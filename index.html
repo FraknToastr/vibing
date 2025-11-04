@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Dashboard Layout (Fixed)</title>
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS (load before our overrides) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        html, body { height: 100%; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* -------- THE IMPORTANT FIX --------
+           Tailwind's preflight sets img { max-width: 100%; height: auto; }
+           That breaks Leaflet tile sizing (causing a checkerboard / squares).
+           Force Leaflet tiles and image layers to ignore responsive img rules. */
+        .leaflet-container img.leaflet-image-layer,
+        .leaflet-container .leaflet-tile,
+        .leaflet-pane img {
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        /* Optional: slightly tinted background to hide any gaps while tiles load */
+        .leaflet-container { background: #e5e7eb; }
+
+        /* Map box must fill remaining space */
+        #map { width: 100%; height: 100%; z-index: 1; }
+
+        .card { transition: transform .2s ease, box-shadow .2s ease; min-height: 300px; }
+        .card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); transform: translateY(-2px); }
+
+        #calendar-grid-days > div { height: 40px; }
+
+        .modal-overlay { z-index: 50; }
+        .modal-content { animation: fadeIn .3s ease-out; }
+        @keyframes fadeIn { from { opacity:0; transform: scale(.95); } to { opacity:1; transform: scale(1); } }
+
+        #category-slicer { transition: all .2s ease; }
+        .category-slicer-button { transition: all .2s ease; color: white !important; }
+
+        .event-card { transition: all .2s ease; z-index: 10; }
+        .event-card:hover { transform: scale(1.01); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- Event Detail Modal -->
+    <div id="event-modal" class="modal-overlay hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div id="modal-content-card" class="modal-content bg-white w-full max-w-lg p-6 rounded-xl shadow-2xl relative">
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition" aria-label="Close">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 id="modal-title" class="text-3xl font-bold text-gray-800 mb-2"></h3>
+            <p class="text-lg text-indigo-600 font-semibold mb-4 flex items-center">
+                <span id="modal-category" class="text-sm font-bold text-white px-3 py-1 rounded-full mr-3"></span>
+                <span id="modal-time"></span>
+            </p>
+            <div class="space-y-4">
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <p class="text-sm font-medium text-gray-500">Location:</p>
+                    <p id="modal-location" class="text-base font-semibold text-gray-700"></p>
+                </div>
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <p class="text-sm font-medium text-gray-500">Full Description:</p>
+                    <p id="modal-details" class="text-base text-gray-600"></p>
+                </div>
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <p class="text-sm font-medium text-gray-500">Coordinates:</p>
+                    <p id="modal-coords" class="text-base text-gray-700"></p>
+                </div>
+            </div>
+            <button id="view-on-map-btn" data-lat="" data-lng="" class="mt-6 w-full py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg hover:bg-indigo-600 transition duration-200">
+                View on Map
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row h-full md:h-[90vh] gap-6">
+        <!-- LEFT -->
+        <div class="w-full md:w-1/2 h-[40vh] md:h-full flex flex-col gap-4">
+            <div id="category-slicer" class="w-full bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-wrap gap-2">
+                <span class="text-sm font-semibold text-gray-700 flex-shrink-0">Filter by:</span>
+            </div>
+            <div id="map" class="w-full h-full rounded-xl shadow-2xl overflow-hidden border border-gray-200" role="region" aria-label="Interactive Leaflet Map Display for Events"></div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="w-full md:w-1/2 flex flex-col gap-6 h-full">
+            <div class="w-full card bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col flex-1">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">Upcoming Events Calendar</h2>
+                <div class="flex flex-col items-center justify-center flex-grow min-h-0">
+                    <div class="w-full flex justify-between items-center mb-4 px-2">
+                        <button id="prev-month" class="text-gray-500 hover:text-indigo-600 focus:outline-none p-2 rounded-full transition duration-150" aria-label="Previous month">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <span id="calendar-month-display" class="text-xl font-bold text-gray-800">October 2025</span>
+                        <button id="next-month" class="text-gray-500 hover:text-indigo-600 focus:outline-none p-2 rounded-full transition duration-150" aria-label="Next month">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                    <div class="w-full grid grid-cols-7 gap-1 text-center text-sm flex-grow">
+                        <div class="text-xs font-semibold text-gray-500 py-1">Sun</div>
+                        <div class="text-xs font-semibold text-gray-500 py-1">Mon</div>
+                        <div class="text-xs font-semibold text-gray-500 py-1">Tue</div>
+                        <div class="text-xs font-semibold text-gray-500 py-1">Wed</div>
+                        <div class="text-xs font-semibold text-gray-500 py-1">Thu</div>
+                        <div class="text-xs font-semibold text-gray-500 py-1">Fri</div>
+                        <div class="text-xs font-semibold text-gray-500 py-1">Sat</div>
+                        <div id="calendar-grid-days" class="col-span-7 grid grid-cols-7 gap-1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full card bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col flex-1">
+                <div id="event-card-container" class="space-y-4 overflow-y-auto pr-3 flex-grow min-h-0">
+                    <div id="loading-indicator" class="text-center text-indigo-500 p-8">Loading events...</div>
+                </div>
+                <div id="no-events-placeholder" class="hidden text-center text-gray-500 p-8 flex-grow items-center justify-center">
+                    <p>No events scheduled for this date.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        (function() {
+            let eventsData = {};
+            const TODAY_DATE_KEY = '2025-10-14';
+            let viewDate = new Date(2025, 9, 1);
+            let selectedDateKey = TODAY_DATE_KEY;
+            let activeDayElement = null;
+
+            let currentMarkers = L.layerGroup();
+            let activeCategory = 'All Categories';
+
+            const COLOR_CLASSES = {
+                indigo: { border: 'border-indigo-500', bg: 'bg-indigo-100', text: 'text-indigo-600', badge: 'bg-indigo-500' },
+                red: { border: 'border-red-500', bg: 'bg-red-100', text: 'text-red-600', badge: 'bg-red-500' },
+                green: { border: 'border-green-500', bg: 'bg-green-100', text: 'text-green-600', badge: 'bg-green-500' },
+                purple: { border: 'border-purple-500', bg: 'bg-purple-100', text: 'text-purple-600', badge: 'bg-purple-500' },
+                blue: { border: 'border-blue-500', bg: 'bg-blue-100', text: 'text-blue-600', badge: 'bg-blue-500' },
+                pink: { border: 'border-pink-500', bg: 'bg-pink-100', text: 'text-pink-600', badge: 'bg-pink-500' },
+                orange: { border: 'border-orange-500', bg: 'bg-orange-100', text: 'text-orange-600', badge: 'bg-orange-500' },
+                teal: { border: 'border-teal-500', bg: 'bg-teal-100', text: 'text-teal-600', badge: 'bg-teal-500' },
+                amber: { border: 'border-amber-500', bg: 'bg-amber-100', text: 'text-amber-600', badge: 'bg-amber-500' },
+                gray: { border: 'border-gray-500', bg: 'bg-gray-200', text: 'text-gray-700', badge: 'bg-gray-500' }
+            };
+
+            const monthDisplay = document.getElementById('calendar-month-display');
+            const daysGrid = document.getElementById('calendar-grid-days');
+            const eventCardContainer = document.getElementById('event-card-container');
+            const noEventsPlaceholder = document.getElementById('no-events-placeholder');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const categorySlicer = document.getElementById('category-slicer');
+
+            const eventModal = document.getElementById('event-modal');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalTitle = document.getElementById('modal-title');
+            const modalCategory = document.getElementById('modal-category');
+            const modalTime = document.getElementById('modal-time');
+            const modalLocation = document.getElementById('modal-location');
+            const modalDetails = document.getElementById('modal-details');
+            const modalCoords = document.getElementById('modal-coords');
+            const prevMonthBtn = document.getElementById('prev-month');
+            const nextMonthBtn = document.getElementById('next-month');
+            const viewOnMapBtn = document.getElementById('view-on-map-btn');
+
+            // Map
+            const map = L.map('map', {
+                center: [-34.9285, 138.6007],
+                zoom: 13,
+                zoomSnap: 0.5,
+                zoomDelta: 0.5
+            });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                crossOrigin: true,
+                detectRetina: true
+            }).addTo(map);
+            currentMarkers.addTo(map);
+            setTimeout(() => map.invalidateSize(), 0);
+
+            function updateMapMarkers(events) {
+                currentMarkers.clearLayers();
+                let bounds = L.latLngBounds();
+                if (events && events.length) {
+                    events.forEach(event => {
+                        const marker = L.marker([event.lat, event.lng], { title: event.title })
+                          .bindPopup(`<b>${event.title}</b><br>${event.location}`);
+                        currentMarkers.addLayer(marker);
+                        bounds.extend([event.lat, event.lng]);
+                    });
+                    events.length > 1 ? map.fitBounds(bounds, { padding: [50,50] }) : map.setView([events[0].lat, events[0].lng], 15);
+                } else {
+                    map.setView([-34.9285, 138.6007], 13);
+                }
+                map.invalidateSize();
+            }
+
+            function showEventModal(event) {
+                const color = COLOR_CLASSES[event.color] || COLOR_CLASSES.indigo;
+                modalTitle.textContent = event.title;
+                modalCategory.textContent = event.category;
+                modalCategory.className = `text-sm font-bold text-white px-3 py-1 rounded-full mr-3 ${color.badge}`;
+                modalTime.textContent = `| ${event.time}`;
+                modalLocation.textContent = event.location;
+                modalDetails.textContent = event.details;
+                modalCoords.textContent = `${event.lat.toFixed(4)}, ${event.lng.toFixed(4)}`;
+                viewOnMapBtn.dataset.lat = event.lat;
+                viewOnMapBtn.dataset.lng = event.lng;
+                eventModal.classList.remove('hidden');
+            }
+
+            modalCloseBtn.onclick = () => eventModal.classList.add('hidden');
+            eventModal.onclick = (e) => { if (e.target.id === 'event-modal') eventModal.classList.add('hidden'); };
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') eventModal.classList.add('hidden'); });
+
+            viewOnMapBtn.addEventListener('click', () => {
+                const lat = parseFloat(viewOnMapBtn.dataset.lat);
+                const lng = parseFloat(viewOnMapBtn.dataset.lng);
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    eventModal.classList.add('hidden');
+                    map.setView([lat, lng], 17);
+                    const marker = currentMarkers.getLayers().find(m => m.getLatLng().lat === lat && m.getLatLng().lng === lng);
+                    if (marker) marker.openPopup();
+                }
+            });
+
+            function displayEvents(dateKey) {
+                selectedDateKey = dateKey;
+                let events = eventsData[dateKey] || [];
+                if (activeCategory !== 'All Categories') events = events.filter(e => e.category === activeCategory);
+
+                eventCardContainer.innerHTML = '';
+                if (!events.length) {
+                    eventCardContainer.classList.add('hidden');
+                    noEventsPlaceholder.classList.remove('hidden');
+                    updateMapMarkers([]);
+                    return;
+                }
+                eventCardContainer.classList.remove('hidden');
+                noEventsPlaceholder.classList.add('hidden');
+
+                events.forEach(event => {
+                    const color = COLOR_CLASSES[event.color] || COLOR_CLASSES.indigo;
+                    const cardHtml = `
+                        <div data-event-id="${event.id}" class="event-card p-4 bg-gray-50 rounded-xl border-l-4 ${color.border} shadow-md cursor-pointer hover:bg-gray-100 transition duration-150">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-lg font-semibold text-gray-800">${event.title}</h3>
+                                <span class="text-xs font-bold text-white ${color.badge} px-2 py-1 rounded-full">${event.category}</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">${event.location}</p>
+                            <p class="text-sm text-gray-500">Time: ${event.time}</p>
+                        </div>`;
+                    eventCardContainer.insertAdjacentHTML('beforeend', cardHtml);
+                });
+
+                document.querySelectorAll('.event-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const id = parseInt(card.dataset.eventId);
+                        const allEvents = Object.values(eventsData).flat();
+                        const event = allEvents.find(e => e.id === id);
+                        if (event) showEventModal(event);
+                    });
+                });
+
+                updateMapMarkers(events);
+            }
+
+            function renderCalendar() {
+                daysGrid.innerHTML = '';
+                const year = viewDate.getFullYear();
+                const month = viewDate.getMonth();
+                const firstDayOfMonth = new Date(year, month, 1);
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const startingDayOfWeek = firstDayOfMonth.getDay();
+                const monthName = firstDayOfMonth.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+                if (monthDisplay) monthDisplay.textContent = monthName;
+
+                for (let i = 0; i < startingDayOfWeek; i++) {
+                    const emptyDiv = document.createElement('div');
+                    emptyDiv.classList.add('text-gray-400', 'rounded-lg');
+                    daysGrid.appendChild(emptyDiv);
+                }
+                activeDayElement = null;
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    const eventCount = (eventsData[dateKey] || []).length;
+                    const isToday = (dateKey === TODAY_DATE_KEY);
+                    const isEventDay = (eventCount > 0);
+                    const isSelectedDay = (dateKey === selectedDateKey);
+
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('rounded-lg', 'font-medium', 'cursor-pointer', 'transition', 'duration-150', 'hover:bg-gray-100', 'border', 'border-gray-200', 'flex', 'items-center', 'justify-center', 'space-x-1', 'text-sm');
+                    dayDiv.dataset.dateKey = dateKey;
+
+                    const dayNumberSpan = document.createElement('span');
+                    dayNumberSpan.textContent = day;
+                    dayDiv.appendChild(dayNumberSpan);
+
+                    if (isToday) {
+                        dayDiv.classList.add('bg-indigo-500', 'text-white', 'font-bold', 'shadow-md', 'hover:bg-indigo-600', 'border-indigo-700');
+                    } else if (isEventDay) {
+                        dayDiv.classList.add('bg-teal-100', 'text-teal-800', 'font-semibold', 'hover:bg-teal-200', 'border-teal-400');
+                        dayNumberSpan.classList.add('text-teal-800');
+                    } else {
+                        dayDiv.classList.add('text-gray-800');
+                    }
+
+                    if (isSelectedDay) {
+                        dayDiv.classList.add('border-4', 'border-indigo-800', 'selected-day');
+                        activeDayElement = dayDiv;
+                    }
+
+                    if (isEventDay) {
+                        const badge = document.createElement('span');
+                        badge.classList.add('text-xs', 'font-bold', 'bg-red-500', 'text-white', 'rounded-full', 'h-4', 'w-4', 'flex-shrink-0', 'flex', 'items-center', 'justify-center');
+                        badge.textContent = eventCount;
+                        dayDiv.appendChild(badge);
+                    }
+
+                    dayDiv.addEventListener('click', () => handleDayClick(dayDiv, dateKey));
+                    daysGrid.appendChild(dayDiv);
+                }
+            }
+
+            function handleDayClick(clickedDayDiv, dateKey) {
+                if (activeDayElement) activeDayElement.classList.remove('border-4', 'border-indigo-800', 'selected-day');
+                clickedDayDiv.classList.add('border-4', 'border-indigo-800', 'selected-day');
+                activeDayElement = clickedDayDiv;
+                selectedDateKey = dateKey;
+                displayEvents(dateKey);
+            }
+
+            function changeMonth(delta) {
+                viewDate.setMonth(viewDate.getMonth() + delta);
+                let targetDay = new Date(selectedDateKey).getDate();
+                let newDate = new Date(viewDate.getFullYear(), viewDate.getMonth(), targetDay);
+                if (newDate.getMonth() !== viewDate.getMonth()) newDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 0);
+                const newSelectedDateKey = `${newDate.getFullYear()}-${String(newDate.getMonth() + 1).padStart(2, '0')}-${String(newDate.getDate()).padStart(2, '0')}`;
+                selectedDateKey = newSelectedDateKey;
+                renderCalendar();
+                const newActiveDayElement = document.querySelector(`[data-date-key="${newSelectedDateKey}"]`);
+                if (newActiveDayElement) handleDayClick(newActiveDayElement, newSelectedDateKey); else displayEvents(newSelectedDateKey);
+            }
+            prevMonthBtn.addEventListener('click', () => changeMonth(-1));
+            nextMonthBtn.addEventListener('click', () => changeMonth(1));
+
+            const MOCK_API_RESPONSE = [
+                { id: 101, date: "2025-10-05", title: "Farmers Market Opening", category: "Market", time: "8:00 AM - 1:00 PM", location: "Adelaide Showground", lat: -34.9602, lng: 138.5866, details: "Opening day for the seasonal farmers market.", color: 'green' },
+                { id: 102, date: "2025-10-05", title: "Outdoor Yoga Session", category: "Fitness", time: "9:30 AM - 10:30 AM", location: "Botanic Park", lat: -34.9150, lng: 138.6080, details: "A restorative session open to all skill levels.", color: 'pink' },
+                { id: 103, date: "2025-10-14", title: "Tech Innovation Summit", category: "Conference", time: "9:00 AM - 5:00 PM", location: "Adelaide Convention Centre", lat: -34.9208, lng: 138.5959, details: "Annual tech conference focusing on AI and sustainability.", color: 'indigo' },
+                { id: 104, date: "2025-10-14", title: "Gourmet Food & Wine Festival", category: "Festival", time: "11:00 AM - 9:00 PM", location: "Rymill Park / Murlawirrapurka", lat: -34.9254, lng: 138.6166, details: "A day-long celebration of South Australian produce.", color: 'red' },
+                { id: 105, date: "2025-10-14", title: "Digital Marketing Workshop", category: "Workshop", time: "2:00 PM - 4:00 PM", location: "State Library of SA", lat: -34.9202, lng: 138.6006, details: "Hands-on session covering social media strategy and SEO basics.", color: 'blue' },
+                { id: 106, date: "2025-10-14", title: "Local Government Briefing", category: "Meeting", time: "10:00 AM - 11:00 AM", location: "Adelaide Town Hall", lat: -34.9238, lng: 138.5997, details: "Quarterly briefing for local councillors and community leaders.", color: 'purple' },
+                { id: 107, date: "2025-10-18", title: "Film Screening: 'Adelaide Dreams'", category: "Culture", time: "7:00 PM - 9:30 PM", location: "Palace Nova Eastend Cinemas", lat: -34.9242, lng: 138.6020, details: "Premiere screening of a local independent film.", color: 'teal' },
+                { id: 108, date: "2025-10-23", title: "Tech Hiring Fair", category: "Career", time: "1:00 PM - 5:00 PM", location: "Lot Fourteen", lat: -34.9202, lng: 138.6041, details: "A major career fair focused on technology professionals.", color: 'amber' },
+                { id: 109, date: "2025-10-29", title: "Public Art Installation Unveiling", category: "Arts", time: "6:00 PM - 7:30 PM", location: "Victoria Square / Tarntanyangga", lat: -34.9263, lng: 138.5982, details: "Public ceremony for the unveiling of a new permanent sculpture.", color: 'orange' },
+                { id: 110, date: "2025-10-29", title: "Running Club Meetup", category: "Fitness", time: "5:30 AM - 6:30 AM", location: "River Torrens Linear Park", lat: -34.9080, lng: 138.5925, details: "Early morning run along the river.", color: 'pink' }
+            ];
+
+            function transformData(linearEvents) {
+                return linearEvents.reduce((acc, event) => {
+                    const dateKey = event.date;
+                    if (!acc[dateKey]) acc[dateKey] = [];
+                    acc[dateKey].push(event);
+                    return acc;
+                }, {});
+            }
+
+            function getUniqueCategories() {
+                const uniqueCategories = new Set(['All Categories']);
+                Object.values(eventsData).flat().forEach(event => uniqueCategories.add(event.category));
+                return Array.from(uniqueCategories);
+            }
+
+            function getCategoryColorName(category) {
+                if (category === 'All Categories') return 'gray';
+                const event = MOCK_API_RESPONSE.find(e => e.category === category);
+                return event ? event.color : 'gray';
+            }
+
+            function renderCategorySlicer(categories) {
+                categorySlicer.querySelectorAll('button').forEach(btn => btn.remove());
+                categories.forEach(category => {
+                    const button = document.createElement('button');
+                    const colorName = getCategoryColorName(category);
+                    const isActive = category === activeCategory;
+                    button.textContent = category;
+                    button.dataset.category = category;
+                    button.classList.add('category-slicer-button','text-xs','font-bold','px-3','py-1','rounded-full','transition-colors','duration-150','shadow-sm','flex-shrink-0');
+                    if (isActive) {
+                        button.classList.add(`bg-${colorName}-600`, 'text-white', `hover:bg-${colorName}-700`, 'shadow-md', 'shadow-gray-300/50');
+                    } else {
+                        button.classList.add(`bg-${colorName}-500`, 'text-white', `hover:bg-${colorName}-600`);
+                    }
+                    button.addEventListener('click', () => handleCategoryClick(category));
+                    categorySlicer.appendChild(button);
+                });
+            }
+
+            function handleCategoryClick(category) {
+                activeCategory = category;
+                renderCategorySlicer(getUniqueCategories());
+                displayEvents(selectedDateKey);
+            }
+
+            async function fetchEventsAndInitialize() {
+                loadingIndicator.classList.remove('hidden');
+                try {
+                    let rawEvents = MOCK_API_RESPONSE;
+                    await new Promise(r => setTimeout(r, 300));
+                    eventsData = transformData(rawEvents);
+                    renderCategorySlicer(getUniqueCategories());
+                    renderCalendar();
+                    displayEvents(selectedDateKey);
+                } catch (e) {
+                    console.error(e);
+                    eventCardContainer.innerHTML = '<p class="text-red-600 p-4">An error occurred during data processing.</p>';
+                } finally {
+                    loadingIndicator.classList.add('hidden');
+                    map.invalidateSize();
+                }
+            }
+
+            fetchEventsAndInitialize();
+            window.addEventListener('resize', () => map.invalidateSize());
+        })();
+    </script>
+</body>
+</html>
