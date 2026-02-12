@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Offline SQL Beautifier</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --panel: #121a27;
+      --panel2: #0f1622;
+      --text: #e7eefc;
+      --muted: #a8b3c7;
+      --border: #22304a;
+      --accent: #6aa6ff;
+      --bad: #ff6a6a;
+      --good: #65d48b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(106,166,255,.18), transparent 60%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(101,212,139,.12), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 18px 18px 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0;
+      letter-spacing: .2px;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 12.5px;
+      margin: 0;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 18px 22px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 70%), var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      background: var(--panel2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      user-select: none;
+    }
+
+    select, input[type="number"], input[type="checkbox"] {
+      accent-color: var(--accent);
+    }
+
+    select, input[type="number"] {
+      font-family: var(--sans);
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 8px;
+      outline: none;
+    }
+    input[type="number"] { width: 70px; }
+
+    button {
+      cursor: pointer;
+      font-family: var(--sans);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 13px;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+    }
+    button:hover { background: rgba(255,255,255,.06); border-color: rgba(106,166,255,.55); }
+    button:active { transform: translateY(1px); }
+    .primary {
+      background: linear-gradient(180deg, rgba(106,166,255,.35), rgba(106,166,255,.08));
+      border-color: rgba(106,166,255,.65);
+    }
+    .danger {
+      background: linear-gradient(180deg, rgba(255,106,106,.30), rgba(255,106,106,.08));
+      border-color: rgba(255,106,106,.65);
+    }
+    .good {
+      background: linear-gradient(180deg, rgba(101,212,139,.22), rgba(101,212,139,.06));
+      border-color: rgba(101,212,139,.55);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    @media (min-width: 980px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .area {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 420px;
+    }
+
+    .area-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .area-header .label {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    textarea {
+      width: 100%;
+      flex: 1;
+      resize: vertical;
+      min-height: 360px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--text);
+      background: rgba(0,0,0,.18);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      outline: none;
+      tab-size: 2;
+      white-space: pre;
+    }
+
+    .status {
+      padding: 10px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--panel2);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .status b { color: var(--text); font-weight: 600; }
+    .hint { color: var(--muted); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      font-size: 12px;
+    }
+    .pill .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(106,166,255,.12);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <h1>Offline SQL Beautifier</h1>
+      <p class="sub">Single-file, no internet required. Paste SQL on the left → beautified SQL on the right.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <div class="toolbar">
+        <div class="group">
+          <button class="primary" id="btnBeautify">Beautify</button>
+          <button id="btnSwap">Swap</button>
+          <button class="danger" id="btnClear">Clear</button>
+        </div>
+
+        <div class="group" style="margin-left:auto;">
+          <label>
+            Keyword case
+            <select id="keywordCase">
+              <option value="upper" selected>UPPER</option>
+              <option value="lower">lower</option>
+              <option value="keep">keep</option>
+            </select>
+          </label>
+
+          <label>
+            Indent
+            <input id="indentSize" type="number" min="2" max="8" step="1" value="4" />
+          </label>
+
+          <label>
+            Commas
+            <select id="commaStyle">
+              <option value="end" selected>Line-end</option>
+              <option value="leading">Leading</option>
+            </select>
+          </label>
+
+          <label>
+            <input id="compactBlankLines" type="checkbox" checked />
+            Compact blank lines
+          </label>
+
+          <label>
+            <input id="breakBeforeJoins" type="checkbox" checked />
+            Break before JOIN
+          </label>
+
+          <label>
+            <input id="wrapLongLines" type="checkbox" />
+            Soft-wrap output
+          </label>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="area">
+          <div class="area-header">
+            <div class="label">Input SQL</div>
+            <div class="group">
+              <button id="btnPaste">Paste</button>
+            </div>
+          </div>
+          <textarea id="input" spellcheck="false" placeholder="Paste messy SQL here..."></textarea>
+        </div>
+
+        <div class="area">
+          <div class="area-header">
+            <div class="label">Beautified SQL</div>
+            <div class="group">
+              <button class="good" id="btnCopy">Copy</button>
+              <button id="btnDownload">Download .sql</button>
+            </div>
+          </div>
+          <textarea id="output" spellcheck="false" placeholder="Formatted SQL will appear here..." readonly></textarea>
+        </div>
+      </div>
+
+      <div class="status">
+        <span class="pill"><span class="dot"></span><span id="statusText">Ready.</span></span>
+        <span class="hint" id="metrics">Tokens: 0 • Lines: 0</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // --------------------------------------------
+    // Offline SQL Beautifier
+    // - Tokenizes SQL (strings, comments, brackets)
+    // - Applies basic clause formatting and indentation
+    // --------------------------------------------
+
+    const $ = (id) => document.getElementById(id);
+
+    const inputEl = $("input");
+    const outputEl = $("output");
+    const statusText = $("statusText");
+    const metrics = $("metrics");
+
+    const keywordCaseEl = $("keywordCase");
+    const indentSizeEl = $("indentSize");
+    const commaStyleEl = $("commaStyle");
+    const compactBlankLinesEl = $("compactBlankLines");
+    const breakBeforeJoinsEl = $("breakBeforeJoins");
+    const wrapLongLinesEl = $("wrapLongLines");
+
+    function setStatus(msg) {
+      statusText.textContent = msg;
+    }
+
+    function updateMetrics(text) {
+      const lines = text ? text.split(/\r?\n/).length : 0;
+      const tokens = tokenizeSQL(text).length;
+      metrics.textContent = `Tokens: ${tokens} • Lines: ${lines}`;
+    }
+
+    function normalizeNewlines(s) {
+      return (s || "").replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    }
+
+    // Token types: word, string, symbol, ws, commentLine, commentBlock
+    function tokenizeSQL(sql) {
+      sql = normalizeNewlines(sql);
+
+      const tokens = [];
+      let i = 0;
+
+      const push = (type, value) => tokens.push({ type, value });
+
+      while (i < sql.length) {
+        const ch = sql[i];
+
+        // Whitespace
+        if (ch === " " || ch === "\t" || ch === "\n") {
+          let j = i + 1;
+          while (j < sql.length && (sql[j] === " " || sql[j] === "\t" || sql[j] === "\n")) j++;
+          push("ws", sql.slice(i, j));
+          i = j;
+          continue;
+        }
+
+        // Line comment --
+        if (ch === "-" && sql[i + 1] === "-") {
+          let j = i + 2;
+          while (j < sql.length && sql[j] !== "\n") j++;
+          push("commentLine", sql.slice(i, j));
+          i = j;
+          continue;
+        }
+
+        // Block comment /* ... */
+        if (ch === "/" && sql[i + 1] === "*") {
+          let j = i + 2;
+          while (j < sql.length && !(sql[j] === "*" && sql[j + 1] === "/")) j++;
+          j = Math.min(j + 2, sql.length);
+          push("commentBlock", sql.slice(i, j));
+          i = j;
+          continue;
+        }
+
+        // Single-quoted strings: '...'
+        if (ch === "'") {
+          let j = i + 1;
+          while (j < sql.length) {
+            if (sql[j] === "'" && sql[j + 1] === "'") { // escaped ''
+              j += 2;
+              continue;
+            }
+            if (sql[j] === "'") { j++; break; }
+            j++;
+          }
+          push("string", sql.slice(i, j));
+          i = j;
+          continue;
+        }
+
+        // Double-quoted identifiers/strings: "..."
+        if (ch === '"') {
+          let j = i + 1;
+          while (j < sql.length) {
+            if (sql[j] === '"' && sql[j + 1] === '"') { // escaped ""
+              j += 2;
+              continue;
+            }
+            if (sql[j] === '"') { j++; break; }
+            j++;
+          }
+          push("string", sql.slice(i, j));
+          i = j;
+          continue;
+        }
+
+        // Bracket identifiers: [ ... ]
+        if (ch === "[") {
+          let j = i + 1;
+          while (j < sql.length) {
+            if (sql[j] === "]") { j++; break; }
+            j++;
+          }
+          push("string", sql.slice(i, j)); // treat as atomic
+          i = j;
+          continue;
+        }
+
+        // Numbers (simple)
+        if (/[0-9]/.test(ch)) {
+          let j = i + 1;
+          while (j < sql.length && /[0-9.]/.test(sql[j])) j++;
+          push("word", sql.slice(i, j));
+          i = j;
+          continue;
+        }
+
+        // Words / identifiers (includes @, #, $, _, . as part)
+        if (/[A-Za-z_@#$]/.test(ch)) {
+          let j = i + 1;
+          while (j < sql.length && /[A-Za-z0-9_@#$]/.test(sql[j])) j++;
+          push("word", sql.slice(i, j));
+          i = j;
+          continue;
+        }
+
+        // Two-char operators
+        const two = sql.slice(i, i + 2);
+        const twoOps = new Set(["<>", "<=", ">=", "!=","||","::"]);
+        if (twoOps.has(two)) {
+          push("symbol", two);
+          i += 2;
+          continue;
+        }
+
+        // Single symbols
+        push("symbol", ch);
+        i++;
+      }
+
+      return tokens;
+    }
+
+    const KEYWORDS = new Set([
+      // core
+      "select","from","where","group","by","order","having","limit","offset",
+      "insert","into","values","update","set","delete",
+      "create","alter","drop","truncate",
+      "distinct","top","percent",
+      "as","on","and","or","not","in","is","null","like","between","exists",
+      "case","when","then","else","end",
+      "union","all","intersect","except",
+      "join","inner","left","right","full","outer","cross","apply",
+      "with","cte",
+      "over","partition",
+      "returning",
+      // ddl-ish
+      "primary","key","foreign","references","constraint","index","view","table",
+      // misc
+      "cast","convert","coalesce","nullif"
+    ]);
+
+    const CLAUSE_BREAK_BEFORE = new Set([
+      "select","from","where","group","order","having",
+      "union","intersect","except",
+      "insert","update","delete","create","alter","drop","truncate","with"
+    ]);
+
+    const JOIN_WORDS = new Set(["join","inner","left","right","full","outer","cross","apply"]);
+
+    function applyKeywordCase(word, mode) {
+      if (mode === "keep") return word;
+      return mode === "upper" ? word.toUpperCase() : word.toLowerCase();
+    }
+
+    function isWordToken(t, wLower) {
+      return t && t.type === "word" && t.value.toLowerCase() === wLower;
+    }
+
+    function isKeyword(t) {
+      return t && t.type === "word" && KEYWORDS.has(t.value.toLowerCase());
+    }
+
+    function isWhitespace(t) {
+      return t && t.type === "ws";
+    }
+
+    function trimTrailingSpaces(line) {
+      return line.replace(/[ \t]+$/g, "");
+    }
+
+    function beautifySQL(sql, opts) {
+      const tokens = tokenizeSQL(sql);
+      const indentUnit = " ".repeat(opts.indentSize);
+
+      let outLines = [];
+      let line = "";
+      let indent = 0;
+
+      let inSelectList = false;
+      let inGroupOrderBy = false;
+      let caseDepth = 0;
+
+      const newline = (force = false) => {
+        const cleaned = trimTrailingSpaces(line);
+        if (force || cleaned.length > 0) outLines.push(cleaned);
+        line = indentUnit.repeat(Math.max(0, indent));
+      };
+
+      const ensureSpace = () => {
+        if (line.length === 0) {
+          line = indentUnit.repeat(Math.max(0, indent));
+          return;
+        }
+        if (!line.endsWith(" ") && !line.endsWith("\t")) line += " ";
+      };
+
+      const append = (s) => { line += s; };
+
+      const peekPrevNonWS = (idx) => {
+        for (let i = idx - 1; i >= 0; i--) if (!isWhitespace(tokens[i])) return tokens[i];
+        return null;
+      };
+
+      const peekNextNonWS = (idx) => {
+        for (let i = idx + 1; i < tokens.length; i++) if (!isWhitespace(tokens[i])) return tokens[i];
+        return null;
+      };
+
+      // Start with clean line
+      line = "";
+
+      for (let i = 0; i < tokens.length; i++) {
+        const t = tokens[i];
+
+        if (t.type === "ws") {
+          // We'll handle spacing explicitly, but preserve newlines around comments if needed.
+          // Ignore generic whitespace.
+          continue;
+        }
+
+        // Comments: keep on their own line when possible
+        if (t.type === "commentLine" || t.type === "commentBlock") {
+          if (line.trim().length > 0) newline(true);
+          append(t.value.trim());
+          newline(true);
+          continue;
+        }
+
+        // Strings: keep atomic
+        if (t.type === "string") {
+          // Space if previous token was a word/string/close paren
+          const prev = peekPrevNonWS(i);
+          if (prev && (prev.type === "word" || prev.type === "string" || (prev.type === "symbol" && prev.value === ")"))) {
+            ensureSpace();
+          }
+          append(t.value);
+          continue;
+        }
+
+        // Words (keywords/identifiers)
+        if (t.type === "word") {
+          const w = t.value;
+          const wLower = w.toLowerCase();
+
+          // Clause breaks (SELECT/FROM/WHERE/GROUP/ORDER/HAVING/UNION...)
+          if (CLAUSE_BREAK_BEFORE.has(wLower)) {
+            // Special handling for GROUP BY / ORDER BY
+            if (wLower === "group" || wLower === "order") {
+              // We'll break line before GROUP/ORDER and mark that BY follows
+              if (line.trim().length > 0) newline(true);
+              indent = Math.max(0, indent - 1); // soften nesting coming out of parens/subqueries
+              line = indentUnit.repeat(Math.max(0, indent));
+              append(applyKeywordCase(w, opts.keywordCase));
+              ensureSpace();
+              inGroupOrderBy = true;
+              inSelectList = false;
+              continue;
+            }
+
+            if (wLower === "select") {
+              if (line.trim().length > 0) newline(true);
+              // If this select follows an opening paren, indent it
+              const prev = peekPrevNonWS(i);
+              if (prev && prev.type === "symbol" && prev.value === "(") {
+                // already increased indent at '('
+              } else {
+                // top-level select: reset indentation gently
+                // (don't slam to 0 because we may be inside WITH/CTE blocks)
+              }
+              append(applyKeywordCase(w, opts.keywordCase));
+              ensureSpace();
+              inSelectList = true;
+              continue;
+            }
+
+            if (wLower === "with") {
+              if (line.trim().length > 0) newline(true);
+              append(applyKeywordCase(w, opts.keywordCase));
+              ensureSpace();
+              inSelectList = false;
+              continue;
+            }
+
+            if (wLower === "from" || wLower === "where" || wLower === "having") {
+              if (line.trim().length > 0) newline(true);
+              // decrease indent after select list
+              if (wLower === "from") {
+                inSelectList = false;
+              }
+              append(applyKeywordCase(w, opts.keywordCase));
+              ensureSpace();
+              continue;
+            }
+
+            if (wLower === "union" || wLower === "intersect" || wLower === "except") {
+              if (line.trim().length > 0) newline(true);
+              indent = Math.max(0, indent - 1);
+              line = indentUnit.repeat(Math.max(0, indent));
+              append(applyKeywordCase(w, opts.keywordCase));
+              ensureSpace();
+              inSelectList = false;
+              continue;
+            }
+
+            // INSERT/UPDATE/DELETE/CREATE/etc.
+            if (line.trim().length > 0) newline(true);
+            append(applyKeywordCase(w, opts.keywordCase));
+            ensureSpace();
+            inSelectList = false;
+            continue;
+          }
+
+          // GROUP/ORDER "BY" companion handling
+          if (inGroupOrderBy && wLower === "by") {
+            append(applyKeywordCase(w, opts.keywordCase));
+            ensureSpace();
+            inGroupOrderBy = false;
+            // group/order by list acts similar to select list for comma breaks
+            inSelectList = true;
+            continue;
+          }
+
+          // JOIN formatting
+          if (JOIN_WORDS.has(wLower)) {
+            if (opts.breakBeforeJoins) {
+              if (line.trim().length > 0) newline(true);
+            } else {
+              ensureSpace();
+            }
+            append(applyKeywordCase(w, opts.keywordCase));
+            ensureSpace();
+            inSelectList = false;
+            continue;
+          }
+
+          // ON formatting: usually newline + indent
+          if (wLower === "on") {
+            if (line.trim().length > 0) newline(true);
+            indent = Math.max(0, indent + 1);
+            line = indentUnit.repeat(Math.max(0, indent));
+            append(applyKeywordCase(w, opts.keywordCase));
+            ensureSpace();
+            continue;
+          }
+
+          // AND/OR formatting inside WHERE/ON: newline before, aligned
+          if (wLower === "and" || wLower === "or") {
+            if (line.trim().length > 0) newline(true);
+            // align under WHERE/ON content: keep current indent
+            append(applyKeywordCase(w, opts.keywordCase));
+            ensureSpace();
+            continue;
+          }
+
+          // CASE formatting
+          if (wLower === "case") {
+            ensureSpaceIfNeededForWord(i, tokens, ensureSpace, line);
+            append(applyKeywordCase(w, opts.keywordCase));
+            caseDepth++;
+            indent++;
+            newline(true);
+            continue;
+          }
+
+          if (wLower === "when" || wLower === "then" || wLower === "else") {
+            if (line.trim().length > 0) newline(true);
+            append(applyKeywordCase(w, opts.keywordCase));
+            ensureSpace();
+            continue;
+          }
+
+          if (wLower === "end") {
+            caseDepth = Math.max(0, caseDepth - 1);
+            indent = Math.max(0, indent - 1);
+            if (line.trim().length > 0) newline(true);
+            append(applyKeywordCase(w, opts.keywordCase));
+            continue;
+          }
+
+          // Default word: keyword casing if keyword
+          const prev = peekPrevNonWS(i);
+          const next = peekNextNonWS(i);
+
+          // space rules
+          if (prev && (prev.type === "word" || prev.type === "string" || (prev.type === "symbol" && prev.value === ")") || (prev.type === "symbol" && prev.value === "]"))) {
+            ensureSpace();
+          }
+          const outWord = isKeyword(t) ? applyKeywordCase(w, opts.keywordCase) : w;
+          append(outWord);
+
+          // If this is DISTINCT/TOP etc, keep space afterwards
+          if (next && (next.type === "word" || next.type === "string")) {
+            ensureSpace();
+          }
+          continue;
+        }
+
+        // Symbols
+        if (t.type === "symbol") {
+          const sym = t.value;
+
+          if (sym === "(") {
+            // attach directly after function names, else add space if needed
+            const prev = peekPrevNonWS(i);
+            if (prev && prev.type === "word") {
+              append("(");
+            } else {
+              // space before ( if previous is word/string/close paren
+              if (prev && (prev.type === "word" || prev.type === "string" || (prev.type === "symbol" && prev.value === ")"))) {
+                // usually no extra space before "(" for SQL, keep tight
+              }
+              append("(");
+            }
+            indent++;
+            continue;
+          }
+
+          if (sym === ")") {
+            indent = Math.max(0, indent - 1);
+            // If current line only has indentation, don't force new line
+            append(")");
+            // If next token is a word clause, let it break naturally
+            continue;
+          }
+
+          if (sym === ",") {
+            if (opts.commaStyle === "leading") {
+              // convert ", item" -> "\n, item"
+              // we emit comma at line start of next line
+              newline(true);
+              append(",");
+              ensureSpace();
+            } else {
+              append(",");
+              newline(true);
+            }
+            continue;
+          }
+
+          if (sym === ";") {
+            append(";");
+            newline(true);
+            continue;
+          }
+
+          // Operators: keep spaced
+          const ops = new Set(["=","<",">","+","-","*","/","%","|","&","^"]);
+          if (ops.has(sym)) {
+            ensureSpace();
+            append(sym);
+            ensureSpace();
+            continue;
+          }
+
+          // Dot should stay tight
+          if (sym === ".") {
+            append(".");
+            continue;
+          }
+
+          // Default punctuation
+          append(sym);
+          continue;
+        }
+      }
+
+      if (line.trim().length > 0) outLines.push(trimTrailingSpaces(line));
+
+      // Post-process: compact blank lines if desired
+      if (opts.compactBlankLines) {
+        const compacted = [];
+        let blank = 0;
+        for (const l of outLines) {
+          if (l.trim().length === 0) {
+            blank++;
+            if (blank <= 1) compacted.push("");
+          } else {
+            blank = 0;
+            compacted.push(l);
+          }
+        }
+        outLines = compacted;
+      }
+
+      return outLines.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n";
+    }
+
+    function ensureSpaceIfNeededForWord(i, tokens, ensureSpace, currentLine) {
+      const prev = (() => {
+        for (let k = i - 1; k >= 0; k--) {
+          if (tokens[k].type !== "ws") return tokens[k];
+        }
+        return null;
+      })();
+      if (prev && (prev.type === "word" || prev.type === "string" || (prev.type === "symbol" && prev.value === ")"))) {
+        ensureSpace();
+      }
+    }
+
+    function getOpts() {
+      const indentSize = clampInt(parseInt(indentSizeEl.value, 10), 2, 8, 4);
+      indentSizeEl.value = String(indentSize);
+
+      return {
+        keywordCase: keywordCaseEl.value,
+        indentSize,
+        commaStyle: commaStyleEl.value,
+        compactBlankLines: compactBlankLinesEl.checked,
+        breakBeforeJoins: breakBeforeJoinsEl.checked
+      };
+    }
+
+    function clampInt(v, min, max, fallback) {
+      if (!Number.isFinite(v)) return fallback;
+      return Math.min(max, Math.max(min, v));
+    }
+
+    // UI actions
+    $("btnBeautify").addEventListener("click", () => {
+      try {
+        setStatus("Beautifying...");
+        const src = inputEl.value || "";
+        const out = beautifySQL(src, getOpts());
+        outputEl.value = out;
+
+        // Soft wrap option
+        outputEl.style.whiteSpace = wrapLongLinesEl.checked ? "pre-wrap" : "pre";
+
+        updateMetrics(out);
+        setStatus("Done.");
+      } catch (e) {
+        console.error(e);
+        setStatus("Error while formatting (see console).");
+      }
+    });
+
+    $("btnCopy").addEventListener("click", async () => {
+      const text = outputEl.value || "";
+      if (!text.trim()) { setStatus("Nothing to copy."); return; }
+      try {
+        await navigator.clipboard.writeText(text);
+        setStatus("Copied to clipboard.");
+      } catch {
+        // Fallback
+        outputEl.focus();
+        outputEl.select();
+        document.execCommand("copy");
+        setStatus("Copied (fallback).");
+      }
+    });
+
+    $("btnDownload").addEventListener("click", () => {
+      const text = outputEl.value || "";
+      if (!text.trim()) { setStatus("Nothing to download."); return; }
+
+      const stamp = new Date().toISOString().replace(/[:]/g, "-").slice(0, 19);
+      const filename = `beautified-${stamp}.sql`;
+
+      const blob = new Blob([text], { type: "application/sql;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+
+      URL.revokeObjectURL(url);
+      setStatus(`Downloaded ${filename}`);
+    });
+
+    $("btnClear").addEventListener("click", () => {
+      inputEl.value = "";
+      outputEl.value = "";
+      updateMetrics("");
+      setStatus("Cleared.");
+    });
+
+    $("btnSwap").addEventListener("click", () => {
+      const a = inputEl.value;
+      inputEl.value = outputEl.value;
+      outputEl.value = a;
+      updateMetrics(outputEl.value || "");
+      setStatus("Swapped.");
+    });
+
+    $("btnPaste").addEventListener("click", async () => {
+      try {
+        const t = await navigator.clipboard.readText();
+        inputEl.value = t;
+        setStatus("Pasted from clipboard.");
+      } catch {
+        setStatus("Clipboard paste blocked by browser. Use Ctrl+V in the box.");
+      }
+    });
+
+    wrapLongLinesEl.addEventListener("change", () => {
+      outputEl.style.whiteSpace = wrapLongLinesEl.checked ? "pre-wrap" : "pre";
+    });
+
+    // Initial metrics
+    updateMetrics("");
+
+    // Small sample (optional): uncomment to prefill
+    // inputEl.value = "select a,b,c from dbo.Table t left join dbo.X x on x.id=t.id where a=1 and b like '%test%' order by c;";
+  </script>
+</body>
+</html>

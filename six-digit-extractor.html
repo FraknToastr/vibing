@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Six-Digit Number Extractor → CSV</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 16px;
+      line-height: 1.4;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .controls label {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .controls select {
+      padding: 7px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(127,127,127,0.35);
+      background: transparent;
+      font-size: 13px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 980px) {
+      .row { grid-template-columns: 1fr 1fr; }
+    }
+    .panel {
+      border: 1px solid rgba(127,127,127,0.35);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .panel h2 {
+      font-size: 14px;
+      margin: 0 0 8px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+    }
+    textarea {
+      width: 100%;
+      min-height: 320px;
+      resize: vertical;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(127,127,127,0.35);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      box-sizing: border-box;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 9px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(127,127,127,0.35);
+      background: transparent;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    button:hover { filter: brightness(1.05); }
+    button:active { transform: translateY(1px); }
+    .meta {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .badge {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(127,127,127,0.35);
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    .hint {
+      font-size: 12px;
+      opacity: 0.75;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Six-Digit Number Extractor → CSV</h1>
+      <div class="controls">
+        <label><input id="optDedupe" type="checkbox" checked /> Dedupe</label>
+        <label><input id="optSort" type="checkbox" /> Sort ascending</label>
+        <label><input id="optKeepOrder" type="checkbox" checked /> Preserve first-seen order</label>
+
+        <label>
+          Output:
+          <select id="optFormat" title="Choose output format">
+            <option value="singleLine_sq">'single line' (one per line, single quotes)</option>
+            <option value="singleLine_nq">single line (one per line, no quotes)</option>
+            <option value="singleRow_sq">single row (comma-separated, single quotes)</option>
+            <option value="singleRow_header">single row CSV (with header)</option>
+            <option value="singleRow_noheader">single row CSV (no header)</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <div class="row">
+      <section class="panel">
+        <h2>
+          <span>Paste messy text here</span>
+          <span class="badge" id="inCount">0 chars</span>
+        </h2>
+        <textarea id="inputText" placeholder="Paste anything here... emails, reports, logs, PDFs copied as text, etc."></textarea>
+        <div class="buttons">
+          <button id="btnExtract" type="button">Extract 6-digit numbers</button>
+          <button id="btnClearIn" type="button">Clear input</button>
+          <button id="btnExample" type="button">Load example</button>
+        </div>
+        <div class="hint">
+          Rule: extracts numbers that are <strong>exactly 6 digits</strong> (e.g. 012345, 999999). It will NOT take 5 or 7+ digit numbers.
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>
+          <span>Output</span>
+          <span class="badge" id="outCount">0 numbers</span>
+        </h2>
+        <textarea id="outputCsv" placeholder="Output will appear here..." readonly></textarea>
+        <div class="buttons">
+          <button id="btnCopy" type="button">Copy</button>
+          <button id="btnDownload" type="button">Download .csv</button>
+          <button id="btnClearOut" type="button">Clear output</button>
+        </div>
+        <div class="meta">
+          <div>Filename: <span class="badge" id="fileName">six-digit-numbers.csv</span></div>
+          <div id="status" aria-live="polite"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const elIn = document.getElementById('inputText');
+    const elOut = document.getElementById('outputCsv');
+    const elInCount = document.getElementById('inCount');
+    const elOutCount = document.getElementById('outCount');
+    const elStatus = document.getElementById('status');
+
+    const optDedupe = document.getElementById('optDedupe');
+    const optSort = document.getElementById('optSort');
+    const optKeepOrder = document.getElementById('optKeepOrder');
+    const optFormat = document.getElementById('optFormat');
+
+    // Match exactly six digits not adjacent to other digits
+    const SIX_DIGIT_RE = /(?<!\d)\d{6}(?!\d)/g;
+
+    function setStatus(msg) {
+      elStatus.textContent = msg || '';
+      if (msg) setTimeout(() => {
+        if (elStatus.textContent === msg) elStatus.textContent = '';
+      }, 2200);
+    }
+
+    function updateCounts() {
+      elInCount.textContent = `${(elIn.value || '').length.toLocaleString()} chars`;
+    }
+
+    function extractSixDigits(text) {
+      const matches = text.match(SIX_DIGIT_RE) || [];
+      let values = matches.slice();
+
+      if (optDedupe.checked) {
+        const seen = new Set();
+        const deduped = [];
+        for (const v of values) {
+          if (!seen.has(v)) {
+            seen.add(v);
+            deduped.push(v);
+          }
+        }
+        values = deduped;
+      }
+
+      if (optSort.checked) {
+        values.sort((a, b) => {
+          const na = Number(a), nb = Number(b);
+          if (na !== nb) return na - nb;
+          return a.localeCompare(b);
+        });
+      } else if (!optKeepOrder.checked) {
+        // default match order is "first seen"; keep toggle for future extensibility
+      }
+
+      return values;
+    }
+
+    function renderOutput(values) {
+      const fmt = optFormat.value;
+
+      if (fmt === 'singleLine_sq') {
+        // one item per line, wrapped in single quotes (requested)
+        return values.map(v => `'${v}'`).join('\r\n');
+      }
+
+      if (fmt === 'singleLine_nq') {
+        // one item per line, no quotes
+        return values.join('\r\n');
+      }
+
+      if (fmt === 'singleRow_sq') {
+        // single row, comma-separated, each value wrapped in single quotes (requested)
+        return values.map(v => `'${v}'`).join(',');
+      }
+
+      if (fmt === 'singleRow_header') {
+        // header + values as a single row (CSV)
+        return ['six_digit_number', values.join(',')].join('\r\n');
+      }
+
+      if (fmt === 'singleRow_noheader') {
+        // values only in one row, comma-separated
+        return values.join(',');
+      }
+
+      return values.join('\r\n');
+    }
+
+    function doExtract() {
+      const text = elIn.value || '';
+      const values = extractSixDigits(text);
+      const out = renderOutput(values);
+
+      elOut.value = out;
+      elOutCount.textContent = `${values.length.toLocaleString()} numbers`;
+      setStatus(values.length ? `Extracted ${values.length} six-digit number(s).` : 'No six-digit numbers found.');
+    }
+
+    function downloadCsv() {
+      const content = elOut.value || '';
+      if (!content.trim()) {
+        setStatus('Nothing to download.');
+        return;
+      }
+      const blob = new Blob([content], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'six-digit-numbers.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+
+      URL.revokeObjectURL(url);
+      setStatus('Downloaded CSV.');
+    }
+
+    async function copyOut() {
+      const content = elOut.value || '';
+      if (!content.trim()) {
+        setStatus('Nothing to copy.');
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(content);
+        setStatus('Copied to clipboard.');
+      } catch {
+        elOut.focus();
+        elOut.select();
+        document.execCommand('copy');
+        setStatus('Copied (fallback).');
+      }
+    }
+
+    // Wire up UI
+    document.getElementById('btnExtract').addEventListener('click', doExtract);
+    document.getElementById('btnDownload').addEventListener('click', downloadCsv);
+    document.getElementById('btnCopy').addEventListener('click', copyOut);
+
+    document.getElementById('btnClearIn').addEventListener('click', () => {
+      elIn.value = '';
+      updateCounts();
+      setStatus('Input cleared.');
+    });
+
+    document.getElementById('btnClearOut').addEventListener('click', () => {
+      elOut.value = '';
+      elOutCount.textContent = '0 numbers';
+      setStatus('Output cleared.');
+    });
+
+    document.getElementById('btnExample').addEventListener('click', () => {
+      elIn.value =
+`Example messy paste:
+
+Invoice: 123456
+Ref: ABC-654321-XYZ
+Long number should NOT match: 1234567
+Embedded digits should NOT match: A123456B (but " 123456 " will)
+Multiple lines:
+  - Case #000001
+  - Case #000001 (duplicate)
+Text with punctuation: (999999), [111111], {222222}.
+`;
+      updateCounts();
+      setStatus('Example loaded.');
+    });
+
+    // Re-render on format change (so you can toggle output format after extracting)
+    optFormat.addEventListener('change', () => {
+      if ((elIn.value || '').trim()) doExtract();
+    });
+
+    // Live counts
+    elIn.addEventListener('input', updateCounts);
+
+    updateCounts();
+  </script>
+</body>
+</html>
