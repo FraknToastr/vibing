@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>JR – GitHub Apps Launcher</title>
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#121826; --muted:#9aa4b2; --text:#e6edf3;
+      --border:#223044; --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --btn:#1f6feb; --btnText:#ffffff; --btn2:#263042; --btn2Text:#e6edf3;
+      --chip:#1a2332; --chipText:#b9c4d3; --focus:#7aa7ff;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f8fb; --card:#ffffff; --muted:#5b6573; --text:#111827;
+        --border:#d9e1ee; --shadow: 0 10px 30px rgba(17,24,39,.10);
+        --btn:#1f6feb; --btnText:#ffffff; --btn2:#eef2f8; --btn2Text:#111827;
+        --chip:#eef2f8; --chipText:#334155; --focus:#2b6fff;
+      }
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% 0%, rgba(31,111,235,.20), transparent 55%),
+                  radial-gradient(1000px 500px at 90% 10%, rgba(122,167,255,.14), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+    a{ color:inherit; }
+    .wrap{ max-width:1050px; margin:0 auto; padding:28px 18px 42px; }
+    header{
+      display:flex; gap:14px; align-items:flex-end; justify-content:space-between;
+      flex-wrap:wrap;
+      padding: 8px 2px 18px;
+    }
+    .title{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    h1{ margin:0; font-size:22px; letter-spacing:.2px; }
+    .sub{ margin:0; color:var(--muted); font-size:13px; line-height:1.35; max-width:75ch; }
+    .controls{
+      display:flex; gap:10px; align-items:center;
+      flex: 1 1 320px;
+      justify-content:flex-end;
+    }
+    .search{
+      position:relative;
+      flex:1 1 260px;
+      max-width: 420px;
+      min-width: 220px;
+    }
+    .search input{
+      width:100%;
+      padding:10px 12px 10px 36px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      outline:none;
+      box-shadow:none;
+    }
+    @media (prefers-color-scheme: light){
+      .search input{ background: rgba(17,24,39,.02); }
+    }
+    .search svg{
+      position:absolute;
+      left:11px; top:50%;
+      transform:translateY(-50%);
+      opacity:.8;
+    }
+    .search input:focus{
+      border-color: var(--focus);
+      box-shadow: 0 0 0 3px rgba(122,167,255,.18);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top: 10px;
+    }
+    .card{
+      grid-column: span 6;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px 16px 14px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    @media (max-width: 780px){ .card{ grid-column: span 12; } }
+    @media (prefers-color-scheme: light){
+      .card{ background: rgba(255,255,255, .86); }
+    }
+    .cardTop{
+      display:flex; gap:12px; align-items:flex-start;
+      margin-bottom: 10px;
+    }
+    .icon{
+      width:42px; height:42px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(31,111,235,.25), rgba(122,167,255,.10));
+      border: 1px solid rgba(122,167,255,.25);
+      display:flex; align-items:center; justify-content:center;
+      font-size:20px;
+      flex: 0 0 auto;
+    }
+    .nameRow{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .name{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .meta{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0; }
+    .chip{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: var(--chip);
+      color: var(--chipText);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    @media (prefers-color-scheme: light){
+      .chip{ border-color: rgba(17,24,39,.08); }
+    }
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      border:1px solid transparent;
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:600;
+      font-size:13px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      user-select:none;
+    }
+    .btnPrimary{ background: var(--btn); color: var(--btnText); }
+    .btnSecondary{ background: var(--btn2); color: var(--btn2Text); border-color: var(--border); }
+    .btn:focus{
+      outline:none;
+      box-shadow: 0 0 0 3px rgba(122,167,255,.18);
+    }
+    .footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      padding: 0 2px;
+    }
+    .count{
+      font-weight:700;
+      color: var(--text);
+    }
+    .empty{
+      grid-column: 1 / -1;
+      border:1px dashed var(--border);
+      border-radius:16px;
+      padding:18px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>JR – App Launcher</h1>
+        <p class="sub">
+          Static launcher for your GitHub-hosted tools. “Launch” targets GitHub Pages URLs; “Source” opens the repo file.
+        </p>
+      </div>
+
+      <div class="controls">
+        <div class="search" aria-label="Search apps">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input id="q" type="text" placeholder="Search apps…" autocomplete="off" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="grid" class="grid" role="list"></div>
+      <div class="footer">
+        Showing <span id="shown" class="count">0</span> of <span id="total" class="count">0</span>.
+        Tip: to add more apps, edit the <code>APPS</code> array in this file.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // CONFIG: where your repo is (used for the default "Launch" URLs)
+    const GITHUB_USER = "FraknToastr";
+    const REPO = "vibing";
+    const PAGES_BASE = `https://${GITHUB_USER.toLowerCase()}.github.io/${REPO}`;
+
+    // Apps
+    const APPS = [
+      {
+        id: "six-digit-extractor",
+        name: "Six-Digit Extractor",
+        icon: "🔎",
+        description: "Paste messy text → extract all 6-digit numbers → copy/save CSV.",
+        tags: ["extract", "csv", "text"],
+        launchUrl: `${PAGES_BASE}/six-digit-extractor.html`,
+        sourceUrl: `https://github.com/${GITHUB_USER}/${REPO}/blob/main/six-digit-extractor.html`
+      },
+      {
+        id: "sql-beautifier",
+        name: "SQL Beautifier",
+        icon: "🧼",
+        description: "Format/beautify SQL quickly in-browser.",
+        tags: ["sql", "format", "beautify"],
+        launchUrl: `${PAGES_BASE}/sql-beautifier.html`,
+        sourceUrl: `https://github.com/${GITHUB_USER}/${REPO}/blob/main/sql-beautifier.html`
+      }
+    ];
+
+    const elGrid = document.getElementById("grid");
+    const elQ = document.getElementById("q");
+    const elShown = document.getElementById("shown");
+    const elTotal = document.getElementById("total");
+
+    elTotal.textContent = String(APPS.length);
+
+    function escapeHtml(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function render(apps){
+      elGrid.innerHTML = "";
+
+      if (!apps.length){
+        elGrid.innerHTML = `
+          <div class="empty">
+            No apps match your search.
+          </div>
+        `;
+        elShown.textContent = "0";
+        return;
+      }
+
+      const html = apps.map(app => {
+        const tags = (app.tags || []).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join("");
+        return `
+          <section class="card" role="listitem" aria-label="${escapeHtml(app.name)}">
+            <div class="cardTop">
+              <div class="icon" aria-hidden="true">${escapeHtml(app.icon || "🔗")}</div>
+              <div style="flex:1 1 auto;">
+                <div class="nameRow">
+                  <h2 class="name">${escapeHtml(app.name)}</h2>
+                </div>
+                <p class="meta">${escapeHtml(app.description || "")}</p>
+                <div class="chips">${tags}</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn btnPrimary" href="${escapeHtml(app.launchUrl)}" target="_blank" rel="noopener noreferrer">
+                ▶ Launch
+              </a>
+              <a class="btn btnSecondary" href="${escapeHtml(app.sourceUrl)}" target="_blank" rel="noopener noreferrer">
+                🧾 Source
+              </a>
+            </div>
+          </section>
+        `;
+      }).join("");
+
+      elGrid.innerHTML = html;
+      elShown.textContent = String(apps.length);
+    }
+
+    function applyFilter(){
+      const q = elQ.value.trim().toLowerCase();
+      if (!q){
+        render(APPS);
+        return;
+      }
+      const filtered = APPS.filter(a => {
+        const hay = [
+          a.name, a.description,
+          ...(a.tags || []),
+          a.id
+        ].join(" ").toLowerCase();
+        return hay.includes(q);
+      });
+      render(filtered);
+    }
+
+    elQ.addEventListener("input", applyFilter);
+
+    // Initial render
+    render(APPS);
+  </script>
+</body>
+</html>
