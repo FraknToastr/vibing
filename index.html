@@ -37,9 +37,7 @@
       flex-wrap:wrap;
       padding: 8px 2px 18px;
     }
-    .title{
-      display:flex; flex-direction:column; gap:6px;
-    }
+    .title{ display:flex; flex-direction:column; gap:6px; }
     h1{ margin:0; font-size:22px; letter-spacing:.2px; }
     .sub{ margin:0; color:var(--muted); font-size:13px; line-height:1.35; max-width:75ch; }
     .controls{
@@ -176,6 +174,7 @@
       color: var(--muted);
       background: rgba(255,255,255,.03);
     }
+    code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
   </style>
 </head>
 <body>
@@ -208,30 +207,43 @@
   </div>
 
   <script>
-    // CONFIG: where your repo is (used for the default "Launch" URLs)
-    const GITHUB_USER = "FraknToastr";
-    const REPO = "vibing";
-    const PAGES_BASE = `https://${GITHUB_USER.toLowerCase()}.github.io/${REPO}`;
+    function pagesUrl(user, repo, path) {
+      // GitHub Pages for project sites is typically:
+      // https://<user>.github.io/<repo>/<path>
+      // If your Pages config differs, just override launchUrl per app.
+      const base = `https://${String(user).toLowerCase()}.github.io/${repo}`;
+      if (!path) return base;
+      return base.replace(/\/+$/, "") + "/" + String(path).replace(/^\/+/, "");
+    }
 
-    // Apps
     const APPS = [
       {
         id: "six-digit-extractor",
         name: "Six-Digit Extractor",
         icon: "🔎",
         description: "Paste messy text → extract all 6-digit numbers → copy/save CSV.",
-        tags: ["extract", "csv", "text"],
-        launchUrl: `${PAGES_BASE}/six-digit-extractor.html`,
-        sourceUrl: `https://github.com/${GITHUB_USER}/${REPO}/blob/main/six-digit-extractor.html`
+        tags: ["extract", "csv", "text", "vibing"],
+        launchUrl: pagesUrl("FraknToastr", "vibing", "six-digit-extractor.html"),
+        sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/six-digit-extractor.html"
       },
       {
         id: "sql-beautifier",
         name: "SQL Beautifier",
         icon: "🧼",
         description: "Format/beautify SQL quickly in-browser.",
-        tags: ["sql", "format", "beautify"],
-        launchUrl: `${PAGES_BASE}/sql-beautifier.html`,
-        sourceUrl: `https://github.com/${GITHUB_USER}/${REPO}/blob/main/sql-beautifier.html`
+        tags: ["sql", "format", "beautify", "vibing"],
+        launchUrl: pagesUrl("FraknToastr", "vibing", "sql-beautifier.html"),
+        sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/sql-beautifier.html"
+      },
+      {
+        id: "iasa-qr-generator",
+        name: "IASA QR Generator",
+        icon: "📷",
+        description: "QR code generator (Ileostomy Association).",
+        tags: ["qr", "generator", "ileostomy-association"],
+        // Folder index: .../qr-generator/ (or .../qr-generator/index.html both usually work)
+        launchUrl: pagesUrl("FraknToastr", "Ileostomy-Association", "qr-generator/"),
+        sourceUrl: "https://github.com/FraknToastr/Ileostomy-Association/blob/main/qr-generator/index.html"
       }
     ];
 
