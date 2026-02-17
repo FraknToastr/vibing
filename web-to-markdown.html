@@ -1,0 +1,893 @@
+<!--
+Web Page Paste (Rich) / HTML -> Markdown Converter (Offline) - FIXED
+- Input is a contenteditable "Paste Area" to preserve formatting from direct web-page paste.
+- Captures clipboard HTML on paste; conversion prefers that HTML (optional toggle).
+- Layout fixes: minmax(0,1fr), min-width:0, scrollbar-gutter to avoid overlap/clipping.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Web Page → Markdown (Offline)</title>
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#111a33; --panel2:#0f1730; --text:#e7ecff; --muted:#9fb0ff;
+      --line:#25305a; --accent:#7aa2ff; --good:#3ddc97; --warn:#ffcc66; --bad:#ff6b6b;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    html,body{height:100%}
+    body{
+      margin:0; font-family:var(--sans);
+      background: radial-gradient(1200px 800px at 20% 10%, #18245a 0%, var(--bg) 55%);
+      color:var(--text);
+    }
+    .wrap{max-width:1200px; margin:0 auto; padding:18px 16px 28px;}
+    header{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+    h1{margin:0; font-size:18px; letter-spacing:.2px;}
+    .sub{color:var(--muted); font-size:12.5px; margin-top:6px; line-height:1.35}
+    .card{
+      margin-top:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line); border-radius:16px; overflow:hidden;
+      box-shadow:0 12px 28px rgba(0,0,0,.3);
+    }
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      padding:12px; border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.12);
+    }
+    .toolbar .group{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .spacer{flex:1}
+    label{
+      display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--muted);
+      padding:8px 10px; border:1px solid rgba(255,255,255,.08); border-radius:12px; background:rgba(0,0,0,.12);
+    }
+    input[type="checkbox"]{transform:translateY(1px)}
+    select{
+      color:var(--text); background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.10); border-radius:12px;
+      padding:8px 10px; font-size:12.5px; outline:none;
+    }
+    button{
+      color:var(--text); background:rgba(122,162,255,.18);
+      border:1px solid rgba(122,162,255,.35);
+      padding:9px 12px; border-radius:12px; cursor:pointer; font-weight:600; font-size:12.5px;
+      transition:transform .05s ease, background .15s ease, border-color .15s ease;
+    }
+    button:hover{background:rgba(122,162,255,.26); border-color:rgba(122,162,255,.55)}
+    button:active{transform:translateY(1px)}
+    button.secondary{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12)}
+    button.good{background:rgba(61,220,151,.16); border-color:rgba(61,220,151,.35)}
+    button.bad{background:rgba(255,107,107,.14); border-color:rgba(255,107,107,.33)}
+
+    /* === LAYOUT FIXES (no overlap/clipping) === */
+    .grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap:0;
+      min-height:62vh;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr; min-height:auto;} }
+
+    .pane{
+      display:flex; flex-direction:column; min-height:320px;
+      min-width:0; /* critical */
+    }
+    .pane + .pane{border-left:1px solid var(--line)}
+    @media (max-width: 980px){ .pane + .pane{border-left:0; border-top:1px solid var(--line)} }
+
+    .paneHead{
+      padding:12px 12px 10px; display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+      background:rgba(0,0,0,.10);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .paneHead .title{font-size:13px; font-weight:700}
+    .paneHead .meta{font-size:12px; color:var(--muted)}
+
+    /* Rich paste area */
+    .richbox{
+      flex:1;
+      padding:12px;
+      background:transparent;
+      color:var(--text);
+      outline:none;
+      border:0;
+      overflow:auto;
+      font-family:var(--sans);
+      font-size:13.5px;
+      line-height:1.5;
+      min-width:0;
+      scrollbar-gutter: stable; /* reserve space */
+    }
+    .richbox:empty:before{
+      content: attr(data-placeholder);
+      color: rgba(159,176,255,.65);
+    }
+    .richbox code, .richbox pre{
+      font-family:var(--mono);
+      font-size:12.8px;
+      background:rgba(0,0,0,.20);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:10px;
+      padding:2px 6px;
+    }
+    .richbox pre{
+      display:block;
+      padding:10px 12px;
+      overflow:auto;
+      scrollbar-gutter: stable;
+    }
+    .richbox blockquote{
+      margin:10px 0;
+      padding:8px 12px;
+      border-left:3px solid rgba(122,162,255,.55);
+      background:rgba(0,0,0,.14);
+      border-radius:10px;
+    }
+    .richbox img{max-width:100%; height:auto}
+
+    textarea{
+      flex:1;
+      width:100%;
+      padding:12px;
+      border:0;
+      resize:none;
+      outline:none;
+      background:transparent;
+      color:var(--text);
+      font-family:var(--mono);
+      font-size:12.8px;
+      line-height:1.45;
+      white-space:pre;
+      tab-size:2;
+      overflow:auto;
+      min-width:0;           /* critical */
+      scrollbar-gutter: stable; /* reserve space */
+    }
+
+    .status{
+      padding:10px 12px; font-size:12.5px; color:var(--muted);
+      border-top:1px solid var(--line);
+      display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      background:rgba(0,0,0,.10);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.12);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .pill.good{border-color:rgba(61,220,151,.35); color:#c7ffe8}
+    .pill.warn{border-color:rgba(255,204,102,.35); color:#ffe7bd}
+    .pill.bad{border-color:rgba(255,107,107,.35); color:#ffd2d2}
+    .kbd{
+      font-family:var(--mono);
+      font-size:11.5px;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.20);
+      color:var(--text);
+    }
+    .help{margin-top:12px; color:var(--muted); font-size:12.5px; line-height:1.45}
+    .help details{border:1px solid var(--line); border-radius:14px; padding:10px 12px; background:rgba(0,0,0,.10)}
+    .help summary{cursor:pointer; font-weight:700; color:var(--text)}
+    .help ul{margin:8px 0 0 18px}
+    .help li{margin:6px 0}
+    a{color:var(--accent)}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Web Page → Markdown (Offline)</h1>
+      <div class="sub">
+        Paste directly from a web page into the left pane — formatting is preserved via clipboard HTML.
+      </div>
+    </div>
+    <div class="sub" style="text-align:right">
+      Shortcuts:
+      <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> convert ·
+      <span class="kbd">Ctrl</span>+<span class="kbd">L</span> clear ·
+      <span class="kbd">Ctrl</span>+<span class="kbd">K</span> copy output
+    </div>
+  </header>
+
+  <div class="card">
+    <div class="toolbar">
+      <div class="group">
+        <button id="btnConvert" class="good" title="Convert (Ctrl+Enter)">Convert</button>
+        <button id="btnCopy" class="secondary" title="Copy output (Ctrl+K)">Copy Markdown</button>
+        <button id="btnDownload" class="secondary" title="Download output as .md">Download .md</button>
+        <button id="btnClear" class="bad" title="Clear (Ctrl+L)">Clear</button>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="group">
+        <label><input type="checkbox" id="optPreferClipboardHtml" checked> Prefer clipboard HTML</label>
+        <label><input type="checkbox" id="optKeepLinks" checked> Keep links</label>
+        <label><input type="checkbox" id="optKeepImages" checked> Keep images</label>
+        <label><input type="checkbox" id="optBulletTight" checked> Tight lists</label>
+        <label><input type="checkbox" id="optAutoLink" checked> Auto-link bare URLs</label>
+        <label><input type="checkbox" id="optStripTracking" checked> Strip tracking params</label>
+        <select id="optWrap" title="Line wrapping">
+          <option value="0">No wrap</option>
+          <option value="80">Wrap 80</option>
+          <option value="100" selected>Wrap 100</option>
+          <option value="120">Wrap 120</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="pane">
+        <div class="paneHead">
+          <div class="title">Paste Area (rich)</div>
+          <div class="meta" id="inputMeta">0 chars</div>
+        </div>
+        <div
+          id="richInput"
+          class="richbox"
+          contenteditable="true"
+          data-placeholder="Paste from a web page here… (Ctrl+V)
+This area preserves formatting using clipboard HTML."
+        ></div>
+      </section>
+
+      <section class="pane">
+        <div class="paneHead">
+          <div class="title">Markdown output</div>
+          <div class="meta" id="outputMeta">0 chars</div>
+        </div>
+        <textarea id="output" spellcheck="false" placeholder="Markdown appears here…"></textarea>
+      </section>
+    </div>
+
+    <div class="status">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+        <span class="pill" id="pillMode">Mode: —</span>
+        <span class="pill" id="pillNotes">Paste content, then Convert</span>
+      </div>
+      <div class="sub">
+        Tip: if a site blocks rich clipboard HTML, you’ll still get plain text (conversion still works).
+      </div>
+    </div>
+  </div>
+
+  <div class="help">
+    <details>
+      <summary>Notes</summary>
+      <ul>
+        <li>This converts the HTML that arrives on the clipboard (<span class="kbd">text/html</span>). If a site/app only provides plain text, conversion falls back gracefully.</li>
+        <li>The Markdown output is shown as text (not rendered). If you want a rendered preview pane, say so and I’ll add a third pane.</li>
+      </ul>
+    </details>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+
+  const richInput = $("richInput");
+  const output = $("output");
+
+  const inputMeta = $("inputMeta");
+  const outputMeta = $("outputMeta");
+  const pillMode = $("pillMode");
+  const pillNotes = $("pillNotes");
+
+  const optPreferClipboardHtml = $("optPreferClipboardHtml");
+  const optKeepLinks = $("optKeepLinks");
+  const optKeepImages = $("optKeepImages");
+  const optBulletTight = $("optBulletTight");
+  const optAutoLink = $("optAutoLink");
+  const optStripTracking = $("optStripTracking");
+  const optWrap = $("optWrap");
+
+  const btnConvert = $("btnConvert");
+  const btnCopy = $("btnCopy");
+  const btnDownload = $("btnDownload");
+  const btnClear = $("btnClear");
+
+  const ZERO_WIDTH_RE = /[\u200B-\u200D\uFEFF]/g;
+
+  const TRACKING_PARAMS = new Set([
+    "utm_source","utm_medium","utm_campaign","utm_term","utm_content",
+    "utm_id","utm_name","utm_reader","utm_viz_id","utm_pubreferrer","utm_swu",
+    "gclid","fbclid","mc_cid","mc_eid","mkt_tok","igshid","si","ref","ref_src"
+  ]);
+
+  // We store the last clipboard HTML we captured (best for conversion).
+  let lastClipboardHtml = "";
+  let lastClipboardText = "";
+
+  function updateCounts() {
+    const plain = (richInput.innerText || "").replace(/\r\n/g, "\n");
+    inputMeta.textContent = `${plain.length.toLocaleString()} chars`;
+    outputMeta.textContent = `${(output.value || "").length.toLocaleString()} chars`;
+  }
+
+  function cleanText(s) {
+    return (s || "")
+      .replace(ZERO_WIDTH_RE, "")
+      .replace(/\u00A0/g, " ")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function stripTracking(url) {
+    try {
+      const u = new URL(url, window.location.href);
+      if (!/^https?:$/i.test(u.protocol)) return u.toString();
+      [...u.searchParams.keys()].forEach(k => {
+        if (TRACKING_PARAMS.has(k.toLowerCase())) u.searchParams.delete(k);
+      });
+      if (u.hash && /^#(utm_|ref=)/i.test(u.hash)) u.hash = "";
+      return u.toString();
+    } catch {
+      return url;
+    }
+  }
+
+  function escapeMdText(text) {
+    return (text || "")
+      .replace(/\\/g, "\\\\")
+      .replace(/([*_`[\]])/g, "\\$1");
+  }
+
+  function normalizeUrl(url) {
+    let u = (url || "").trim();
+    if (!u) return "";
+    try { u = new URL(u, window.location.href).toString(); } catch {}
+    if (optStripTracking.checked) u = stripTracking(u);
+    return u;
+  }
+
+  function wrapText(text, width) {
+    const w = parseInt(width, 10);
+    if (!w || w <= 0) return text;
+
+    const lines = text.split("\n");
+    let out = [];
+    let inFence = false;
+    let inTable = false;
+
+    const flushPara = (para) => {
+      if (!para.length) return;
+      const joined = para.join(" ").replace(/[ \t]+/g, " ").trim();
+      if (!joined) { out.push(""); return; }
+
+      if (/^(>\s|[-*+]\s|\d+\.\s)/.test(joined)) {
+        out.push(joined);
+        return;
+      }
+
+      const words = joined.split(" ");
+      let line = "";
+      for (const word of words) {
+        if (!line) { line = word; continue; }
+        if ((line.length + 1 + word.length) > w) {
+          out.push(line);
+          line = word;
+        } else {
+          line += " " + word;
+        }
+      }
+      if (line) out.push(line);
+      out.push("");
+    };
+
+    let para = [];
+    for (const ln of lines) {
+      if (/^```/.test(ln.trim())) {
+        flushPara(para); para = [];
+        inFence = !inFence;
+        out.push(ln);
+        continue;
+      }
+      if (inFence) { out.push(ln); continue; }
+
+      if (/^\s*\|.*\|\s*$/.test(ln)) {
+        flushPara(para); para = [];
+        inTable = true;
+        out.push(ln);
+        continue;
+      }
+      if (inTable) {
+        if (ln.trim() === "") { inTable = false; out.push(""); continue; }
+        out.push(ln);
+        continue;
+      }
+
+      if (ln.trim() === "") {
+        flushPara(para); para = [];
+      } else {
+        para.push(ln.trim());
+      }
+    }
+    flushPara(para);
+
+    return out.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n";
+  }
+
+  function htmlToMarkdown(html) {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    doc.querySelectorAll("script,style,noscript,svg,canvas,iframe,object,embed").forEach(n => n.remove());
+
+    let root = doc.body;
+    const mainish = doc.querySelector("main, article, [role='main']");
+    if (mainish) root = mainish;
+
+    const state = { listStack: [], out: "", pendingNL: 0, inPre: false };
+    const push = (s) => { state.out += s; };
+    const newline = (n=1) => { state.pendingNL = Math.max(state.pendingNL, n); };
+    const flushNL = () => { if (state.pendingNL > 0) { push("\n".repeat(state.pendingNL)); state.pendingNL = 0; } };
+
+    function blockStart() {
+      newline((state.out.endsWith("\n\n") || state.out.length === 0) ? 0 : 2);
+    }
+
+    function currentIndent() {
+      return "  ".repeat(Math.max(0, state.listStack.length - 1));
+    }
+
+    function mdForLink(text, href) {
+      const t = cleanText(text);
+      const url = normalizeUrl(href);
+      if (!optKeepLinks.checked || !url) return t;
+
+      if (optAutoLink.checked && t && (t === url || t === href)) return `<${url}>`;
+      const safeText = t ? escapeMdText(t) : url;
+      return `[${safeText}](${url})`;
+    }
+
+    function mdForImage(alt, src) {
+      if (!optKeepImages.checked) return "";
+      const url = normalizeUrl(src);
+      if (!url) return "";
+      const a = escapeMdText(cleanText(alt || "")) || "image";
+      return `![${a}](${url})`;
+    }
+
+    function renderChildrenToString(container) {
+      let tmp = "";
+      let tmpPending = 0;
+      let tmpInPre = false;
+
+      const tmpPush = (s) => { tmp += s; };
+      const tmpNL = (n=1) => { tmpPending = Math.max(tmpPending, n); };
+      const tmpFlush = () => { if (tmpPending > 0) { tmpPush("\n".repeat(tmpPending)); tmpPending = 0; } };
+
+      const tmpListStack = state.listStack.slice();
+
+      function tmpWalk(n) {
+        if (!n) return;
+        if (n.nodeType === Node.TEXT_NODE) {
+          const t = n.nodeValue || "";
+          if (!t.trim()) return;
+          tmpFlush();
+          tmpPush(tmpInPre ? t.replace(/\r\n/g, "\n") : escapeMdText(t.replace(/\s+/g, " ")));
+          return;
+        }
+        if (n.nodeType !== Node.ELEMENT_NODE) return;
+        const el = n;
+        const tag = el.tagName.toLowerCase();
+
+        if (tag === "br") { tmpNL(1); return; }
+        if (tag === "a") { tmpFlush(); tmpPush(mdForLink(cleanText(el.textContent||""), el.getAttribute("href")||"")); return; }
+        if (tag === "img") { tmpFlush(); const md = mdForImage(el.getAttribute("alt")||"", el.getAttribute("src")||""); if (md) tmpPush(md); return; }
+        if (tag === "strong" || tag === "b") { tmpFlush(); tmpPush("**"); [...el.childNodes].forEach(tmpWalk); tmpPush("**"); return; }
+        if (tag === "em" || tag === "i") { tmpFlush(); tmpPush("*"); [...el.childNodes].forEach(tmpWalk); tmpPush("*"); return; }
+        if (tag === "code") {
+          if (el.closest("pre")) return;
+          tmpFlush();
+          const codeText = (el.textContent || "").replace(/\r\n/g, "\n").trim();
+          tmpPush("`" + codeText.replace(/`/g,"\\`") + "`");
+          return;
+        }
+        if (tag === "pre") {
+          tmpNL(1); tmpFlush();
+          const codeEl = el.querySelector("code");
+          const codeText = codeEl ? codeEl.textContent : el.textContent;
+          tmpPush("```" + "\n");
+          tmpInPre = true;
+          tmpPush((codeText || "").replace(/\r\n/g, "\n").replace(/\n+$/,"") + "\n");
+          tmpInPre = false;
+          tmpPush("```");
+          tmpNL(1);
+          return;
+        }
+        if (tag === "ul" || tag === "ol") {
+          tmpNL(1); tmpFlush();
+          tmpListStack.push({ type: tag, index: 0 });
+          [...el.childNodes].forEach(tmpWalk);
+          tmpListStack.pop();
+          tmpNL(optBulletTight.checked ? 1 : 2);
+          return;
+        }
+        if (tag === "li") {
+          tmpFlush();
+          const top = tmpListStack[tmpListStack.length - 1];
+          const indent = "  ".repeat(Math.max(0, tmpListStack.length - 1));
+          let bullet = "- ";
+          if (top && top.type === "ol") { top.index += 1; bullet = `${top.index}. `; }
+          tmpPush(indent + bullet);
+          [...el.childNodes].forEach(tmpWalk);
+          tmpNL(1);
+          return;
+        }
+        if (tag.match(/^h[1-6]$/)) {
+          tmpNL(1); tmpFlush();
+          const level = parseInt(tag[1],10);
+          tmpPush("#".repeat(level) + " ");
+          [...el.childNodes].forEach(tmpWalk);
+          tmpNL(2);
+          return;
+        }
+        if (tag === "p" || tag === "div" || tag === "section" || tag === "article") {
+          tmpNL(1);
+          [...el.childNodes].forEach(tmpWalk);
+          tmpNL(2);
+          return;
+        }
+        if (tag === "blockquote") {
+          tmpNL(1); tmpFlush();
+          const inner = cleanText(el.textContent || "");
+          if (inner) tmpPush(inner.split("\n").map(l => "> " + l).join("\n"));
+          tmpNL(2);
+          return;
+        }
+        [...el.childNodes].forEach(tmpWalk);
+      }
+
+      [...container.childNodes].forEach(tmpWalk);
+      tmpFlush();
+      return cleanText(tmp);
+    }
+
+    function walk(node) {
+      if (!node) return;
+
+      if (node.nodeType === Node.TEXT_NODE) {
+        const t = node.nodeValue || "";
+        if (!t.trim()) return;
+        flushNL();
+        push(state.inPre ? t.replace(/\r\n/g, "\n") : escapeMdText(t.replace(/\s+/g, " ")));
+        return;
+      }
+      if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+      const el = node;
+      const tag = el.tagName.toLowerCase();
+
+      if (tag === "table") {
+        blockStart(); flushNL();
+        const rows = [...el.querySelectorAll("tr")].map(tr =>
+          [...tr.querySelectorAll("th,td")].map(cell =>
+            cleanText(cell.textContent || "").replace(/\s+/g," ").trim()
+          )
+        ).filter(r => r.length);
+
+        if (!rows.length) return;
+
+        const header = rows[0];
+        const body = rows.slice(1);
+        const colCount = Math.max(...rows.map(r => r.length));
+        const padRow = (r) => { const rr = r.slice(); while (rr.length < colCount) rr.push(""); return rr; };
+
+        const h = padRow(header);
+        const divider = new Array(colCount).fill("---");
+        push(`| ${h.map(escapeMdText).join(" | ")} |\n`);
+        push(`| ${divider.join(" | ")} |\n`);
+        for (const r of body) {
+          const rr = padRow(r);
+          push(`| ${rr.map(v => escapeMdText(v)).join(" | ")} |\n`);
+        }
+        newline(2);
+        return;
+      }
+
+      if (tag === "pre") {
+        blockStart(); flushNL();
+        const codeEl = el.querySelector("code");
+        const codeText = codeEl ? codeEl.textContent : el.textContent;
+        push("```" + "\n");
+        state.inPre = true;
+        push((codeText || "").replace(/\r\n/g, "\n").replace(/\n+$/,"") + "\n");
+        state.inPre = false;
+        push("```");
+        newline(2);
+        return;
+      }
+
+      if (tag === "br") { newline(1); return; }
+      if (tag === "hr") { blockStart(); flushNL(); push("---"); newline(2); return; }
+
+      if (tag.match(/^h[1-6]$/)) {
+        blockStart(); flushNL();
+        const level = parseInt(tag[1], 10);
+        push("#".repeat(level) + " ");
+        for (const child of el.childNodes) walk(child);
+        newline(2);
+        return;
+      }
+
+      if (tag === "blockquote") {
+        blockStart(); flushNL();
+        const inner = renderChildrenToString(el);
+        if (inner) {
+          const lines = inner.split("\n").filter(l => l !== "");
+          push(lines.map(l => "> " + l).join("\n"));
+          newline(2);
+        }
+        return;
+      }
+
+      if (tag === "ul" || tag === "ol") {
+        blockStart(); flushNL();
+        state.listStack.push({ type: tag, index: 0 });
+        for (const child of el.childNodes) walk(child);
+        state.listStack.pop();
+        newline(optBulletTight.checked ? 1 : 2);
+        return;
+      }
+
+      if (tag === "li") {
+        flushNL();
+        const stackTop = state.listStack[state.listStack.length - 1];
+        const indent = currentIndent();
+        let bullet = "- ";
+        if (stackTop && stackTop.type === "ol") { stackTop.index += 1; bullet = `${stackTop.index}. `; }
+        push(indent + bullet);
+
+        const inner = renderChildrenToString(el).replace(/\n{3,}/g, "\n\n").trim();
+        const followIndent = indent + "  ";
+        const lines = inner.split("\n");
+        if (lines.length) {
+          push(lines[0]);
+          for (let i = 1; i < lines.length; i++) push("\n" + followIndent + lines[i]);
+        }
+        newline(1);
+        return;
+      }
+
+      if (tag === "a") { flushNL(); push(mdForLink(cleanText(el.textContent||""), el.getAttribute("href")||"")); return; }
+      if (tag === "img") { flushNL(); const md = mdForImage(el.getAttribute("alt")||"", el.getAttribute("src")||""); if (md) push(md); return; }
+
+      if (tag === "strong" || tag === "b") { flushNL(); push("**"); for (const c of el.childNodes) walk(c); push("**"); return; }
+      if (tag === "em" || tag === "i") { flushNL(); push("*"); for (const c of el.childNodes) walk(c); push("*"); return; }
+
+      if (tag === "code") {
+        if (el.closest("pre")) return;
+        flushNL();
+        const codeText = (el.textContent || "").replace(/\r\n/g, "\n").trim();
+        push("`" + codeText.replace(/`/g,"\\`") + "`");
+        return;
+      }
+
+      if (tag === "p" || tag === "div" || tag === "section" || tag === "article" || tag === "header" || tag === "footer") {
+        const hasMeaning = (el.textContent || "").trim().length > 0 || el.querySelector("img, a, code, pre, ul, ol, table, blockquote");
+        if (hasMeaning) blockStart();
+        for (const child of el.childNodes) walk(child);
+        newline(2);
+        return;
+      }
+
+      // Default: recurse
+      for (const child of el.childNodes) walk(child);
+    }
+
+    for (const child of root.childNodes) walk(child);
+    flushNL();
+
+    let md = state.out
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+    if (!optKeepLinks.checked) md = md.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+
+    if (optAutoLink.checked) {
+      md = md.replace(
+        /(^|[\s(])((https?:\/\/|www\.)[^\s)<>]+)(?=$|[\s),.<>])/g,
+        (m, pre, url) => {
+          const full = url.startsWith("www.") ? "https://" + url : url;
+          const norm = normalizeUrl(full);
+          return `${pre}<${norm}>`;
+        }
+      );
+    }
+
+    if (optBulletTight.checked) {
+      md = md.replace(/(\n(?:- |\d+\.\s)[\s\S]*?)\n\n(?=(?:- |\d+\.\s))/g, "$1\n");
+    }
+
+    md = cleanText(md);
+    md = wrapText(md, optWrap.value);
+    return md;
+  }
+
+  function textToMarkdown(text) {
+    let t = (text || "")
+      .replace(ZERO_WIDTH_RE, "")
+      .replace(/\u00A0/g, " ")
+      .replace(/\r\n/g, "\n").replace(/\r/g, "\n")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/^[ \t]*[•·◦▪–—]\s+/gm, "- ")
+      .replace(/^[ \t]*(\d+)\)\s+/gm, "$1. ")
+      .replace(/[“”]/g, '"').replace(/[‘’]/g, "'")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+    if (!optKeepLinks.checked) {
+      t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+    } else if (optAutoLink.checked) {
+      t = t.replace(
+        /(^|[\s(])((https?:\/\/|www\.)[^\s)<>]+)(?=$|[\s),.<>])/g,
+        (m, pre, url) => {
+          const full = url.startsWith("www.") ? "https://" + url : url;
+          const norm = normalizeUrl(full);
+          return `${pre}<${norm}>`;
+        }
+      );
+    }
+
+    t = wrapText(t, optWrap.value);
+    t = cleanText(t);
+    return t ? (t + "\n") : "";
+  }
+
+  function convert() {
+    // Prefer captured clipboard HTML, else fall back to the current richInput HTML, else plain text.
+    const prefer = optPreferClipboardHtml.checked;
+
+    const htmlFromPaste = (lastClipboardHtml || "").trim();
+    const htmlFromBox = (richInput.innerHTML || "").trim();
+    const textFromBox = (richInput.innerText || "").trim();
+
+    let md = "";
+    let mode = "";
+    let notes = [];
+
+    if (prefer && htmlFromPaste) {
+      mode = "Clipboard HTML → Markdown";
+      md = htmlToMarkdown(htmlFromPaste);
+      notes.push("Used clipboard HTML");
+    } else if (htmlFromBox && /<\/?[a-z][\s\S]*>/i.test(htmlFromBox)) {
+      // contenteditable contains HTML structure
+      mode = "Paste Area HTML → Markdown";
+      md = htmlToMarkdown(htmlFromBox);
+      notes.push(prefer ? "No clipboard HTML (used box HTML)" : "Used box HTML");
+    } else {
+      mode = "Text → Markdown";
+      md = textToMarkdown(lastClipboardText || textFromBox);
+      notes.push("Used plain text");
+    }
+
+    if (!optKeepImages.checked) {
+      md = md.replace(/!\[[^\]]*\]\([^)]+\)/g, "");
+      md = cleanText(md);
+    }
+
+    output.value = md;
+    pillMode.textContent = `Mode: ${mode}`;
+    pillMode.className = "pill good";
+    pillNotes.textContent = notes.join(" · ");
+    pillNotes.className = "pill";
+    updateCounts();
+  }
+
+  async function copyOutput() {
+    const text = output.value || "";
+    if (!text.trim()) {
+      pillNotes.textContent = "Nothing to copy";
+      pillNotes.className = "pill warn";
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      pillNotes.textContent = "Copied to clipboard";
+      pillNotes.className = "pill good";
+    } catch {
+      output.focus();
+      output.select();
+      document.execCommand("copy");
+      pillNotes.textContent = "Copied (fallback)";
+      pillNotes.className = "pill good";
+    }
+  }
+
+  function downloadMd() {
+    const text = output.value || "";
+    if (!text.trim()) {
+      pillNotes.textContent = "Nothing to download";
+      pillNotes.className = "pill warn";
+      return;
+    }
+    const blob = new Blob([text], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const stamp = new Date();
+    const pad = (n)=>String(n).padStart(2,"0");
+    const fname = `converted-${stamp.getFullYear()}${pad(stamp.getMonth()+1)}${pad(stamp.getDate())}-${pad(stamp.getHours())${pad(stamp.getMinutes())}}.md`.replace(")",""); // safety
+    a.href = url;
+    a.download = fname.replace(/[:]/g,"");
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    pillNotes.textContent = `Downloaded ${a.download}`;
+    pillNotes.className = "pill good";
+  }
+
+  function clearAll() {
+    richInput.innerHTML = "";
+    output.value = "";
+    lastClipboardHtml = "";
+    lastClipboardText = "";
+    pillMode.textContent = "Mode: —";
+    pillMode.className = "pill";
+    pillNotes.textContent = "Cleared";
+    pillNotes.className = "pill";
+    updateCounts();
+    richInput.focus();
+  }
+
+  // Capture rich clipboard paste
+  richInput.addEventListener("paste", (e) => {
+    try {
+      const dt = e.clipboardData;
+      const html = dt ? dt.getData("text/html") : "";
+      const text = dt ? dt.getData("text/plain") : "";
+      lastClipboardHtml = html || "";
+      lastClipboardText = text || "";
+
+      // Preserve formatting in the box: if html exists, insert it.
+      if (html) {
+        e.preventDefault();
+        document.execCommand("insertHTML", false, html);
+        pillNotes.textContent = "Pasted rich content (clipboard HTML captured)";
+        pillNotes.className = "pill good";
+      } else {
+        pillNotes.textContent = "Pasted plain text (no clipboard HTML available)";
+        pillNotes.className = "pill warn";
+      }
+      updateCounts();
+    } catch {
+      pillNotes.textContent = "Paste captured (limited)";
+      pillNotes.className = "pill warn";
+      updateCounts();
+    }
+  });
+
+  richInput.addEventListener("input", updateCounts);
+
+  // Wire up buttons
+  btnConvert.addEventListener("click", convert);
+  btnCopy.addEventListener("click", copyOutput);
+  btnDownload.addEventListener("click", downloadMd);
+  btnClear.addEventListener("click", clearAll);
+
+  // Keyboard shortcuts
+  document.addEventListener("keydown", (e) => {
+    const isMac = /Mac|iPhone|iPad|iPod/i.test(navigator.platform);
+    const ctrl = isMac ? e.metaKey : e.ctrlKey;
+    if (ctrl && e.key === "Enter") { e.preventDefault(); convert(); }
+    if (ctrl && (e.key === "k" || e.key === "K")) { e.preventDefault(); copyOutput(); }
+    if (ctrl && (e.key === "l" || e.key === "L")) { e.preventDefault(); clearAll(); }
+  });
+
+  // Initial state
+  updateCounts();
+})();
+</script>
+</body>
+</html>
