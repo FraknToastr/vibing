@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pattern Extractor</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-grad-a: #0b1022;
+      --bg-grad-b: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --warn: #f59e0b;
+      --error: #ef4444;
+      --line: #374151;
+      --square: 2.2rem;
+      --radius: 10px;
+      --font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    /* Light theme tokens are activated when data-theme="light" is present on <html>. */
+    :root[data-theme="light"] {
+      --bg: #eef2ff;
+      --bg-grad-a: #f8fafc;
+      --bg-grad-b: #e2e8f0;
+      --panel: #ffffff;
+      --panel-2: #f1f5f9;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #16a34a;
+      --warn: #d97706;
+      --error: #dc2626;
+      --line: #cbd5e1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg-grad-a), var(--bg-grad-b) 40%);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1200px, 96vw);
+      margin: 1rem auto 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: color-mix(in srgb, var(--panel) 95%, transparent);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.9rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.3rem;
+      letter-spacing: 0.2px;
+    }
+
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      color: color-mix(in srgb, var(--text) 85%, #6366f1 15%);
+      font-weight: 650;
+    }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.35rem;
+      line-height: 1.35;
+    }
+
+    .usage {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+      color: #d1d5db;
+      line-height: 1.4;
+      font-size: 0.92rem;
+    }
+
+    .controls,
+    .toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .toggles {
+      margin-top: 0.5rem;
+    }
+
+    .field {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: #dbeafe;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.35rem 0.45rem;
+    }
+
+    label { user-select: none; }
+
+    input[type="number"],
+    input[type="text"],
+    select,
+    textarea,
+    button {
+      font: inherit;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      background: #0b1220;
+      color: var(--text);
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 0.36rem 0.45rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      resize: vertical;
+      font-family: var(--mono);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    button {
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid color-mix(in srgb, var(--line) 80%, #475569 20%);
+      border-radius: 8px;
+      padding: 0.45rem 0.7rem;
+      cursor: pointer;
+      transition: transform .04s ease, background .15s ease;
+    }
+
+    button:hover { background: #334155; }
+    button:active { transform: translateY(1px); }
+    button.primary { background: #14532d; border-color: #22c55e; }
+    button.primary:hover { background: #166534; }
+
+    .row-wrap {
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+    }
+
+    .pattern-grid {
+      min-width: 1080px;
+      display: grid;
+      grid-template-columns: repeat(20, minmax(var(--square), var(--square)));
+      gap: 0.35rem;
+      align-items: end;
+      justify-content: start;
+    }
+
+    .cell {
+      display: grid;
+      gap: 0.2rem;
+      justify-items: center;
+      transition: opacity .15s ease;
+    }
+
+    .cell.inactive {
+      opacity: 0.33;
+    }
+
+    .type-select {
+      width: var(--square);
+      height: 1.25rem;
+      padding: 0;
+      text-align: center;
+      font-size: 0.74rem;
+      background: #0d1829;
+      color: #bfdbfe;
+      border-color: #27405f;
+    }
+
+    .char-input {
+      width: var(--square);
+      height: var(--square);
+      text-align: center;
+      text-transform: none;
+      font-size: 1rem;
+      font-weight: 650;
+      font-family: var(--mono);
+      padding: 0;
+      border-radius: 7px;
+      border: 1px solid #4b5563;
+      background: #0a1323;
+      color: #e5e7eb;
+    }
+
+    .char-input.invalid {
+      border-color: var(--error);
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.22);
+      background: rgba(127, 29, 29, 0.25);
+    }
+
+    .status {
+      min-height: 1.2rem;
+      margin-top: 0.35rem;
+      font-size: 0.92rem;
+      color: #bae6fd;
+    }
+
+    .status.error { color: #fecaca; }
+    .status.ok { color: #86efac; }
+
+    .counter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.35rem;
+      color: #cbd5e1;
+      font-size: 0.88rem;
+    }
+
+    .counter code {
+      color: #fef08a;
+      font-family: var(--mono);
+    }
+
+    :root[data-theme="light"] .field { color: #0f172a; }
+    :root[data-theme="light"] .subtle { color: #475569; }
+    :root[data-theme="light"] .usage { color: #1e293b; }
+    :root[data-theme="light"] textarea,
+    :root[data-theme="light"] input[type="text"],
+    :root[data-theme="light"] input[type="number"],
+    :root[data-theme="light"] select {
+      background: #ffffff;
+      border-color: #94a3b8;
+      color: #0f172a;
+    }
+    :root[data-theme="light"] .type-select {
+      background: #e2e8f0;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }
+    :root[data-theme="light"] .char-input {
+      background: #ffffff;
+      border-color: #94a3b8;
+      color: #0f172a;
+    }
+    :root[data-theme="light"] .counter { color: #334155; }
+    :root[data-theme="light"] .counter code { color: #854d0e; }
+
+    @media (max-width: 760px) {
+      .container { width: 98vw; }
+      .field { font-size: 0.84rem; }
+      textarea { min-height: 130px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Wordle-Style Pattern Extractor (Offline)</h1>
+      <div class="controls" style="margin-top:0.6rem;">
+        <button id="themeToggleBtn" type="button" aria-pressed="false">Switch to Light Theme</button>
+      </div>
+      <p class="subtle">Extracts matching substrings from pasted text using a 20-position pattern row. Works from <code>file://</code> (double-click this file).</p>
+      <ol class="usage">
+        <li>Paste text, set pattern type + optional char in each square, then click <strong>Extract</strong>.</li>
+        <li>Keep <strong>Length</strong> in Auto, or set manually (1–20) to force extraction length.</li>
+        <li>Use output options for quoting, dedupe, trim, and CSV row formatting.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Pattern (20 positions)</h2>
+      <div class="controls">
+        <label class="field">
+          <input id="lengthAuto" type="checkbox" checked />
+          Length Auto
+        </label>
+        <label class="field">
+          Length (1–20)
+          <input id="manualLength" type="number" min="1" max="20" value="20" disabled />
+        </label>
+        <button id="resetPatternBtn" type="button">Reset Pattern</button>
+        <button id="sampleBtn" type="button">Sample Input</button>
+      </div>
+      <div class="subtle">Type codes per position: <strong>L</strong>=Letter, <strong>N</strong>=Number, <strong>C</strong>=Character, <strong>*</strong>=Wildcard.</div>
+      <div class="row-wrap" aria-label="Pattern row scroll area">
+        <div id="patternGrid" class="pattern-grid" role="group" aria-label="20-position pattern"></div>
+      </div>
+      <div id="statusMsg" class="status" aria-live="polite"></div>
+      <div id="counter" class="counter">
+        <span>Total matches: <code id="countTotal">0</code></span>
+        <span>Unique output: <code id="countUnique">0</code></span>
+        <span>Time: <code id="countTime">0 ms</code></span>
+        <span>Active length: <code id="activeLen">1</code></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Input</h2>
+      <textarea id="inputText" placeholder="Paste source text here..."></textarea>
+      <div class="controls" style="margin-top:0.6rem;">
+        <button id="extractBtn" class="primary" type="button">Extract</button>
+        <button id="clearInputBtn" type="button">Clear Input</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Output Options</h2>
+      <div class="toggles">
+        <label class="field"><input id="allowDupes" type="checkbox" /> Allow duplicates</label>
+        <label class="field"><input id="trimMatches" type="checkbox" checked /> Trim matches</label>
+        <label class="field"><input id="singleQuoteWrap" type="checkbox" /> Wrap each in single quotes</label>
+      </div>
+      <div class="toggles">
+        <label class="field">
+          Layout
+          <select id="layoutSelect">
+            <option value="singleLine">Single line</option>
+            <option value="singleRow">Single row (CSV)</option>
+          </select>
+        </label>
+        <label class="field">
+          <input id="headerOn" type="checkbox" /> Header (single row mode)
+        </label>
+        <label class="field">
+          Header name
+          <input id="headerName" type="text" value="Extracted" placeholder="Extracted" style="width:140px;" />
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Output</h2>
+      <textarea id="outputText" placeholder="Extraction output appears here..."></textarea>
+      <div class="controls" style="margin-top:0.6rem;">
+        <button id="copyOutputBtn" type="button">Copy Output</button>
+        <button id="clearOutputBtn" type="button">Clear Output</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    "use strict";
+
+    // Constants for per-position selector types.
+    const TYPE = {
+      LETTER: "L",
+      NUMBER: "N",
+      CHARACTER: "C",
+      WILDCARD: "*"
+    };
+
+    const TOTAL_POSITIONS = 20;
+
+    const el = {
+      patternGrid: document.getElementById("patternGrid"),
+      lengthAuto: document.getElementById("lengthAuto"),
+      manualLength: document.getElementById("manualLength"),
+      statusMsg: document.getElementById("statusMsg"),
+      countTotal: document.getElementById("countTotal"),
+      countUnique: document.getElementById("countUnique"),
+      countTime: document.getElementById("countTime"),
+      activeLen: document.getElementById("activeLen"),
+      inputText: document.getElementById("inputText"),
+      outputText: document.getElementById("outputText"),
+      allowDupes: document.getElementById("allowDupes"),
+      trimMatches: document.getElementById("trimMatches"),
+      singleQuoteWrap: document.getElementById("singleQuoteWrap"),
+      layoutSelect: document.getElementById("layoutSelect"),
+      headerOn: document.getElementById("headerOn"),
+      headerName: document.getElementById("headerName"),
+      extractBtn: document.getElementById("extractBtn"),
+      copyOutputBtn: document.getElementById("copyOutputBtn"),
+      clearInputBtn: document.getElementById("clearInputBtn"),
+      clearOutputBtn: document.getElementById("clearOutputBtn"),
+      resetPatternBtn: document.getElementById("resetPatternBtn"),
+      sampleBtn: document.getElementById("sampleBtn"),
+      themeToggleBtn: document.getElementById("themeToggleBtn")
+    };
+
+    const patternCells = [];
+    const THEME_STORAGE_KEY = "patternExtractorTheme";
+
+    function setTheme(theme) {
+      const resolved = theme === "light" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", resolved);
+      const isLight = resolved === "light";
+      el.themeToggleBtn.textContent = isLight ? "Switch to Dark Theme" : "Switch to Light Theme";
+      el.themeToggleBtn.setAttribute("aria-pressed", String(isLight));
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, resolved);
+      } catch {
+        // Ignore storage limitations in strict browser environments.
+      }
+    }
+
+    function initTheme() {
+      let stored = "dark";
+      try {
+        stored = localStorage.getItem(THEME_STORAGE_KEY) || "dark";
+      } catch {
+        stored = "dark";
+      }
+      setTheme(stored);
+    }
+
+    function isLetter(ch) {
+      return /^[A-Za-z]$/.test(ch);
+    }
+
+    function isDigit(ch) {
+      return /^[0-9]$/.test(ch);
+    }
+
+    function charAllowedByType(ch, typeCode) {
+      if (ch === "") return true;
+      if (typeCode === TYPE.LETTER) return isLetter(ch);
+      if (typeCode === TYPE.NUMBER) return isDigit(ch);
+      return true; // Character and Wildcard allow any single char.
+    }
+
+    // Creates the 20 UI cells (selector + char input) and installs keyboard behavior.
+    function initPatternGrid() {
+      for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+
+        const select = document.createElement("select");
+        select.className = "type-select";
+        select.setAttribute("aria-label", `Type for position ${i + 1}`);
+        [TYPE.LETTER, TYPE.NUMBER, TYPE.CHARACTER, TYPE.WILDCARD].forEach((code) => {
+          const option = document.createElement("option");
+          option.value = code;
+          option.textContent = code;
+          if (code === TYPE.WILDCARD) option.selected = true;
+          select.appendChild(option);
+        });
+
+        const input = document.createElement("input");
+        input.className = "char-input";
+        input.type = "text";
+        input.maxLength = 1;
+        input.autocomplete = "off";
+        input.spellcheck = false;
+        input.setAttribute("aria-label", `Character for position ${i + 1}`);
+
+        input.addEventListener("input", (ev) => {
+          // Keep exactly one character; auto-advance once user types.
+          const v = ev.target.value;
+          ev.target.value = v.length > 1 ? v.slice(0, 1) : v;
+          validatePattern(false);
+          if (ev.target.value && i < TOTAL_POSITIONS - 1) {
+            patternCells[i + 1].input.focus();
+            patternCells[i + 1].input.select();
+          }
+        });
+
+        input.addEventListener("keydown", (ev) => {
+          if (ev.key === "ArrowRight" && i < TOTAL_POSITIONS - 1) {
+            ev.preventDefault();
+            patternCells[i + 1].input.focus();
+            patternCells[i + 1].input.select();
+          } else if (ev.key === "ArrowLeft" && i > 0) {
+            ev.preventDefault();
+            patternCells[i - 1].input.focus();
+            patternCells[i - 1].input.select();
+          } else if (ev.key === "Backspace" && ev.target.value === "" && i > 0) {
+            ev.preventDefault();
+            patternCells[i - 1].input.focus();
+            patternCells[i - 1].input.value = "";
+            validatePattern(false);
+          }
+        });
+
+        select.addEventListener("change", () => validatePattern(false));
+
+        cell.appendChild(select);
+        cell.appendChild(input);
+        el.patternGrid.appendChild(cell);
+        patternCells.push({ cell, select, input });
+      }
+      updateActiveLengthVisuals(getActiveLength());
+    }
+
+    // Computes active length L according to spec.
+    function getActiveLength() {
+      if (!el.lengthAuto.checked) {
+        const manual = Number(el.manualLength.value);
+        return Math.max(1, Math.min(TOTAL_POSITIONS, Number.isFinite(manual) ? manual : 1));
+      }
+
+      let maxIdx = 0;
+      for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
+        const c = patternCells[i];
+        const hasChar = c.input.value !== "";
+        const typeNotWildcard = c.select.value !== TYPE.WILDCARD;
+        if (hasChar || typeNotWildcard) maxIdx = i + 1;
+      }
+      return Math.max(1, maxIdx);
+    }
+
+    function updateActiveLengthVisuals(L) {
+      el.activeLen.textContent = String(L);
+      for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
+        patternCells[i].cell.classList.toggle("inactive", i >= L);
+      }
+    }
+
+    function setStatus(msg, kind = "") {
+      el.statusMsg.textContent = msg;
+      el.statusMsg.className = `status${kind ? ` ${kind}` : ""}`;
+    }
+
+    // Validates entered chars against selected type; marks invalid squares.
+    function validatePattern(showError = true) {
+      const L = getActiveLength();
+      updateActiveLengthVisuals(L);
+
+      const invalidPositions = [];
+      for (let i = 0; i < L; i += 1) {
+        const { select, input } = patternCells[i];
+        const ok = charAllowedByType(input.value, select.value);
+        input.classList.toggle("invalid", !ok);
+        if (!ok) invalidPositions.push(i + 1);
+      }
+
+      // Past L should never block extraction; clear invalid state there.
+      for (let i = L; i < TOTAL_POSITIONS; i += 1) {
+        patternCells[i].input.classList.remove("invalid");
+      }
+
+      if (invalidPositions.length > 0) {
+        if (showError) setStatus(`Pattern invalid at position(s): ${invalidPositions.join(", ")}.`, "error");
+        return { valid: false, invalidPositions, L };
+      }
+
+      if (showError) setStatus("Pattern valid and ready.", "ok");
+      return { valid: true, invalidPositions: [], L };
+    }
+
+    // Build matcher exactly as requested.
+    function buildMatcher(patternSelectors, patternChars, L) {
+      const invalidPositions = [];
+
+      for (let i = 0; i < L; i += 1) {
+        if (!charAllowedByType(patternChars[i], patternSelectors[i])) {
+          invalidPositions.push(i + 1);
+        }
+      }
+
+      if (invalidPositions.length > 0) {
+        return {
+          isValid: false,
+          invalidPositions,
+          matchAt: () => false
+        };
+      }
+
+      const matchAt = (text, index) => {
+        for (let i = 0; i < L; i += 1) {
+          const currentChar = text[index + i];
+          const requiredType = patternSelectors[i];
+          const fixedChar = patternChars[i];
+
+          // Type constraint.
+          if (requiredType === TYPE.LETTER && !isLetter(currentChar)) return false;
+          if (requiredType === TYPE.NUMBER && !isDigit(currentChar)) return false;
+          // Character / Wildcard => no extra type checks.
+
+          // Optional fixed-char constraint.
+          if (fixedChar !== "") {
+            if (requiredType === TYPE.LETTER) {
+              if (fixedChar.toLowerCase() !== currentChar.toLowerCase()) return false;
+            } else if (fixedChar !== currentChar) {
+              return false;
+            }
+          }
+        }
+        return true;
+      };
+
+      return { isValid: true, invalidPositions: [], matchAt };
+    }
+
+    function csvEscapeIfNeeded(value) {
+      const needsQuotes = /[",\n]/.test(value);
+      if (!needsQuotes) return value;
+      return `"${value.replace(/"/g, '""')}"`;
+    }
+
+    function formatOutput(values) {
+      const wrapQuotes = el.singleQuoteWrap.checked;
+      const prepared = wrapQuotes ? values.map((v) => `'${v}'`) : values.slice();
+      const layout = el.layoutSelect.value;
+
+      if (layout === "singleLine") {
+        return prepared.join(",");
+      }
+
+      const csvValues = prepared.map(csvEscapeIfNeeded).join(",");
+      if (!el.headerOn.checked) {
+        return csvValues;
+      }
+      const headerRaw = (el.headerName.value || "").trim() || "Extracted";
+      const headerLine = csvEscapeIfNeeded(headerRaw);
+      return `${headerLine}\n${csvValues}`;
+    }
+
+    function extractMatches() {
+      const start = performance.now();
+      const { valid, invalidPositions, L } = validatePattern(true);
+      if (!valid) {
+        setStatus(`Cannot extract: invalid pattern at position(s): ${invalidPositions.join(", ")}.`, "error");
+        el.countTotal.textContent = "0";
+        el.countUnique.textContent = "0";
+        el.countTime.textContent = `${Math.round(performance.now() - start)} ms`;
+        return;
+      }
+
+      const text = el.inputText.value || "";
+      if (text.length < L) {
+        setStatus(`No matches: input length (${text.length}) is shorter than active length (${L}).`, "");
+        el.outputText.value = "";
+        el.countTotal.textContent = "0";
+        el.countUnique.textContent = "0";
+        el.countTime.textContent = `${Math.round(performance.now() - start)} ms`;
+        return;
+      }
+
+      const selectors = patternCells.map((c) => c.select.value);
+      const chars = patternCells.map((c) => c.input.value);
+      const matcher = buildMatcher(selectors, chars, L);
+      if (!matcher.isValid) {
+        setStatus(`Cannot extract: invalid pattern at position(s): ${matcher.invalidPositions.join(", ")}.`, "error");
+        return;
+      }
+
+      let total = 0;
+      const allowDupes = el.allowDupes.checked;
+      const trimOutput = el.trimMatches.checked;
+      const seen = new Set();
+      const values = [];
+
+      for (let i = 0; i <= text.length - L; i += 1) {
+        if (!matcher.matchAt(text, i)) continue;
+        total += 1;
+        let candidate = text.slice(i, i + L);
+        if (trimOutput) candidate = candidate.trim();
+
+        if (allowDupes) {
+          values.push(candidate);
+        } else if (!seen.has(candidate)) {
+          seen.add(candidate);
+          values.push(candidate);
+        }
+      }
+
+      el.outputText.value = formatOutput(values);
+      el.countTotal.textContent = String(total);
+      el.countUnique.textContent = String(values.length);
+      el.countTime.textContent = `${Math.round(performance.now() - start)} ms`;
+
+      if (values.length === 0) {
+        setStatus("No matches found.", "");
+      } else {
+        setStatus(`Extraction complete: ${values.length} value(s) in output.`, "ok");
+      }
+    }
+
+    async function copyOutput() {
+      const out = el.outputText.value;
+      if (!out) {
+        setStatus("Output is empty; nothing to copy.", "");
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(out);
+        setStatus("Output copied to clipboard.", "ok");
+      } catch {
+        // Clipboard may be blocked on file:// in some browsers.
+        el.outputText.focus();
+        el.outputText.select();
+        setStatus("Clipboard unavailable here. Output selected; press Ctrl/Cmd+C.", "");
+      }
+    }
+
+    function resetPattern() {
+      patternCells.forEach((c) => {
+        c.select.value = TYPE.WILDCARD;
+        c.input.value = "";
+        c.input.classList.remove("invalid");
+      });
+      el.lengthAuto.checked = true;
+      el.manualLength.disabled = true;
+      el.manualLength.value = "20";
+      validatePattern(false);
+      setStatus("Pattern reset.", "");
+    }
+
+    function loadSample() {
+      el.inputText.value = [
+        "Ref IDs: AB12, XY34, ab12, PQ99",
+        "Messy chunk: [AB12]\tAB12\nMN45 + zZ88",
+        "Other noise: 1234 ABCD A1B2"
+      ].join("\n");
+
+      resetPattern();
+      // Demo pattern: Letter, Letter, Number, Number => picks values like AB12, XY34.
+      patternCells[0].select.value = TYPE.LETTER;
+      patternCells[1].select.value = TYPE.LETTER;
+      patternCells[2].select.value = TYPE.NUMBER;
+      patternCells[3].select.value = TYPE.NUMBER;
+      el.lengthAuto.checked = false;
+      el.manualLength.disabled = false;
+      el.manualLength.value = "4";
+      validatePattern(true);
+      setStatus("Sample loaded. Click Extract.", "ok");
+    }
+
+    function wireEvents() {
+      el.lengthAuto.addEventListener("change", () => {
+        el.manualLength.disabled = el.lengthAuto.checked;
+        validatePattern(false);
+      });
+      el.manualLength.addEventListener("input", () => validatePattern(false));
+      el.extractBtn.addEventListener("click", extractMatches);
+      el.copyOutputBtn.addEventListener("click", copyOutput);
+      el.clearInputBtn.addEventListener("click", () => {
+        el.inputText.value = "";
+        setStatus("Input cleared.", "");
+      });
+      el.clearOutputBtn.addEventListener("click", () => {
+        el.outputText.value = "";
+        el.countTotal.textContent = "0";
+        el.countUnique.textContent = "0";
+        el.countTime.textContent = "0 ms";
+        setStatus("Output cleared.", "");
+      });
+      el.resetPatternBtn.addEventListener("click", resetPattern);
+      el.sampleBtn.addEventListener("click", loadSample);
+      el.themeToggleBtn.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme") || "dark";
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+      el.layoutSelect.addEventListener("change", () => {
+        const on = el.layoutSelect.value === "singleRow";
+        el.headerOn.disabled = !on;
+        el.headerName.disabled = !on;
+      });
+    }
+
+    initPatternGrid();
+    initTheme();
+    wireEvents();
+    el.layoutSelect.dispatchEvent(new Event("change"));
+    validatePattern(false);
+  </script>
+</body>
+</html>
