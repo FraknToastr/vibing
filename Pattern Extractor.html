@@ -298,7 +298,7 @@
   <main class="container">
     <section class="card">
       <h1>Wordle-Style Pattern Extractor (Offline)</h1>
-      <p class="subtle">Extracts matching substrings from pasted text using a 20-position pattern row. Works from <code>file://</code> (double-click this file).</p>
+      <p class="subtle">Extracts matching substrings from pasted text using a 20-position pattern row.</p>
       <ol class="usage">
         <li>Paste text, set pattern type + optional char in each square, then click <strong>Extract</strong>.</li>
         <li>Keep <strong>Length</strong> in Auto, or set manually (1–20) to force extraction length.</li>
@@ -313,11 +313,13 @@
           Pattern preset
           <select id="presetSelect">
             <option value="">Custom</option>
-            <option value="asseticId">Assetic Id (NNNNNN)</option>
-            <option value="pathwayId">Pathway Id (NNNNNN)</option>
-            <option value="planSaId">Plan SA ID (NNNNNNNN)</option>
-            <option value="pathwayUbn">Pathway UBN (NNNN-NN-NN)</option>
-            <option value="auMobile">Australian Mobile (04NNNNNNNN)</option>
+            <option value="asseticId">Assetic Id</option>
+            <option value="pathwayId">Pathway Id</option>
+            <option value="planSaId">Plan SA Id</option>
+            <option value="pathwayUbn">Pathway UBN</option>
+            <option value="auMobile">Australian Mobile</option>
+            <option value="auAbn">Australian ABN</option>
+            <option value="auTfn">Australian Tax File Number</option>
           </select>
         </label>
         <label class="field">
@@ -428,10 +430,12 @@
     const PATTERN_PRESETS = {
       asseticId: { label: "Assetic Id", template: "NNNNNN" },
       pathwayId: { label: "Pathway Id", template: "NNNNNN" },
-      planSaId: { label: "Plan SA ID", template: "NNNNNNNN" },
+      planSaId: { label: "Plan SA Id", template: "NNNNNNNN" },
       // Based on UBN.csv dominant format.
       pathwayUbn: { label: "Pathway UBN", template: "NNNN-NN-NN" },
-      auMobile: { label: "Australian Mobile", template: "04NNNNNNNN" }
+      auMobile: { label: "Australian Mobile", template: "04NNNNNNNN" },
+      auAbn: { label: "Australian ABN", template: "NNNNNNNNNNN" },
+      auTfn: { label: "Australian Tax File Number", template: "NNNNNNNNN" }
     };
     const HEADER_NAME_CUSTOM = "custom pattern";
     const HEADER_NAME_SAMPLE = "Sample";
