@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -19,6 +19,18 @@
       --radius: 14px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    :root[data-theme="light"] {
+      --bg: #f3f7fc;
+      --panel: #ffffff;
+      --panel2: #eef3fb;
+      --text: #102033;
+      --muted: #4f627a;
+      --border: #c9d7ea;
+      --accent: #2b6fff;
+      --bad: #dc2626;
+      --good: #16a34a;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
     }
     * { box-sizing: border-box; }
     body {
@@ -307,6 +319,48 @@
     // - Tokenizes SQL (strings, comments, brackets)
     // - Applies basic clause formatting and indentation
     // --------------------------------------------
+
+    const THEME_STORAGE_KEY = "jrDataToolboxTheme";
+    const LEGACY_THEME_STORAGE_KEY = "sqlBeautifierTheme";
+    const THEME_MESSAGE_TYPE = "jr-toolbox-theme";
+
+    function normalizeTheme(theme) {
+      return theme === "light" ? "light" : "dark";
+    }
+
+    function setTheme(theme, persist = true) {
+      const resolved = normalizeTheme(theme);
+      document.documentElement.setAttribute("data-theme", resolved);
+      if (persist) {
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, resolved);
+        } catch {
+          // Ignore storage restrictions.
+        }
+      }
+    }
+
+    function initTheme() {
+      let stored = "dark";
+      try {
+        stored =
+          localStorage.getItem(THEME_STORAGE_KEY) ||
+          localStorage.getItem(LEGACY_THEME_STORAGE_KEY) ||
+          "dark";
+      } catch {
+        stored = "dark";
+      }
+      setTheme(stored, false);
+    }
+
+    function wireThemeMessages() {
+      window.addEventListener("message", (ev) => {
+        const data = ev.data;
+        if (!data || typeof data !== "object") return;
+        if (data.type !== THEME_MESSAGE_TYPE) return;
+        setTheme(data.theme);
+      });
+    }
 
     const $ = (id) => document.getElementById(id);
 
@@ -933,6 +987,9 @@
     wrapLongLinesEl.addEventListener("change", () => {
       outputEl.style.whiteSpace = wrapLongLinesEl.checked ? "pre-wrap" : "pre";
     });
+
+    initTheme();
+    wireThemeMessages();
 
     // Initial metrics
     updateMetrics("");

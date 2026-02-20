@@ -2,6 +2,11 @@
 
 :root {
   --bg: #04070d;
+  --bg-grad-a: rgba(0, 246, 255, 0.18);
+  --bg-grad-b: rgba(255, 59, 212, 0.18);
+  --bg-grad-c: rgba(0, 120, 255, 0.2);
+  --bg-solid-start: #050a14;
+  --bg-solid-end: #02040a;
   --ink: #e7f6ff;
   --muted: #9cb2c2;
   --accent: #00f6ff;
@@ -17,6 +22,24 @@
   --grid: rgba(0, 246, 255, 0.06);
 }
 
+:root[data-theme="light"] {
+  --bg: #eef3fb;
+  --bg-grad-a: rgba(31, 111, 235, 0.16);
+  --bg-grad-b: rgba(192, 38, 211, 0.12);
+  --bg-grad-c: rgba(14, 116, 144, 0.14);
+  --bg-solid-start: #f8fbff;
+  --bg-solid-end: #e8f1fc;
+  --ink: #102338;
+  --muted: #4c627a;
+  --accent: #1f6feb;
+  --accent-2: #c026d3;
+  --card: rgba(255, 255, 255, 0.9);
+  --border: rgba(31, 111, 235, 0.28);
+  --shadow: rgba(15, 23, 42, 0.12);
+  --glow: 0 0 12px rgba(31, 111, 235, 0.22);
+  --grid: rgba(31, 111, 235, 0.08);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -27,10 +50,10 @@ body {
   font-family: var(--font-sans);
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 15%, rgba(0, 246, 255, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 85% 10%, rgba(255, 59, 212, 0.18) 0%, transparent 40%),
-    radial-gradient(circle at 50% 90%, rgba(0, 120, 255, 0.2) 0%, transparent 45%),
-    linear-gradient(180deg, #050a14 0%, #02040a 100%);
+    radial-gradient(circle at 15% 15%, var(--bg-grad-a) 0%, transparent 45%),
+    radial-gradient(circle at 85% 10%, var(--bg-grad-b) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, var(--bg-grad-c) 0%, transparent 45%),
+    linear-gradient(180deg, var(--bg-solid-start) 0%, var(--bg-solid-end) 100%);
 }
 
 body::before {
@@ -618,6 +641,50 @@ textarea {
 .status {
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+:root[data-theme="light"] .tabs {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="light"] .tab-btn {
+  background: rgba(241, 245, 252, 0.95);
+  color: #38526d;
+  border-color: rgba(31, 111, 235, 0.18);
+}
+
+:root[data-theme="light"] .tab-btn.is-active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(31, 111, 235, 0.95), rgba(192, 38, 211, 0.85));
+}
+
+:root[data-theme="light"] .lookup-item,
+:root[data-theme="light"] .table-wrap {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+:root[data-theme="light"] #renewedAssetsTable thead th {
+  background: rgba(242, 247, 255, 0.96);
+}
+
+:root[data-theme="light"] button,
+:root[data-theme="light"] select,
+:root[data-theme="light"] .project-code-input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] .cell-input,
+:root[data-theme="light"] .cell-select {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--ink);
+  border-color: rgba(31, 111, 235, 0.28);
+}
+
+:root[data-theme="light"] .file-input {
+  background: rgba(192, 38, 211, 0.09);
+}
+
+:root[data-theme="light"] .card-header {
+  background: linear-gradient(120deg, rgba(31, 111, 235, 0.12), rgba(255, 255, 255, 0.5));
 }
 
 .result {

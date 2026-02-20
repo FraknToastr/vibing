@@ -97,6 +97,47 @@ const HEADER_FILES = {
 };
 
 const REMOTE_BASE = "https://raw.githubusercontent.com/FraknToastr/PAR/main/";
+const THEME_STORAGE_KEY = "jrDataToolboxTheme";
+const LEGACY_THEME_STORAGE_KEY = "parTheme";
+const THEME_MESSAGE_TYPE = "jr-toolbox-theme";
+
+function normalizeTheme(theme) {
+  return theme === "light" ? "light" : "dark";
+}
+
+function setTheme(theme, persist = true) {
+  const resolved = normalizeTheme(theme);
+  document.documentElement.setAttribute("data-theme", resolved);
+  if (persist) {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, resolved);
+    } catch {
+      // Ignore storage restrictions.
+    }
+  }
+}
+
+function initTheme() {
+  let stored = "dark";
+  try {
+    stored =
+      localStorage.getItem(THEME_STORAGE_KEY) ||
+      localStorage.getItem(LEGACY_THEME_STORAGE_KEY) ||
+      "dark";
+  } catch {
+    stored = "dark";
+  }
+  setTheme(stored, false);
+}
+
+function wireThemeMessages() {
+  window.addEventListener("message", (ev) => {
+    const data = ev.data;
+    if (!data || typeof data !== "object") return;
+    if (data.type !== THEME_MESSAGE_TYPE) return;
+    setTheme(data.theme);
+  });
+}
 
 const lookupStatus = document.getElementById("lookupStatus");
 const toggleWidthBtn = document.getElementById("toggleWidth");
@@ -3826,6 +3867,8 @@ if (disposedToggleFieldsBtn) {
   });
 }
 
+initTheme();
+wireThemeMessages();
 init();
 
 if (toggleWidthBtn) {

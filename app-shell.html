@@ -294,6 +294,8 @@
   <script>
     const THEME_STORAGE_KEY = "jrDataToolboxTheme";
     const THEME_MESSAGE_TYPE = "jr-toolbox-theme";
+    const THEME_CONTROL_MESSAGE_TYPE = "jr-toolbox-theme-control";
+    const LOCAL_QR_APP_PATH = "qr-generator-with-logo.html";
 
     const params = new URLSearchParams(window.location.search);
     const frame = document.getElementById("toolFrame");
@@ -306,6 +308,44 @@
       return theme === "light" ? "light" : "dark";
     }
 
+    function applyThemeToEmbeddedDocument(theme) {
+      try {
+        const doc = frame.contentDocument;
+        if (!doc || !doc.documentElement) return;
+
+        doc.documentElement.setAttribute("data-theme", theme);
+        if (doc.body) {
+          doc.body.classList.toggle("dark", theme === "dark");
+          doc.body.classList.toggle("light", theme === "light");
+        }
+
+        const hideSelectors = [
+          "#themeToggle",
+          "#themePicker",
+          ".theme-picker",
+          ".themePicker",
+          ".theme-toggle",
+          ".themeToggle",
+          "[data-theme-picker]",
+          "[data-theme-toggle]"
+        ];
+
+        hideSelectors.forEach((selector) => {
+          doc.querySelectorAll(selector).forEach((node) => {
+            node.style.display = "none";
+            node.setAttribute("aria-hidden", "true");
+          });
+        });
+
+        const qrHeaderRow = doc.querySelector(".header-row");
+        if (qrHeaderRow && doc.getElementById("themeToggle")) {
+          qrHeaderRow.style.gridTemplateColumns = "0px 1fr 0px";
+        }
+      } catch {
+        // Ignore cross-origin restrictions.
+      }
+    }
+
     function notifyEmbeddedTheme(theme) {
       try {
         if (frame.contentWindow) {
@@ -313,18 +353,16 @@
             { type: THEME_MESSAGE_TYPE, theme },
             "*"
           );
+          frame.contentWindow.postMessage(
+            { type: THEME_CONTROL_MESSAGE_TYPE, hideThemePicker: true, shellManaged: true },
+            "*"
+          );
         }
       } catch {
         // Ignore cross-origin restrictions.
       }
 
-      try {
-        if (frame.contentDocument && frame.contentDocument.documentElement) {
-          frame.contentDocument.documentElement.setAttribute("data-theme", theme);
-        }
-      } catch {
-        // Ignore cross-origin restrictions.
-      }
+      applyThemeToEmbeddedDocument(theme);
     }
 
     function setTheme(theme, persist = true) {
@@ -364,6 +402,23 @@
       }
     }
 
+    function resolveTargetUrl(url, appName) {
+      try {
+        const parsed = new URL(url, window.location.href);
+        const appLabel = String(appName || "").trim().toLowerCase();
+        const path = parsed.pathname.toLowerCase();
+        const isRemoteQr =
+          path.includes("/ileostomy-association/qr-generator/") ||
+          (parsed.hostname === "frakntoastr.github.io" && path.endsWith("/ileostomy-association/qr-generator"));
+        if (appLabel === "qr generator with logo" || isRemoteQr) {
+          return new URL(LOCAL_QR_APP_PATH, window.location.href).toString();
+        }
+        return parsed.toString();
+      } catch {
+        return url;
+      }
+    }
+
     function withCacheBuster(url) {
       try {
         const parsed = new URL(url, window.location.href);
@@ -388,7 +443,8 @@
     }
 
     const appName = (params.get("app") || "Selected App").trim();
-    const targetUrl = parseSafeUrl(params.get("src"));
+    const parsedTargetUrl = parseSafeUrl(params.get("src"));
+    const targetUrl = parsedTargetUrl ? resolveTargetUrl(parsedTargetUrl, appName) : null;
 
     appNameEl.textContent = appName;
     document.title = appName + " | JR's Data Toobox";
@@ -409,6 +465,9 @@
         loaded = true;
         notice.classList.remove("show");
         setTheme(themePicker.value, false);
+        setTimeout(function () {
+          setTheme(themePicker.value, false);
+        }, 120);
       });
 
       const frameUrl = withCacheBuster(targetUrl);
