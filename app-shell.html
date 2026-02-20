@@ -200,6 +200,12 @@
       padding:12px;
     }
 
+    body.appWide .barInner,
+    body.appWide .main{
+      width:100%;
+      max-width:none;
+    }
+
     .frameWrap{
       flex:1 1 auto;
       min-height:calc(100vh - 86px);
@@ -358,6 +364,15 @@
       }
     }
 
+    function shouldUseWideShell(url) {
+      try {
+        const path = new URL(url, window.location.href).pathname.toLowerCase();
+        return path.includes("/par/") || path.endsWith("/par");
+      } catch {
+        return false;
+      }
+    }
+
     const appName = (params.get("app") || "Selected App").trim();
     const targetUrl = parseSafeUrl(params.get("src"));
 
@@ -371,6 +386,10 @@
       frame.remove();
       openDirect.remove();
     } else {
+      if (shouldUseWideShell(targetUrl)) {
+        document.body.classList.add("appWide");
+      }
+
       let loaded = false;
       frame.addEventListener("load", function () {
         loaded = true;
