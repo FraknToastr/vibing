@@ -379,6 +379,8 @@
   </div>
 
   <script>
+    const SHELL_CACHE_BUSTER = Date.now().toString(36);
+
     function pagesUrl(user, repo, path) {
       // GitHub Pages for project sites is typically:
       // https://<user>.github.io/<repo>/<path>
@@ -392,6 +394,7 @@
       const shell = new URL("app-shell.html", window.location.href);
       shell.searchParams.set("src", targetUrl);
       shell.searchParams.set("app", appName);
+      shell.searchParams.set("_sv", SHELL_CACHE_BUSTER);
       return shell.toString();
     }
 

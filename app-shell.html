@@ -364,6 +364,20 @@
       }
     }
 
+    function withCacheBuster(url) {
+      try {
+        const parsed = new URL(url, window.location.href);
+        const sameOrigin = parsed.origin === window.location.origin;
+        const path = parsed.pathname.toLowerCase();
+        const isHtmlLike = path.endsWith(".html") || path.endsWith("/");
+        if (!sameOrigin || !isHtmlLike) return parsed.toString();
+        parsed.searchParams.set("_tb", String(Date.now()));
+        return parsed.toString();
+      } catch {
+        return url;
+      }
+    }
+
     function shouldUseWideShell(url) {
       try {
         const path = new URL(url, window.location.href).pathname.toLowerCase();
@@ -397,8 +411,9 @@
         setTheme(themePicker.value, false);
       });
 
-      openDirect.href = targetUrl;
-      frame.src = targetUrl;
+      const frameUrl = withCacheBuster(targetUrl);
+      openDirect.href = frameUrl;
+      frame.src = frameUrl;
 
       setTimeout(function () {
         if (loaded) return;

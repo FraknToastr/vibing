@@ -207,6 +207,8 @@
       gap: 0.2rem;
       justify-items: center;
       transition: opacity .15s ease;
+      --type-bg: #538d4e;
+      --type-border: #467a42;
     }
 
     .cell.inactive {
@@ -240,21 +242,41 @@
     }
 
     .cell.configured select.type-select {
-      background: #538d4e;
-      border-color: #467a42;
+      background: var(--type-bg);
+      border-color: var(--type-border);
       color: #ffffff;
     }
 
     .cell.configured input.char-input {
-      background: #538d4e;
-      border-color: #467a42;
+      background: var(--type-bg);
+      border-color: var(--type-border);
       color: #ffffff;
     }
 
+    .cell.configured.type-number {
+      --type-bg: #3a77d1;
+      --type-border: #2b64bb;
+    }
+
+    .cell.configured.type-letter {
+      --type-bg: #2a9d8f;
+      --type-border: #24897d;
+    }
+
+    .cell.configured.type-character {
+      --type-bg: #538d4e;
+      --type-border: #467a42;
+    }
+
+    .cell.configured.type-wildcard {
+      --type-bg: #8b5cf6;
+      --type-border: #7c3aed;
+    }
+
     input.char-input.invalid {
-      border-color: var(--error);
-      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.22);
-      background: rgba(127, 29, 29, 0.25);
+      border-color: var(--error) !important;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.22) !important;
+      background: rgba(127, 29, 29, 0.25) !important;
     }
 
     .status {
@@ -302,15 +324,24 @@
       border-color: #ad9a48;
       color: #ffffff;
     }
-    :root[data-theme="light"] .cell.configured select.type-select {
-      background: #6aaa64;
-      border-color: #5b9556;
-      color: #ffffff;
+    :root[data-theme="light"] .cell.configured.type-number {
+      --type-bg: #3b82f6;
+      --type-border: #2563eb;
     }
-    :root[data-theme="light"] .cell.configured input.char-input {
-      background: #6aaa64;
-      border-color: #5b9556;
-      color: #ffffff;
+
+    :root[data-theme="light"] .cell.configured.type-letter {
+      --type-bg: #0d9488;
+      --type-border: #0f766e;
+    }
+
+    :root[data-theme="light"] .cell.configured.type-character {
+      --type-bg: #6aaa64;
+      --type-border: #5b9556;
+    }
+
+    :root[data-theme="light"] .cell.configured.type-wildcard {
+      --type-bg: #a78bfa;
+      --type-border: #8b5cf6;
     }
     :root[data-theme="light"] .counter { color: #334155; }
     :root[data-theme="light"] .counter code { color: #854d0e; }
@@ -364,7 +395,7 @@
         <button id="sampleBtn" type="button">Sample Input</button>
         <button id="addPatternRowBtn" type="button">Add Another Pattern</button>
       </div>
-      <div class="subtle">Type codes per position: <strong>L</strong>=Letter, <strong>N</strong>=Number, <strong>C</strong>=Character, <strong>*</strong>=Wildcard.</div>
+      <div class="subtle">Type codes per position: <strong>L</strong>=Letter, <strong>N</strong>=Number, <strong>C</strong>=Character, <strong>*</strong>=Wildcard. Space is shown as <strong>␠</strong>.</div>
       <div id="patternRows" class="pattern-rows" aria-label="Pattern maker rows"></div>
       <div id="statusMsg" class="status" aria-live="polite"></div>
       <div id="counter" class="counter">
@@ -426,6 +457,13 @@
       NUMBER: "N",
       CHARACTER: "C",
       WILDCARD: "*"
+    };
+    const SPACE_MARKER = "␠";
+    const TYPE_CLASS_BY_CODE = {
+      [TYPE.LETTER]: "type-letter",
+      [TYPE.NUMBER]: "type-number",
+      [TYPE.CHARACTER]: "type-character",
+      [TYPE.WILDCARD]: "type-wildcard"
     };
 
     const TOTAL_POSITIONS = 20;
@@ -529,10 +567,19 @@
       return /^[0-9]$/.test(ch);
     }
 
+    function normalizePatternChar(ch) {
+      return ch === SPACE_MARKER ? " " : ch;
+    }
+
+    function displayPatternChar(ch) {
+      return ch === " " ? SPACE_MARKER : ch;
+    }
+
     function charAllowedByType(ch, typeCode) {
-      if (ch === "") return true;
-      if (typeCode === TYPE.LETTER) return isLetter(ch);
-      if (typeCode === TYPE.NUMBER) return isDigit(ch);
+      const normalized = normalizePatternChar(ch);
+      if (normalized === "") return true;
+      if (typeCode === TYPE.LETTER) return isLetter(normalized);
+      if (typeCode === TYPE.NUMBER) return isDigit(normalized);
       return true; // Character and Wildcard allow any single char.
     }
 
@@ -595,13 +642,13 @@
           cell.input.value = "";
         } else if (isDigit(token)) {
           cell.select.value = TYPE.NUMBER;
-          cell.input.value = token;
+          cell.input.value = displayPatternChar(token);
         } else if (isLetter(token)) {
           cell.select.value = TYPE.LETTER;
-          cell.input.value = token;
+          cell.input.value = displayPatternChar(token);
         } else {
           cell.select.value = TYPE.CHARACTER;
-          cell.input.value = token;
+          cell.input.value = displayPatternChar(token);
         }
       });
     }
@@ -676,11 +723,13 @@
 
         input.addEventListener("input", (ev) => {
           const v = ev.target.value;
-          ev.target.value = v.length > 1 ? v.slice(0, 1) : v;
-          if (ev.target.value !== "") {
-            if (isDigit(ev.target.value)) {
+          const oneChar = v.length > 1 ? v.slice(0, 1) : v;
+          ev.target.value = displayPatternChar(oneChar);
+          const actualChar = normalizePatternChar(ev.target.value);
+          if (actualChar !== "") {
+            if (isDigit(actualChar)) {
               select.value = TYPE.NUMBER;
-            } else if (isLetter(ev.target.value)) {
+            } else if (isLetter(actualChar)) {
               select.value = TYPE.LETTER;
             } else {
               select.value = TYPE.CHARACTER;
@@ -782,6 +831,8 @@
     function updateCellWordleStates() {
       patternRows.forEach((row) => {
         row.cells.forEach((c) => {
+          c.cell.classList.remove("type-number", "type-letter", "type-character", "type-wildcard");
+          c.cell.classList.add(TYPE_CLASS_BY_CODE[c.select.value] || TYPE_CLASS_BY_CODE[TYPE.WILDCARD]);
           const configured = c.input.value !== "" || c.select.value !== TYPE.WILDCARD;
           c.cell.classList.toggle("configured", configured);
         });
@@ -948,7 +999,7 @@
         const row = patternRows[rowIdx];
         const L = activeLengths[rowIdx];
         const selectors = row.cells.map((c) => c.select.value);
-        const chars = row.cells.map((c) => c.input.value);
+        const chars = row.cells.map((c) => normalizePatternChar(c.input.value));
         const matcher = buildMatcher(selectors, chars, L);
         if (!matcher.isValid) {
           setStatus(`Cannot extract: invalid pattern at row ${rowIdx + 1}, position(s): ${matcher.invalidPositions.join(", ")}.`, "error");
