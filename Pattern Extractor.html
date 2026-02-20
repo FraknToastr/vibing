@@ -364,9 +364,9 @@
         <label class="field">
           Layout
           <select id="layoutSelect">
-            <option value="singleLine">Single line</option>
-            <option value="singleRowNoHeader">Single row (no header)</option>
-            <option value="singleRowWithHeader">Single row (with header)</option>
+            <option value="singleRow">Single row (comma-separated)</option>
+            <option value="singleColumnNoHeader">Single column (no header)</option>
+            <option value="singleColumnWithHeader">Single column (with header)</option>
           </select>
         </label>
         <label class="field">
@@ -433,6 +433,8 @@
       pathwayUbn: { label: "Pathway UBN", template: "NNNN-NN-NN" },
       auMobile: { label: "Australian Mobile", template: "04NNNNNNNN" }
     };
+    const HEADER_NAME_CUSTOM = "custom pattern";
+    const HEADER_NAME_SAMPLE = "Sample";
     const THEME_STORAGE_KEY = "jrDataToolboxTheme";
     const LEGACY_THEME_STORAGE_KEY = "patternExtractorTheme";
     const THEME_MESSAGE_TYPE = "jr-toolbox-theme";
@@ -486,6 +488,18 @@
       return true; // Character and Wildcard allow any single char.
     }
 
+    function setHeaderNameByPatternSource(source, presetKey = "") {
+      if (source === "sample") {
+        el.headerName.value = HEADER_NAME_SAMPLE;
+        return;
+      }
+      if (source === "preset" && PATTERN_PRESETS[presetKey]) {
+        el.headerName.value = PATTERN_PRESETS[presetKey].label;
+        return;
+      }
+      el.headerName.value = HEADER_NAME_CUSTOM;
+    }
+
     // Creates the 20 UI cells (selector + char input) and installs keyboard behavior.
     function initPatternGrid() {
       for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
@@ -524,6 +538,7 @@
               select.value = TYPE.CHARACTER;
             }
           }
+          setHeaderNameByPatternSource("custom");
           validatePattern(false);
           if (ev.target.value && i < TOTAL_POSITIONS - 1) {
             patternCells[i + 1].input.focus();
@@ -548,7 +563,10 @@
           }
         });
 
-        select.addEventListener("change", () => validatePattern(false));
+        select.addEventListener("change", () => {
+          setHeaderNameByPatternSource("custom");
+          validatePattern(false);
+        });
 
         cell.appendChild(select);
         cell.appendChild(input);
@@ -606,6 +624,7 @@
       el.lengthAuto.checked = false;
       el.manualLength.disabled = false;
       el.manualLength.value = String(tokens.length);
+      setHeaderNameByPatternSource("preset", key);
       validatePattern(false);
       setStatus(`Preset applied: ${preset.label} (${preset.template}).`, "ok");
     }
@@ -712,20 +731,20 @@
       const prepared = wrapQuotes ? values.map((v) => `'${v}'`) : values.slice();
       const layout = el.layoutSelect.value;
 
-      if (layout === "singleLine") {
+      if (layout === "singleRow") {
         return prepared.join(",");
       }
 
-      const csvValues = prepared.map(csvEscapeIfNeeded).join(",");
-      if (layout === "singleRowNoHeader") {
-        return csvValues;
+      const columnValues = prepared.join("\n");
+      if (layout === "singleColumnNoHeader") {
+        return columnValues;
       }
-      if (layout !== "singleRowWithHeader") {
-        return csvValues;
+      if (layout !== "singleColumnWithHeader") {
+        return columnValues;
       }
-      const headerRaw = (el.headerName.value || "").trim() || "Extracted";
+      const headerRaw = (el.headerName.value || "").trim() || HEADER_NAME_CUSTOM;
       const headerLine = csvEscapeIfNeeded(headerRaw);
-      return `${headerLine}\n${csvValues}`;
+      return `${headerLine}\n${columnValues}`;
     }
 
     function extractMatches() {
@@ -742,7 +761,7 @@
       const text = el.inputText.value || "";
       if (text.length < L) {
         setStatus(`No matches: input length (${text.length}) is shorter than active length (${L}).`, "");
-        el.outputText.value = "";
+        el.outputText.value = "No patterns found.";
         el.countTotal.textContent = "0";
         el.countUnique.textContent = "0";
         el.countTime.textContent = `${Math.round(performance.now() - start)} ms`;
@@ -783,6 +802,7 @@
       el.countTime.textContent = `${Math.round(performance.now() - start)} ms`;
 
       if (values.length === 0) {
+        el.outputText.value = "No patterns found.";
         setStatus("No matches found.", "");
       } else {
         setStatus(`Extraction complete: ${values.length} value(s) in output.`, "ok");
@@ -816,6 +836,7 @@
       el.lengthAuto.checked = true;
       el.manualLength.disabled = true;
       el.manualLength.value = "20";
+      setHeaderNameByPatternSource("custom");
       validatePattern(false);
       setStatus("Pattern reset.", "");
     }
@@ -837,6 +858,7 @@
       el.manualLength.disabled = false;
       el.manualLength.value = "4";
       el.presetSelect.value = "";
+      setHeaderNameByPatternSource("sample");
       validatePattern(true);
       setStatus("Sample loaded. Click Extract.", "ok");
     }
@@ -844,9 +866,13 @@
     function wireEvents() {
       el.lengthAuto.addEventListener("change", () => {
         el.manualLength.disabled = el.lengthAuto.checked;
+        setHeaderNameByPatternSource("custom");
         validatePattern(false);
       });
-      el.manualLength.addEventListener("input", () => validatePattern(false));
+      el.manualLength.addEventListener("input", () => {
+        setHeaderNameByPatternSource("custom");
+        validatePattern(false);
+      });
       el.extractBtn.addEventListener("click", extractMatches);
       el.copyOutputBtn.addEventListener("click", copyOutput);
       el.clearInputBtn.addEventListener("click", () => {
@@ -863,10 +889,14 @@
       el.resetPatternBtn.addEventListener("click", resetPattern);
       el.sampleBtn.addEventListener("click", loadSample);
       el.presetSelect.addEventListener("change", () => {
-        applyPreset(el.presetSelect.value);
+        if (el.presetSelect.value) {
+          applyPreset(el.presetSelect.value);
+        } else {
+          setHeaderNameByPatternSource("custom");
+        }
       });
       el.layoutSelect.addEventListener("change", () => {
-        const withHeader = el.layoutSelect.value === "singleRowWithHeader";
+        const withHeader = el.layoutSelect.value === "singleColumnWithHeader";
         el.headerName.disabled = !withHeader;
       });
     }
@@ -875,6 +905,7 @@
     initTheme();
     wireThemeMessages();
     wireEvents();
+    setHeaderNameByPatternSource("custom");
     el.layoutSelect.dispatchEvent(new Event("change"));
     validatePattern(false);
   </script>
