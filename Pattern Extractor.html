@@ -1130,7 +1130,7 @@
         if (el.presetSelect.value) {
           applyPreset(el.presetSelect.value);
         } else {
-          setHeaderNameByPatternSource("custom");
+          resetPattern();
         }
       });
       el.layoutSelect.addEventListener("change", () => {
