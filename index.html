@@ -433,6 +433,7 @@
         icon: "🧩",
         description: "Extract regex-style patterns from text with configurable options.",
         tags: ["extract", "pattern", "regex", "vibing"],
+        directUrl: "Pattern%20Extractor.html",
         launchUrl: shellUrl(
           "Pattern%20Extractor.html",
           "Pattern Extractor"
@@ -445,6 +446,7 @@
         icon: "🧼",
         description: "Format/beautify SQL quickly in-browser.",
         tags: ["sql", "format", "beautify", "vibing"],
+        directUrl: "sql-beautifier.html",
         launchUrl: shellUrl(
           "sql-beautifier.html",
           "SQL Beautifier"
@@ -452,15 +454,29 @@
         sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/sql-beautifier.html"
       },
       {
+        id: "par-data-validator",
+        name: "PAR Data Validator",
+        icon: "✅",
+        description: "Validate PAR data using the bundled PAR toolset.",
+        tags: ["par", "validator", "data", "vibing"],
+        directUrl: "PAR/index.html",
+        launchUrl: shellUrl(
+          "PAR/index.html",
+          "PAR Data Validator"
+        ),
+        sourceUrl: "https://github.com/FraknToastr/PAR/blob/main/index.html"
+      },
+      {
         id: "iasa-qr-generator",
-        name: "IASA QR Generator",
+        name: "QR Generator with logo",
         icon: "📷",
         description: "QR code generator (Ileostomy Association).",
-        tags: ["qr", "generator", "ileostomy-association"],
+        tags: ["qr", "generator"],
         // Folder index: .../qr-generator/ (or .../qr-generator/index.html both usually work)
+        directUrl: pagesUrl("FraknToastr", "Ileostomy-Association", "qr-generator/"),
         launchUrl: shellUrl(
           pagesUrl("FraknToastr", "Ileostomy-Association", "qr-generator/"),
-          "IASA QR Generator"
+          "QR Generator with logo"
         ),
         sourceUrl: "https://github.com/FraknToastr/Ileostomy-Association/blob/main/qr-generator/index.html"
       }
@@ -515,6 +531,9 @@
             <div class="actions">
               <a class="btn btnPrimary" href="${escapeHtml(app.launchUrl)}">
                 ▶ Launch
+              </a>
+              <a class="btn btnSecondary" href="${escapeHtml(app.directUrl || app.launchUrl)}" target="_blank" rel="noopener noreferrer">
+                ▶ Run Directly
               </a>
               <a class="btn btnSecondary" href="${escapeHtml(app.sourceUrl)}" target="_blank" rel="noopener noreferrer">
                 🧾 Source

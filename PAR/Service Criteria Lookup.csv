@@ -1,0 +1,1160 @@
+Asset_Subtype,Component_Name,Component_Type,Service_Criteria_Type
+10.5m Adepole combination mast arm,Pole Main,Main,Main Condition
+10.5m Adepole combination mast arm,Wifi Supply Point,Main,Main Condition
+10.5m Adepole combination pole,Pole Main,Main,Main Condition
+10.5m Adepole combination pole,Wifi Supply Point,Main,Main Condition
+10.5m combination,Pole Main,Main,Main Condition
+10.5m combination,Wifi Supply Point,Main,Main Condition
+10.5m combination mast arm,Pole Main,Main,Main Condition
+10.5m combination mast arm,Wifi Supply Point,Main,Main Condition
+10.5m combination mast arm(CMA),Pole Main,Main,Main Condition
+10.5m combination mast arm(CMA),Wifi Supply Point,Main,Main Condition
+100,Conduit,Main,Main Condition
+2 x 100,Conduit,Main,Main Condition
+3 quarters pole,Pole Main,Main,Main Condition
+40,Cable,Main,Main Condition
+40,Conduit,Main,Main Condition
+50,Conduit,Main,Main Condition
+80,Conduit,Main,Main Condition
+96 Core,Fibre,Main,Main Condition
+9m combination,Pole Main,Main,Main Condition
+9m combination,Wifi Supply Point,Main,Main Condition
+9m combination mast arm (CMA),Pole Main,Main,Main Condition
+9m combination mast arm (CMA),Wifi Supply Point,Main,Main Condition
+ACC Type 3 - Aggregate,Super Structure Main,Main,Superstructure Condition
+Accessible Junction Box,Lid,Lid,Main Condition
+Accessible Junction Box,Stormwater Pit Main,Main,Main Condition
+Accessible Ramp,Formation,04 Working Platform,Formation Condition
+Accessible Ramp,Pavement Base,02 Intermediate Course,Pavement Base Condition
+Accessible Ramp,Surface,01 Wearing Course,Surface Condition
+Activity Hub,Softfall - Rubberised,Softfall,Softfall Surface Condition
+Adelaide Bridge Fixing,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Adelaide Suite Style,Bollard Main,Main,Main Condition
+Advisory Large Sign,Custom Sign Main,Main,Main Condition
+Advisory Large Sign,Custom Sign Main,Main,Structural Compliance Condition
+Advisory Large Sign,Custom Sign Main,Main,Structural Condition
+Advisory Large Sign,Custom Sign Main,Main,Surface Damage Condition
+Advisory Small Sign,Custom Sign Main,Main,Main Condition
+Advisory Small Sign,Custom Sign Main,Main,Structural Compliance Condition
+Advisory Small Sign,Custom Sign Main,Main,Structural Condition
+Advisory Small Sign,Custom Sign Main,Main,Surface Damage Condition
+Arbour Structure,Other Structures Main,Main,Main Condition
+Archery Field,Archery Field Main,Main,Main Condition
+Architectural Lighting Pole - 5.3m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Architectural Lighting Pole - 9.0m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Architectural Street Light,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Architectural Street Light,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Architectural Street Light,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Art,Playground Equipment Main,Main,Main Condition
+Art Rack,Bike Rack Main,Main,Main Condition
+Art Rack,Bike Rack Main,Main,Structural Compliance Condition
+Art Rack,Bike Rack Main,Main,Structural Condition
+Athletic Track,Athletic Track Main,Main,Main Condition
+Audio Tactile,Audio Tactile,Audio Tactile,Audio Tactile Condition
+Back Flow,Back Flow Main,Main,Main Condition
+Back of Pole Light - Pendant,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Back of Pole Light - Street Light,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Back of Pole Light - Street Light - Prestige,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Back of Pole Light - Traffic,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Barrier Fencing,Fence Main,Main,Main Condition
+Barrier Fencing,Fence Main,Main,Structural Compliance Condition
+Barrier Fencing,Fence Main,Main,Structural Condition
+Barrier Fencing,Fence Main,Main,Surface Damage Condition
+Basketball Backboard,Other Structures Main,Main,Main Condition
+Basketball Court,Basketball Court Main,Main,Main Condition
+Basketball Court - Acrylic Surface ,Acrylic Surface,Main,Main Condition
+Basketball Court - Acrylic Surface ,Asphalt Layer,Main,Main Condition
+Basketball Court - Acrylic Surface ,Rubble Base,Main,Main Condition
+Basketball Court - Asphalt Surface,Asphalt Layer,Main,Main Condition
+Basketball Court - Asphalt Surface,Rubble Base,Main,Main Condition
+Basketball Ring,Basketball Ring,Main,Main Condition
+Bench,Picnic Table Main,Main,Main Condition
+Bench,Picnic Table Main,Main,Structural Compliance Condition
+Bench,Picnic Table Main,Main,Structural Condition
+Bench,Picnic Table Main,Main,Surface Damage Condition
+Bin Mounted Directional Sign,Custom Sign Main,Main,Main Condition
+Bin Stand,Bin Main,Main,Main Condition
+Bio-retention,Basins Main,Main,Main Condition
+BioSeparator,Main,Main,Main Condition
+BMX Track,BMX Track - Advanced,Main,Main Condition
+BMX Track,BMX Track - Intermediate,Main,Main Condition
+BMX Track,BMX Track - Pump Track,Main,Main Condition
+BMX Track - Beginner,BMX Track - Beginner,Main,Main Condition
+Boat Landing,Deck,Deck,Deck Condition
+Boat Landing,Sub-Structure Main,Sub-Structure Main,Substructure Condition
+Boat Landing,Super Structure Main,Super Structure Main,Superstructure Condition
+Boat Ramp,Sub-Structure Main,Sub-Structure Main,Substructure Condition
+Bollard,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Bollard Fence Linked,Fence Main,Main,Main Condition
+Bollard Fence Linked,Fence Main,Main,Structural Compliance Condition
+Bollard Fence Linked,Fence Main,Main,Structural Condition
+Bollard Fence Linked,Fence Main,Main,Surface Damage Condition
+Bollard Fence Unlinked,Fence Main,Main,Main Condition
+Bollard Lighting Switch,LE Bollard Lighting Switch,LE Bollard Lighting Switch,Switchboard Condition
+Boom Gate,Main,Main,Main Condition
+Boom Gate - Twin Lane,Gate Main,Main,Main Condition
+Bowls Lawn,Bowls Lawn Main,Main,Main Condition
+Bows / Garlands,Main,Main,Main Condition
+Box,Culvert Main,Main,Main Condition
+Brace Arm Style,Gate Main,Main,Main Condition
+Brace Arm Style,Gate Main,Main,Structural Compliance Condition
+Brace Arm Style,Gate Main,Main,Structural Condition
+Brace Arm Style,Gate Main,Main,Surface Damage Condition
+Braced Steel Frame and Bars,Gate Main,Main,Main Condition
+Braced Steel Frame and Bars,Gate Main,Main,Structural Compliance Condition
+Braced Steel Frame and Bars,Gate Main,Main,Structural Condition
+Braced Steel Frame and Bars,Gate Main,Main,Surface Damage Condition
+Braced Timber Ranch Style,Gate Main,Main,Main Condition
+Braced Timber Ranch Style,Gate Main,Main,Structural Compliance Condition
+Braced Timber Ranch Style,Gate Main,Main,Structural Condition
+Braced Timber Ranch Style,Gate Main,Main,Surface Damage Condition
+Bracket Only,Bracket,Bracket,Main Condition
+Brick Paver on Granular Pavement,01 Wearing Course,01 Wearing Course,Surface Condition
+Brick Paver on Granular Pavement,03 Base Course,03 Base Course,Pavement Subbase Condition
+Bud Lighting,Luminaire,Luminaire,Main Condition
+Building Identification Sign,Custom Sign Main,Main,Main Condition
+Building Identification Sign Small,Custom Sign Main,Main,Main Condition
+Building Identification Sign Small,Custom Sign Main,Main,Structural Compliance Condition
+Building Identification Sign Small,Custom Sign Main,Main,Structural Condition
+Business Sign Plinth Short,Custom Sign Main,Main,Main Condition
+Business Sign Plinth Tall,Custom Sign Main,Main,Main Condition
+Business Sign Wall Mounted Short,Custom Sign Main,Main,Main Condition
+Butt-Out,Bin Main,Main,Main Condition
+Butt-Out,Bin Main,Main,Structural Compliance Condition
+Butt-Out,Bin Main,Main,Structural Condition
+Butt-Out,Bin Main,Main,Surface Damage Condition
+Cabinet,CCTV Equipment Enclosure,Main,Main Condition
+Cables and Conduits - Footpaths 29 core,Cable,Cable,Cable Condition
+Cables and Conduits - Footpaths 29 core,Cable,Main,Cable Condition
+Cables and Conduits - Footpaths 29 core,Conduit,Conduit,Conduit Condition
+Cables and Conduits - Footpaths 29 core,Conduit,Main,Conduit Condition
+Cables and Conduits - Roads 63 core,Cable,Cable,Cable Condition
+Cables and Conduits - Roads 63 core,Conduit,Conduit,Conduit Condition
+Cables and Conduits - Tramline 63 Core,Cable,Cable,Cable Condition
+Cables and Conduits - Tramline 63 Core,Conduit,Conduit,Conduit Condition
+Car Park Equipment,Main,Main,Main Condition
+Carousels,Playground Equipment Main,Main,Main Condition
+Carriageway,01 Wearing Course,01 Wearing Course,Surface Condition
+Carriageway,02 Intermediate Course,02 Intermediate Course,Pavement Base Condition
+Carriageway,03 Base Course,03 Base Course,Pavement Subbase Condition
+Catenary Downlight - Gouger Street,Catenary Luminaire,Catenary Luminaire,Catenary Luminaire Condition
+Catenary Downlight - Rundle Mall,Catenary Luminaire,Catenary Luminaire,Catenary Luminaire Condition
+Catenary Electrical Cabling - Gouger Street (16m per Light),Catenary Electrical Cabling,Catenary Electrical Cabling,Catenary Electrical Cabling Condition
+Catenary Electrical Cabling - Rundle Mall (6m per Light),Catenary Electrical Cabling,Catenary Electrical Cabling,Catenary Electrical Cabling Condition
+Catenary Festoon Lighting - Ebenezer Place,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Gresham Place,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - O'Connell Street Laneway,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Peel Street,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Rundle Street,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Solomon Street,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Tavistock Lane,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Vardon Avenue,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Vaughan Place,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Victoria Sqaure - Across Lawn,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Victoria Square Arbour - East,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Festoon Lighting - Victoria Square Arbour - West,Catenary Linear Lighting,Catenary Linear Lighting,Catenary Linear Lighting Condition
+Catenary Pole - Gouger Street,Catenary Pole,Catenary Pole,Catenary Pole Condition
+Catenary Pole - Gouger Street,Primary Luminaire,Luminaire,Luminaire Condition
+Catenary Pole - Rundle Mall,Catenary Pole,Catenary Pole,Catenary Pole Condition
+Catenary Pole - Rundle Mall,Primary Luminaire,Luminaire,Luminaire Condition
+Catenary Pole - Solomon Street,Catenary Pole,Catenary Pole,Catenary Pole Condition
+Catenary System - Ebenezer Place,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Gouger Street,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Gresham Place,Catenary System,Catenary System,Catenary System Condition
+Catenary System - O'Connell Street Laneway,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Peel Street,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Rundle Mall,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Rundle Street,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Solomon Street,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Tavistock Lane,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Vardon Avenue,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Vaughan Place,Catenary System,Catenary System,Catenary System Condition
+Catenary System - Victoria Square - Across Lawn,Catenary System,Catenary System,Catenary System Condition
+C-Bus System - Large,Lighting Control,Lighting Control,Lighting Control Condition
+C-Bus System - Small,Lighting Control,Lighting Control,Lighting Control Condition
+CCTV Pole - Adepole 5m,LE CCTV Pole,LE CCTV Pole,LE CCTV Pole Condition
+CCTV Pole - Stepped Post Top 3.5m,LE CCTV Pole,LE CCTV Pole,LE CCTV Pole Condition
+Central Market Precinct,Electrical Services,Electrical,Electrical Condition
+Central Market Precinct,Fire Services,Fire,Fire Condition
+Central Market Precinct,Fitout and Fittings,Fitout and Fittings,Fitouts and Fittings Condition
+Central Market Precinct,Hydraulic Services,Hydraulics,Hydraulics Condition
+Central Market Precinct,Roof Structure,Roof,Roof Condition
+Central Market Precinct,Structure,Main,Main Condition
+Central Market Precinct,Vertical Transport Services,Transport Service,Transport Condition
+Chain,Gate Main,Main,Main Condition
+Chain,Gate Main,Main,Structural Compliance Condition
+Chain,Gate Main,Main,Structural Condition
+Chain,Gate Main,Main,Surface Damage Condition
+Chess Set - Concrete,Concrete Base,Main,Main Condition
+Circular,Bike Rack Main,Main,Main Condition
+Circular,Bike Rack Main,Main,Structural Compliance Condition
+Circular,Bike Rack Main,Main,Structural Condition
+Circular,Bike Rack Main,Main,Surface Damage Condition
+Climber,Playground Equipment Main,Main,Main Condition
+Commercial Buildings,Fire Services,Fire,Fire Condition
+Commercial Buildings,Fitout and Fittings,Fitout and Fittings,Fitouts and Fittings Condition
+Commercial Buildings,Structure,Main,Main Condition
+Comms - White,CCTV Cable and Conduit,Main,Main Condition
+Comms - White,Conduit,Main,Main Condition
+Community - Libraries and Community Halls,Fitout and Fittings,Fitout and Fittings,Fitouts and Fittings Condition
+Community - Libraries and Community Halls,Mechanical Services,Mechanical,Mechanical Condition
+Community - Libraries and Community Halls,Vertical Transport Services,Transport Service,Transport Condition
+Community - Park Lands Businesses,Electrical Services,Electrical,Electrical Condition
+Community - Park Lands Businesses,Electrical Services,Electrical,Main Condition
+Community - Park Lands Businesses,Hydraulic Services,Hydraulics,Hydraulics Condition
+Community - Park Lands Businesses,Roof Structure,Roof,Roof Condition
+Community - Park Lands Businesses,Structure,Main,Main Condition
+Community - Park Lands Sports Clubs and Grandstands,Fitout and Fittings,Fitout and Fittings,Fitouts and Fittings Condition
+Community - Park Lands Sports Clubs and Grandstands,Hydraulic Services,Hydraulics,Hydraulics Condition
+Community - Park Lands Sports Clubs and Grandstands,Mechanical Services,Mechanical,Mechanical Condition
+Community - Park Lands Sports Clubs and Grandstands,Structure,Main,Main Condition
+Concrete,Planter Box Main,Main,Main Condition
+Concrete,Planter Box Main,Main,Structural Compliance Condition
+Concrete,Planter Box Main,Main,Structural Condition
+Concrete,Planter Box Main,Main,Surface Damage Condition
+Concrete and Mosaic,Planter Box Main,Main,Main Condition
+Concrete and Mosaic,Planter Box Main,Main,Structural Compliance Condition
+Concrete and Mosaic,Planter Box Main,Main,Structural Condition
+Concrete and Mosaic,Planter Box Main,Main,Surface Damage Condition
+Concrete Cylindrical,Bollard Main,Main,Main Condition
+Concrete Cylindrical,Bollard Main,Main,Structural Compliance Condition
+Concrete Cylindrical,Bollard Main,Main,Structural Condition
+Concrete Cylindrical,Bollard Main,Main,Surface Damage Condition
+Conduit - 100mm,SCAT Conduit,SCAT Conduit,SCAT Conduit Condition
+Consumer Main,Cable,Main,Main Condition
+Consumer Main,Conduit,Main,Main Condition
+Controller,Controller Main,Main,Main Condition
+Controller,Irrigation Main,Main,Main Condition
+Controller,Master Valve,Main,Main Condition
+Copper Cable - 20 Pair,SCAT Cable,SCAT Cable,SCAT Cable Condition
+Copper Cable - 50 Pair,SCAT Cable,SCAT Cable,SCAT Cable Condition
+Corporation,Fire Services,Fire,Fire Condition
+Corporation,Fitout and Fittings,Fitout and Fittings,Fitouts and Fittings Condition
+Corporation,Hydraulic Services,Hydraulics,Hydraulics Condition
+Corporation,Mechanical Services,Mechanical,Mechanical Condition
+Corporation,Roof Structure,Roof,Roof Condition
+Corporation,Structure,Main,Main Condition
+Creek,Creek Main,Main,Main Condition
+Crib Wall,Retaining Wall Main,Main,Main Condition
+Cricket Net,Cricket Net Main,Main,Main Condition
+Cricket Pitch,Cricket Pitch Main,Main,Main Condition
+Cricket Pitch - Concrete,Concrete Base,Main,Main Condition
+Croquet Field,Croquet Field Main,Main,Main Condition
+Cultural,Custom Sign Main,Main,Main Condition
+Culvert,Stormwater Drain Main,Main,Main Condition
+Culvert Footbridge,Abutment / Wingwall 1,Wingwall,Main Condition
+Culvert Footbridge,Abutment / Wingwall 1,Wingwall,Significance
+Culvert Footbridge,Culvert No. 1,Culvert Main,Culvert Condition
+Culvert Footbridge,Culvert No. 1,Culvert Main,Significance
+Culvert Footbridge,Deck / Wearing Surface,01 Wearing Course,Significance
+Culvert Footbridge,Deck / Wearing Surface,01 Wearing Course,Surface Condition
+Culvert Footbridge,Handrails 1,Rail,Rail Condition
+Culvert Footbridge,Handrails 1,Rail,Significance
+Culvert Footbridge,Headwall 1,Headwall,Main Condition
+Culvert Footbridge,Headwall 1,Headwall,Significance
+Culvert Footbridge,Span 1 Deck / Wearing Surface,Bridge Deck,Deck Condition
+Culvert Footbridge,Span 1 Deck / Wearing Surface,Bridge Deck,Significance
+Curved,Drinking Fountain Main,Main,Main Condition
+Curved,Drinking Fountain Main,Main,Structural Compliance Condition
+Curved,Drinking Fountain Main,Main,Structural Condition
+Curved,Drinking Fountain Main,Main,Surface Damage Condition
+Custom Sign,Custom Sign Main,Main,Main Condition
+Cycle Bollard,Custom Sign Main,Main,Main Condition
+Cycle Bollard,Custom Sign Main,Main,Structural Compliance Condition
+Cycle Bollard,Custom Sign Main,Main,Structural Condition
+Cycle Detector-Induction,Detector Loop,Detector Loop,Detector Loop Condition
+Cycle Directional Panel,Custom Sign Main,Main,Main Condition
+CycleWay,Formation,04 Working Platform,Formation Condition
+CycleWay,Pavement Base,02 Intermediate Course,Pavement Base Condition
+CycleWay,Surface,01 Wearing Course,Surface Condition
+Cyclist Push Button,Push Button,Push Button,Main Condition
+Cyclist Push Button,Push Button,Push Button,Push Button Condition
+D Pit,Pit Main,Main,Main Condition
+D Pit,Pit Main,Main,Pit Condition
+Decorative Lighting,Main,Main,Main Condition
+Defibrillator,Defibrillator Main,Main,Main Condition
+Detention,Basins Main,Main,Main Condition
+Display,Main,Main,Main Condition
+Dog Dispenser,Bin Main,Main,Main Condition
+Double Braced Steel,Gate Main,Main,Main Condition
+Double Braced Steel,Gate Main,Main,Structural Compliance Condition
+Double Braced Steel,Gate Main,Main,Structural Condition
+Double Braced Steel,Gate Main,Main,Surface Damage Condition
+Double D Pit,Pit Main,Main,Main Condition
+Double D Pit,Pit Main,Main,Pit Condition
+Double Gatic,Pit Main,Main,Main Condition
+Double Gatic,Pit Main,Main,Pit Condition
+Double Steel Bar,Gate Main,Main,Main Condition
+Double Steel Bar,Gate Main,Main,Structural Compliance Condition
+Double Steel Bar,Gate Main,Main,Structural Condition
+Double Steel Bar,Gate Main,Main,Surface Damage Condition
+Double Steel Bar,Tree Main,Main,Consequence of Failure
+Double Steel Bar,Tree Main,Main,Likelihood Matrix
+Double Steel Bar,Tree Main,Main,Likelihood of Failure
+Double Steel Bar,Tree Main,Main,Likelihood of Impact
+Double Steel Bar,Tree Main,Main,Risk Rating Matrix
+Downlight,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Downlight,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Drip in Line,Backflow,Main,Main Condition
+Drip in Line,Control Wire,Control Wire,Main Condition
+Drip in Line,Controller,Control System,Main Condition
+Drip in Line,Controller and Valve,Control System,Main Condition
+Drip in Line,Emitters,Main,Main Condition
+Drip in Line,Irrigation Main,Main,Main Condition
+Drip in Line,Laterals,Laterals,Main Condition
+Drip in Line,Mainline,Mainline,Main Condition
+Drip in Line,Valves,Control System,Main Condition
+Earth Retaining Structure,Anchor Wall,Anchor,Footing/Anchor Condition
+Earth Retaining Structure,Erosion Protection Main,Main,Main Condition
+Earth Retaining Structure,Piles,Pile,Pile Condition
+ECUPS (8 Batteries),UPS,TS UPS,UPS Condition
+Electrical - Orange,Cable,Main,Main Condition
+Electrical - Orange,Conduit,Main,Main Condition
+Electrical - Orange Spare,Conduit,Main,Main Condition
+Enclosure,Bin Main,Main,Main Condition
+Energy Absorbing,Bollard Main,Main,Main Condition
+Energy Absorbing,Bollard Main,Main,Structural Compliance Condition
+Energy Absorbing,Bollard Main,Main,Structural Condition
+Energy Absorbing,Bollard Main,Main,Surface Damage Condition
+Energy Dissipation,Erosion Protection Main,Main,Main Condition
+Entry/Exit,Main,Main,Main Condition
+Erosion Protection,Anchor Wall,Main,Footing/Anchor Condition
+Erosion Protection,Erosion Protection Main,Main,Main Condition
+Festoon Light,Luminaire,Luminaire,Main Condition
+Fingerboard,Custom Sign Main,Main,Main Condition
+Fitness Station,Fitness Station Main,Main,Main Condition
+Fitness Station,Playground Equipment Main,Main,Main Condition
+Fitness Station,Softfall - Rubberised,Softfall,Softfall Surface Condition
+Fixed,Seat Main,Main,Main Condition
+Fixed,Seat Main,Main,Structural Compliance Condition
+Fixed,Seat Main,Main,Structural Condition
+Fixed,Seat Main,Main,Surface Damage Condition
+Fixed,Tree Main,Main,Consequence of Failure
+Fixed,Tree Main,Main,Likelihood Matrix
+Fixed,Tree Main,Main,Likelihood of Failure
+Fixed,Tree Main,Main,Likelihood of Impact
+Fixed,Tree Main,Main,Risk Rating Matrix
+Flat Top,Picnic Table Main,Main,Main Condition
+Flat Top,Picnic Table Main,Main,Structural Compliance Condition
+Flat Top,Picnic Table Main,Main,Structural Condition
+Flat Top,Picnic Table Main,Main,Surface Damage Condition
+Floodlight,Catenary Pole,Catenary Pole,Catenary Pole Condition
+Floodlight,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Floodlight,Primary Luminaire,Luminaire,Luminaire Condition
+Floodlight - Adelaide Bridge,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Floodlight - Adelaide Bridge,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Floodlight - Church,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Floodlight - Church,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Floodlight - Church,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Floodlight - Directional,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Floodlight - Sports Field,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Floodlight - Sports Field,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Floodlight - Sports Field,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Floodlight - Sports Field,Luminaire,Luminaire,Luminaire Condition
+Floodlight Pole,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Floodlight Tower - 12m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Floodlight Tower - 18m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Floodlight Tower - 32m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Floodlight Tower - 32m,Pole,Main,Main Condition
+Floodlight Tower - 32m,Primary Bracket,Bracket,Bracket Condition
+Floor Drain,Stormwater Pit Main,Main,Main Condition
+Flush Kerb,Kerb Main,Main,Main Condition
+Folding Machine,Main,Main,Main Condition
+Football Goal Posts,Football Goal Posts,Main,Main Condition
+Furniture,Playground Equipment Main,Main,Main Condition
+Fuse Pit,LE Lighting Pit,LE Lighting Pit,LE Lighting Pit Condition
+Fuse Pit,Main,Main,Main Condition
+Fuse Pit,Pit Main,Main,Main Condition
+Fuse Pit,Pit Main,Main,Pit Condition
+Fuse Pit - TBC,LE Lighting Pit,LE Lighting Pit,LE Lighting Pit Condition
+Fuse Pit - TBC,Pit Main,Main,Main Condition
+Gabion Basket Wall,Retaining Wall Main,Main,Main Condition
+Gateway Sign,Custom Sign Main,Main,Main Condition
+General,Playground Equipment Main,Main,Main Condition
+General Sports Field,General Sports Field Main,Main,Main Condition
+Golf Greens - Turf Surface,Turf Surface,Main,Main Condition
+Golf Net,Golf Net Main,Main,Main Condition
+Green Infrastructure,Other Structures Main,Main,Main Condition
+Gross Pollutant Trap,Gross Pollutant Trap Main,Main,Main Condition
+Handrail,Fence Main,Main,Main Condition
+Handrail,Fence Main,Main,Structural Compliance Condition
+Handrail,Fence Main,Main,Structural Condition
+Handrail,Fence Main,Main,Surface Damage Condition
+Headwall,Headwall Main,Main,Main Condition
+Heritage Style Acorn,Bollard Main,Main,Main Condition
+Heritage Style Acorn,Bollard Main,Main,Structural Compliance Condition
+Heritage Style Acorn,Bollard Main,Main,Structural Condition
+Heritage Style Acorn,Bollard Main,Main,Surface Damage Condition
+Heritage Style Post Top Light,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Heritage Style Post Top Light,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Heritage Style Post Top Light,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Heritage Style Post Top Pole,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Heritage Style Post Top Pole,Pole,Main,Main Condition
+Heritage Style Street Lighting Pole,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Hockey Field,Hockey Field Main,Main,Main Condition
+Horse Trough,Other Structures Main,Main,Main Condition
+Hubs,Main,Main,Main Condition
+ICUPS (2 Batteries),UPS,TS UPS,UPS Condition
+Inaccessible Junction Box,Stormwater Pit Main,Main,Main Condition
+IndigoVision PTZ,CCTV Camera,Main,Main Condition
+Informal Path,Footpaths Main,Main,Main Condition
+Informal Path,Formation,04 Working Platform,Formation Condition
+Informal Path,Pavement Base,02 Intermediate Course,Pavement Base Condition
+Informal Path,Surface,01 Wearing Course,Surface Condition
+Information,Custom Sign Main,Main,Main Condition
+Information,Custom Sign Main,Main,Structural Compliance Condition
+Information,Custom Sign Main,Main,Structural Condition
+Information,Custom Sign Main,Main,Surface Damage Condition
+Inlet,Stormwater Drain Main,Main,Main Condition
+Inlet Pit,Lid,Lid,Main Condition
+Inlet Pit,Stormwater Pit Main,Main,Main Condition
+Intercom Equipment,Main,Main,Main Condition
+Internal,CCTV Equipment Enclosure,Main,Main Condition
+Interpretive Large Sign,Custom Sign Main,Main,Main Condition
+Interpretive Large Sign,Custom Sign Main,Main,Structural Compliance Condition
+Interpretive Large Sign,Custom Sign Main,Main,Structural Condition
+Interpretive Large Sign,Custom Sign Main,Main,Surface Damage Condition
+Interpretive Sign (Post Mounted),Custom Sign Main,Main,Main Condition
+Interpretive Sign (Post Mounted),Custom Sign Main,Main,Structural Compliance Condition
+Interpretive Sign (Post Mounted),Custom Sign Main,Main,Structural Condition
+Interpretive Sign (Post Mounted),Custom Sign Main,Main,Surface Damage Condition
+Investment Properties,Mechanical Services,Mechanical,Mechanical Condition
+Investment Properties,Roof Structure,Roof,Roof Condition
+Irrigated Turf,Grassed Area Main,Main,Main Condition
+Irrigation,Back Flow Main,Main,Main Condition
+Irrigation,Backflow,Backflow,Main Condition
+Irrigation,Backflow,Main,Main Condition
+Irrigation,Control Wire,Control Wire,Main Condition
+Irrigation,Control wire,Main,Main Condition
+Irrigation,Controller,Control System,Main Condition
+Irrigation,Controller,Main,Main Condition
+Irrigation,Controller and Valve,Control System,Main Condition
+Irrigation,Controller and Valve,Controller and Valve,Main Condition
+Irrigation,Controller and Valve,Main,Main Condition
+Irrigation,Emitters,Emitters,Main Condition
+Irrigation,Emitters,Main,Main Condition
+Irrigation,Irrigation Main,Main,Main Condition
+Irrigation,Laterals,Laterals,Main Condition
+Irrigation,Laterals,Main,Main Condition
+Irrigation,Mainline,Main,Main Condition
+Irrigation,Mainline,Mainline,Main Condition
+Irrigation,Valves,Control System,Main Condition
+Irrigation,Valves,Main,Main Condition
+Irrigation Parkland Space,Control Wire,Control Wire,Main Condition
+Irrigation Parkland Space,Controller,Control System,Controller Condition
+Irrigation Parkland Space,Controller,Control System,Main Condition
+Irrigation Parkland Space,Emitters,Emitters,Main Condition
+Irrigation Parkland Space,Irrigation Main,Main,Main Condition
+Irrigation Parkland Space,Laterals,Laterals,Main Condition
+Irrigation Parkland Space,Mainline,Mainline,Main Condition
+Irrigation Parkland Space,Valves,Control System,Controller Condition
+Irrigation Parkland Space,Valves,Control System,Main Condition
+Jnr Rope Unit,Playground Equipment Main,Main,Main Condition
+Jnr See Saw,Playground Equipment Main,Main,Main Condition
+Join Pit,LE Lighting Pit,LE Lighting Pit,LE Lighting Pit Condition
+Join Pit,Main,Main,Main Condition
+Join Pit,Pit Main,Main,Pit Condition
+Join Pit,SCAT Join Pit,SCAT Join Pit,SCAT Pit Condition
+Junction Box,Inspection Opening,Main,Main Condition
+Junction Box,Lid,Lid,Main Condition
+Junction Box,Stormwater Pit Main,Main,Main Condition
+JVH Kiato,Super Structure Main,Main,Superstructure Condition
+Kerb,Kerb Main,Main,Main Condition
+Kerb and Water Table,Kerb Main,Main,Main Condition
+Kitchen,Main,Main,Main Condition
+Laptop,Main,Main,Main Condition
+Large (>1500mm x 2000mm),Planter Box Main,Main,Main Condition
+Large Memorial,Artwork Lighting Main,Main,Main Condition
+Large Memorial,Artwork Main,Main,Main Condition
+Large Memorial,Artwork Main,Main,Structural Condition
+Large Memorial,Artwork Main,Main,Surface Condition
+Leased Building,Fire Services,Fire,Fire Condition
+LED,Bracket,Bracket,Bracket Condition
+LED,Luminaire,Luminaire,Luminaire Condition
+LED,Luminaire,Luminaire,Main Condition
+LED,Primary Luminaire,Luminaire,Luminaire Condition
+LED,Primary Luminaire,Luminaire,Main Condition
+LED Strip,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Library Equipment,Main,Main,Main Condition
+Light Bollard,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Light Bollard,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Light Bollard,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Lighting Panel,Lighting Control,Lighting Control,Lighting Control Condition
+Low Gardens Retaining Wall,Retaining Wall Main,Main,Main Condition
+Macadam Pavement (High Volume),01 Wearing Course,01 Wearing Course,Main Condition
+Macadam Pavement (High Volume),01 Wearing Course,01 Wearing Course,Surface Condition
+Macadam Pavement (High Volume),02 Intermediate Course,02 Intermediate Course,Main Condition
+Macadam Pavement (High Volume),02 Intermediate Course,02 Intermediate Course,Pavement Base Condition
+Macadam Pavement (High Volume),03 Base Course,03 Base Course,Pavement Subbase Condition
+Macadam Pavement (High Volume),04 Working Platform,04 Working Platform,Formation Condition
+Macadam Pavement (Low Volume),01 Wearing Course,01 Wearing Course,Main Condition
+Macadam Pavement (Low Volume),01 Wearing Course,01 Wearing Course,Pavement Base Condition
+Macadam Pavement (Low Volume),01 Wearing Course,01 Wearing Course,Surface Condition
+Macadam Pavement (Low Volume),01 Wearing Course,01 Wearing Course,Wearing Course Condition (SCI)
+Macadam Pavement (Low Volume),02 Intermediate Course,02 Intermediate Course,Pavement Base Condition
+Macadam Pavement (Low Volume),03 Base Course,03 Base Course,Main Condition
+Macadam Pavement (Low Volume),03 Base Course,03 Base Course,Pavement Subbase Condition
+Main,Pipe Main,Main,Main Condition
+Main,Pipe Main,Main,Sewer Main Condition
+Main,Stormwater Drain Main,Lid,Lid Condition
+Main,Stormwater Drain Main,Main,Main Condition
+Main Switchboard - Above Ground - Large,LE Main Switchboard - Above Ground - Large,LE Main Switchboard - Above Ground - Large,Switchboard Condition
+Main Switchboard - Above Ground - Medium,LE Main Switchboard - Above Ground - Medium,LE Main Switchboard - Above Ground - Medium,Switchboard Condition
+Main Switchboard - Above Ground - Size TBC,LE Main Switchboard - Above Ground - Size TBC,LE Main Switchboard - Above Ground - Size TBC,Switchboard Condition
+Main Switchboard - Above Ground - Small,LE Main Switchboard - Above Ground - Small,LE Main Switchboard - Above Ground - Small,Switchboard Condition
+Main Switchboard - Above Ground - Victoria Square - Large,LE Main Switchboard - Above Ground - Victoria Square - Large,LE Main Switchboard - Above Ground - Victoria Square - Large,Switchboard Condition
+Main Switchboard - Below Ground,LE Main Switchboard - Below Ground,LE Main Switchboard - Below Ground,Switchboard Condition
+Main Switchboard - Wall Mounted - Small,LE Main Switchboard - Wall Mounted - Small,LE Main Switchboard - Wall Mounted - Small,Switchboard Condition
+Mains BBQ,BBQ Main,Main,Main Condition
+Mains BBQ,BBQ Main,Main,Structural Compliance Condition
+Mains BBQ,BBQ Main,Main,Structural Condition
+Mains BBQ,BBQ Main,Main,Surface Damage Condition
+Mains BBQ,Power Outlet Main,Ancillary,Ancillary Condition
+Major Footbridge,Abutment,Sub-Structure Other,Main Condition
+Major Footbridge,Abutment,Sub-Structure Other,Significance
+Major Footbridge,Batter Protection,Sub-Structure Other,Main Condition
+Major Footbridge,Batter Protection,Sub-Structure Other,Significance
+Major Footbridge,Bearings,Super Structure Other,Main Condition
+Major Footbridge,Bearings,Super Structure Other,Significance
+Major Footbridge,Bridge Footpath,Bridge Footpath,Main Condition
+Major Footbridge,Bridge Footpath,Bridge Footpath,Significance
+Major Footbridge,Bridge Railing,Rail,Rail Condition
+Major Footbridge,Bridge Railing,Rail,Significance
+Major Footbridge,Column or Piles,Sub-Structure Other,Main Condition
+Major Footbridge,Column or Piles,Sub-Structure Other,Significance
+Major Footbridge,Cross Bracing,Super Structure Other,Main Condition
+Major Footbridge,Cross Bracing,Super Structure Other,Significance
+Major Footbridge,Deck Joints,Super Structure Other,Main Condition
+Major Footbridge,Deck Joints,Super Structure Other,Significance
+Major Footbridge,Deck Joints2,Super Structure Other,Main Condition
+Major Footbridge,Deck Joints2,Super Structure Other,Significance
+Major Footbridge,Deck Slab,Bridge Deck,Deck Condition
+Major Footbridge,Deck Slab,Bridge Deck,Significance
+Major Footbridge,Deck Truss,Super Structure Other,Main Condition
+Major Footbridge,Deck Truss,Super Structure Other,Significance
+Major Footbridge,Girder Cladding,Super Structure Other,Main Condition
+Major Footbridge,Girder Cladding,Super Structure Other,Significance
+Major Footbridge,Open Girders,Super Structure Other,Main Condition
+Major Footbridge,Open Girders,Super Structure Other,Significance
+Major Footbridge,Precast Girders,Super Structure Other,Main Condition
+Major Footbridge,Precast Girders,Super Structure Other,Significance
+Major Footbridge,Wingwall/Retaining Wall,Wingwall,Main Condition
+Major Footbridge,Wingwall/Retaining Wall,Wingwall,Significance
+Mast arm Pole,Pole Main,Main,Main Condition
+Median Island,Kerb Main,Main,Main Condition
+Medians,Streetscape Main,Main,Main Condition
+Medium (<=1500mm x 2000mm),Planter Box Main,Main,Main Condition
+Medium (<=1500mm x 2000mm),Tree Main,Main,Consequence of Failure
+Medium (<=1500mm x 2000mm),Tree Main,Main,Likelihood Matrix
+Medium (<=1500mm x 2000mm),Tree Main,Main,Likelihood of Failure
+Medium (<=1500mm x 2000mm),Tree Main,Main,Likelihood of Impact
+Medium (<=1500mm x 2000mm),Tree Main,Main,Risk Rating Matrix
+Meeting Room Equipment,Main,Main,Main Condition
+Memorial,Drinking Fountain Main,Main,Main Condition
+Memorial,Drinking Fountain Main,Main,Structural Compliance Condition
+Memorial,Drinking Fountain Main,Main,Structural Condition
+Memorial,Drinking Fountain Main,Main,Surface Damage Condition
+Mercury Vapour,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Metal Enclosure,CCTV Equipment Enclosure,Main,Main Condition
+Metal Halide,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Metered,People Movement Sensor,Main,Main Condition
+MetroLite,Parking Machine Main,Main,Main Condition
+MIMS Wiring on Structure,Cable,Main,Main Condition
+MIMS Wiring on Structure,Conduit,Main,Main Condition
+Minor Footbridge,Abutment / Wingwall 1,Wingwall,Main Condition
+Minor Footbridge,Abutment / Wingwall 1,Wingwall,Significance
+Minor Footbridge,Abutment 1,Sub-Structure Other,Main Condition
+Minor Footbridge,Abutment 1,Sub-Structure Other,Significance
+Minor Footbridge,Abutment 2,Sub-Structure Other,Main Condition
+Minor Footbridge,Abutment 2,Sub-Structure Other,Significance
+Minor Footbridge,Apron,Super Structure Other,Main Condition
+Minor Footbridge,Apron,Super Structure Other,Significance
+Minor Footbridge,Batter Protection 1,Sub-Structure Other,Main Condition
+Minor Footbridge,Batter Protection 1,Sub-Structure Other,Significance
+Minor Footbridge,Batter Protection 2,Sub-Structure Other,Main Condition
+Minor Footbridge,Batter Protection 2,Sub-Structure Other,Significance
+Minor Footbridge,Deck / Slab,Bridge Deck,Deck Condition
+Minor Footbridge,Deck / Slab,Bridge Deck,Significance
+Minor Footbridge,Deck / Wearing Surface,01 Wearing Course,Significance
+Minor Footbridge,Deck / Wearing Surface,01 Wearing Course,Surface Condition
+Minor Footbridge,Handrails 1,Rail,Rail Condition
+Minor Footbridge,Handrails 1,Rail,Significance
+Minor Footbridge,Outlet Protection,Sub-Structure Other,Main Condition
+Minor Footbridge,Outlet Protection,Sub-Structure Other,Significance
+Minor Footbridge,Piers,Sub-Structure Other,Main Condition
+Minor Footbridge,Piers,Sub-Structure Other,Significance
+Minor Footbridge,Primary Beams or Trusses,Super Structure Other,Main Condition
+Minor Footbridge,Primary Beams or Trusses,Super Structure Other,Significance
+Minor Footbridge,Secondary Beams or Joists,Super Structure Other,Main Condition
+Minor Footbridge,Secondary Beams or Joists,Super Structure Other,Significance
+Minor Footbridge,Span 1 Arch 1,Super Structure Other,Main Condition
+Minor Footbridge,Span 1 Arch 1,Super Structure Other,Significance
+Minor Footbridge,Span 1 Deck / Slab,Bridge Deck,Deck Condition
+Minor Footbridge,Span 1 Deck / Slab,Bridge Deck,Significance
+Minor Footbridge,Span 1 Deck / Wearing Surface,Bridge Deck,Deck Condition
+Minor Footbridge,Span 1 Deck / Wearing Surface,Bridge Deck,Significance
+Minor Footbridge,Span 1 Deck/Slab,Bridge Deck,Deck Condition
+Minor Footbridge,Span 1 Deck/Slab,Bridge Deck,Significance
+Minor Footbridge,Span 1 Handrails 1,Rail,Rail Condition
+Minor Footbridge,Span 1 Handrails 1,Rail,Significance
+Minor Footbridge,Span 1 Handrails 2,Rail,Rail Condition
+Minor Footbridge,Span 1 Handrails 2,Rail,Significance
+Minor Footbridge,Span 1 Primary Beams or Trusses,Super Structure Other,Main Condition
+Minor Footbridge,Span 1 Primary Beams or Trusses,Super Structure Other,Significance
+Minor Footbridge,Span 1 Primary Beams or Trusses 1,Super Structure Other,Main Condition
+Minor Footbridge,Span 1 Primary Beams or Trusses 1,Super Structure Other,Significance
+Minor Footbridge,Span 1 Secondary Beams or Joists,Super Structure Other,Main Condition
+Minor Footbridge,Span 1 Secondary Beams or Joists,Super Structure Other,Significance
+Minor Footbridge,Span 1-3 Deck / Slab,Bridge Deck,Deck Condition
+Minor Footbridge,Span 1-3 Deck / Slab,Bridge Deck,Significance
+Minor Footbridge,Span 1-3 Kerb 1,Kerb,Main Condition
+Minor Footbridge,Span 1-3 Kerb 1,Kerb,Significance
+Minor Footbridge,Span 1-3 Primary Beams or Trusses,Super Structure Other,Main Condition
+Minor Footbridge,Span 1-3 Primary Beams or Trusses,Super Structure Other,Significance
+Minor Footbridge,Span 1-3 Secondary Beams or Joists,Super Structure Other,Main Condition
+Minor Footbridge,Span 1-3 Secondary Beams or Joists,Super Structure Other,Significance
+Minor Footbridge,Span 1-4 Deck / Slab,Bridge Deck,Deck Condition
+Minor Footbridge,Span 1-4 Deck / Slab,Bridge Deck,Significance
+Minor Footbridge,Span 1-4 Primary Beams or Trusses,Super Structure Other,Main Condition
+Minor Footbridge,Span 1-4 Primary Beams or Trusses,Super Structure Other,Significance
+Minor Footbridge,Span 1-4 Secondary Beams or Joists,Super Structure Other,Main Condition
+Minor Footbridge,Span 1-4 Secondary Beams or Joists,Super Structure Other,Significance
+Minor Footbridge,Span 1-5  Primary Beams or Trusses,Super Structure Other,Main Condition
+Minor Footbridge,Span 1-5  Primary Beams or Trusses,Super Structure Other,Significance
+Minor Footbridge,Span 1-5 Deck / Slab,Bridge Deck,Deck Condition
+Minor Footbridge,Span 1-5 Deck / Slab,Bridge Deck,Significance
+Minor Footbridge,Span 1-5 Handrails 1,Rail,Rail Condition
+Minor Footbridge,Span 1-5 Handrails 1,Rail,Significance
+Minor Footbridge,Span 1-5 Secondary Beams or Joists,Super Structure Other,Main Condition
+Minor Footbridge,Span 1-5 Secondary Beams or Joists,Super Structure Other,Significance
+Miscellaneous,Bird Bath Main,Main,Main Condition
+Miscellaneous,Other Structures Main,Main,Main Condition
+Monitor,Main,Main,Main Condition
+Mountable Kerb,Kerb Main,Main,Main Condition
+Mountable Kerb and Water Table,Kerb Main,Main,Main Condition
+Multipurpose,Playground Equipment Main,Main,Main Condition
+Multipurpose Court - Acrylic Surface ,Acrylic Surface,Main,Main Condition
+Multipurpose Court - Acrylic Surface ,Asphalt Layer,Main,Main Condition
+Multipurpose Court - Acrylic Surface ,Rubble Base,Main,Main Condition
+Multipurpose Court - Asphalt Surface,Asphalt Layer,Main,Main Condition
+Multipurpose Court - Asphalt Surface,Rubble Base,Main,Main Condition
+Native,Garden Bed Main,Main,Main Condition
+Netball Court,Netball Court Main,Main,Main Condition
+Netball Court - Acrylic Surface,Acrylic Surface,Main,Main Condition
+Netball Court - Acrylic Surface,Asphalt Layer,Main,Main Condition
+Netball Court - Acrylic Surface,Rubble Base,Main,Main Condition
+Netball Ring,Netball Ring,Main,Main Condition
+Network Assets,Main,Main,Main Condition
+Network Switch,Main,Main,Main Condition
+Non Potable Water Pit,Holding Tank,Main,Main Condition
+Non Potable Water Pit,Lid,Main,Main Condition
+Non Potable Water Pit,Lockable Isolation Valve,Main,Main Condition
+Non Potable Water Pit,Smart Water Meter,Main,Main Condition
+Nonremovable,Bollard Main,Main,Main Condition
+Nonremovable,Bollard Main,Main,Structural Compliance Condition
+Nonremovable,Bollard Main,Main,Structural Condition
+Nonremovable,Bollard Main,Main,Surface Damage Condition
+Official,Flag Pole Main,Main,Main Condition
+Official,Lighting Main,Main,Main Condition
+On Prem,Main,Main,Main Condition
+On Street Electric Vehicle Charging Station - Free Stand,Electric Vehicle Charging Station,Main,Main Condition
+On Street Electric Vehicle Charging Station - Free Stand,On Street Electric Vehicle Charging Station - Free Stand,On Street Electric Vehicle Charging Station - Free Stand,On Street Electric Vehicle Charging Station - Free Stand Condition
+On Street Electric Vehicle Charging Station - Wall Mounted,Electric Vehicle Charging Station,Main,Main Condition
+On Street Electric Vehicle Charging Station - Wall Mounted,On Street Electric Vehicle Charging Station - Wall Mounted,On Street Electric Vehicle Charging Station - Wall Mounted,On Street Electric Vehicle Charging Station - Wall Mounted Condition
+Open Channels,Open Channel Main,Main,Main Condition
+Open Channels,Open Channels Main,Main,Main Condition
+Ornamental Stream,Concrete Base,Main,Main Condition
+P1,Pit Main,Main,Main Condition
+P1,Pit Main,Main,Pit Condition
+P2,Pit Main,Main,Main Condition
+P2,Pit Main,Main,Pit Condition
+P3,Pit Main,Main,Main Condition
+P3,Pit Main,Main,Pit Condition
+P4,Pit Main,Main,Main Condition
+P4,Pit Main,Main,Pit Condition
+P5,Pit Main,Main,Main Condition
+P5,Pit Main,Main,Pit Condition
+P6,Pit Main,Main,Main Condition
+P6,Pit Main,Main,Pit Condition
+P7,Pit Main,Main,Main Condition
+P7,Pit Main,Main,Pit Condition
+P8,Pit Main,Main,Main Condition
+P8,Pit Main,Main,Pit Condition
+Painting,Archives Main,Main,Main Condition
+Park Lands  / Squares Decorations,Main,Main,Main Condition
+Park Lands Plinth,Custom Sign Main,Main,Main Condition
+Park Tree,Tree Base Treatment,Ancillary,Ancillary Condition
+Park Tree,Tree Main,Main,Consequence of Failure
+Park Tree,Tree Main,Main,Likelihood Matrix
+Park Tree,Tree Main,Main,Likelihood of Failure
+Park Tree,Tree Main,Main,Likelihood of Impact
+Park Tree,Tree Main,Main,Main Condition
+Park Tree,Tree Main,Main,Risk Rating Matrix
+Pedestrian,Footpaths Main,Main,Main Condition
+Pedestrian,Formation,04 Working Platform,Formation Condition
+Pedestrian,Pavement Base,02 Intermediate Course,Pavement Base Condition
+Pedestrian,Surface,01 Wearing Course,Surface Condition
+Pedestrian Panel,Custom Sign Main,Main,Main Condition
+Pedestrian Panel,Custom Sign Main,Main,Structural Compliance Condition
+Pedestrian Panel,Custom Sign Main,Main,Structural Condition
+Pedestrian Panel,Custom Sign Main,Main,Surface Damage Condition
+Pedestrian Refuge,Kerb Main,Main,Main Condition
+Pelco S5220-EG1,CCTV Camera,Main,Main Condition
+Pelco S5220-EG1-X,CCTV Camera,Main,Main Condition
+Pelco S6230-EG1,CCTV Camera,Main,Main Condition
+Pelco S6230-EGL1,CCTV Camera,Main,Main Condition
+Pelco S7230L-EW1,CCTV Camera,Main,Main Condition
+Pelco S7230L-EW1,Wifi Supply Point,Main,Main Condition
+PelcoIXP21,CCTV Camera,Main,Main Condition
+Pendant,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Pendant,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Perennials,Garden Bed Main,Main,Main Condition
+Pergola,Other Structures Main,Main,Main Condition
+Petanque - Gravel Surface,Gravel Surface,Main,Main Condition
+Petanque Piste,Petanque Piste Main,Main,Main Condition
+PIO,Main,Main,Main Condition
+Pipe,Culvert Main,Main,Main Condition
+Pipe Connection Point,Connection Main,Main,Main Condition
+Pipe-Main,Pipe Main,Main,Main Condition
+Plain Tubular Steel,Bollard Main,Main,Main Condition
+Plain Tubular Steel,Bollard Main,Main,Structural Compliance Condition
+Plain Tubular Steel,Bollard Main,Main,Structural Condition
+Plain Tubular Steel,Bollard Main,Main,Surface Damage Condition
+Planted Road Verge,Streetscape Main,Main,Main Condition
+Planted Verges,Streetscape Main,Main,Main Condition
+Planter Box,Streetscape Main,Main,Main Condition
+Plastic Enclosure,CCTV Equipment Enclosure,Main,Main Condition
+Platform,Other Structures Main,Main,Main Condition
+Playground,Softfall - Rubberised,Main,Softfall Surface Condition
+Playground,Softfall - Rubberised,Softfall,Softfall Surface Condition
+Playground,Softfall - Woodchip,Softfall,Main Condition
+Pod,CCTV Equipment Enclosure,Main,Main Condition
+Pole Box,Custom Sign Main,Main,Main Condition
+Pole Box (Cycle),Custom Sign Main,Main,Main Condition
+Pole Box with a Custom Pole,Custom Sign Main,Main,Main Condition
+Pole Mounted Directional Sign,Custom Sign Main,Main,Main Condition
+Pole Mounted Directional Sign,Custom Sign Main,Main,Structural Compliance Condition
+Pole Mounted Directional Sign,Custom Sign Main,Main,Structural Condition
+Pole Mounted Directional Sign,Custom Sign Main,Main,Surface Damage Condition
+Portrait,Archives Main,Main,Main Condition
+Post,Drinking Fountain Main,Main,Main Condition
+Post,Drinking Fountain Main,Main,Structural Compliance Condition
+Post,Drinking Fountain Main,Main,Structural Condition
+Post,Drinking Fountain Main,Main,Surface Damage Condition
+Post Top Light - City Streets,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Post Top Light - City Streets,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Post Top Light - City Streets,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Post Top Light - Park Lands,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Post Top Light - Park Lands,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Post Top Light - Park Lands,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Post Top Light - Pendant,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Post Top Light - Pendant,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Post Top Light - Pendant,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Post Top Light - Wall Mounted,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Post Top Light - Wall Mounted,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Post Top Light - Wall Mounted,Luminaire,Luminaire,Luminaire Condition
+Post Top Pole - City Streets,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Post Top Pole - Park Lands,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Post Top Pole - Park Lands,Pole,Main,Main Condition
+Potable Water Pit,Lid,Main,Main Condition
+Potable Water Pit,Lockable Isolation Valve,Main,Main Condition
+Potable Water Pit,Pit Main,Main,Main Condition
+Potable Water Pit,Smart Water Meter,Main,Main Condition
+Potable Water Pit,Vent Pipe,Main,Main Condition
+Potable Water Pit,Vent Pt Main,Main,Main Condition
+Power Bollard - Above Ground,LE Power Bollard - Above Ground,LE Power Bollard - Above Ground,Switchboard Condition
+Power Outlet,LE Power Outlet,LE Power Outlet,Switchboard Condition
+Projector,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Projector,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Projector,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Property Connection,Connection Main,Main,Main Condition
+Public Arts,Artistic Pavement Marking,Main,Main Condition
+Public Arts,Artwork Lighting Main,Main,Main Condition
+Public Arts,Artwork Main,Main,Main Condition
+Public Arts,Artwork Main,Main,Structural Condition
+Public Arts,Artwork Main,Main,Surface Condition
+Public Arts,Tree Main,Main,Consequence of Failure
+Public Arts,Tree Main,Main,Likelihood Matrix
+Public Arts,Tree Main,Main,Likelihood of Failure
+Public Arts,Tree Main,Main,Likelihood of Impact
+Public Arts,Tree Main,Main,Risk Rating Matrix
+Public Conveniences,Electrical Services,Electrical,Electrical Condition
+Public Conveniences,Hydraulic Services,Hydraulics,Hydraulics Condition
+Public Conveniences,Structure,Main,Main Condition
+Pull Through,Pit Main,Main,Main Condition
+Pull Through Pit,LE Lighting Pit,LE Lighting Pit,LE Lighting Pit Condition
+Pull Through Pit,Pit Main,Main,Main Condition
+Pump,Holding Tank,Main,Main Condition
+Pump,Lid,Main,Main Condition
+Pump,Pump Main,Main,Main Condition
+Pump,Valve Main,Main,Main Condition
+Pump Station,Pump Main,Main,Main Condition
+Pump Station,Pump Station Main,Main,Main Condition
+Push Button,Pole Main,Main,Main Condition
+Push Button Pole,Push Button,Push Button,Main Condition
+Push Button Pole,Push Button,Push Button,Push Button Condition
+Push Button Shared Pole,Push Button,Push Button,Main Condition
+Push Button Shared Pole,Push Button,Push Button,Push Button Condition
+Recycle Bin,Bin Main,Main,Main Condition
+Recycle Bin,Bin Main,Main,Structural Compliance Condition
+Recycle Bin,Bin Main,Main,Structural Condition
+Refill,Drinking Fountain Main,Main,Main Condition
+Refill,Drinking Fountain Main,Main,Structural Compliance Condition
+Refill,Drinking Fountain Main,Main,Structural Condition
+Refill,Drinking Fountain Main,Main,Surface Damage Condition
+Removable,Bollard Main,Main,Main Condition
+Removable,Bollard Main,Main,Structural Compliance Condition
+Removable,Bollard Main,Main,Structural Condition
+Removable,Bollard Main,Main,Surface Damage Condition
+Retaining Wall,Retaining Wall Main,Main,Main Condition
+Retractable,Bollard Main,Main,Main Condition
+Rigid Concrete Pavement,01 Wearing Course,01 Wearing Course,Main Condition
+Rigid Concrete Pavement,01 Wearing Course,01 Wearing Course,Surface Condition
+Rising Main,Sewer Pipe Main,Main,Main Condition
+Road Bridge,Abutment,Sub-Structure Other,Main Condition
+Road Bridge,Abutment,Sub-Structure Other,Significance
+Road Bridge,Arches,Super Structure Other,Main Condition
+Road Bridge,Arches,Super Structure Other,Significance
+Road Bridge,Batter Protection,Sub-Structure Other,Main Condition
+Road Bridge,Batter Protection,Sub-Structure Other,Significance
+Road Bridge,Bearings,Super Structure Other,Main Condition
+Road Bridge,Bearings,Super Structure Other,Significance
+Road Bridge,Box Girders,Super Structure Other,Main Condition
+Road Bridge,Box Girders,Super Structure Other,Significance
+Road Bridge,Bridge Footpath,Bridge Footpath,Main Condition
+Road Bridge,Bridge Footpath,Bridge Footpath,Significance
+Road Bridge,Bridge Kerbs,Kerb,Main Condition
+Road Bridge,Bridge Kerbs,Kerb,Significance
+Road Bridge,Bridge Railing,Rail,Rail Condition
+Road Bridge,Bridge Railing,Rail,Significance
+Road Bridge,Column or Piles,Sub-Structure Other,Main Condition
+Road Bridge,Column or Piles,Sub-Structure Other,Significance
+Road Bridge,Cross Beams/Floor Beams,Super Structure Other,Main Condition
+Road Bridge,Cross Beams/Floor Beams,Super Structure Other,Significance
+Road Bridge,Cross Bracing,Super Structure Other,Main Condition
+Road Bridge,Cross Bracing,Super Structure Other,Significance
+Road Bridge,Deck Joints,Super Structure Other,Main Condition
+Road Bridge,Deck Joints,Super Structure Other,Significance
+Road Bridge,Deck Slab,Bridge Deck,Deck Condition
+Road Bridge,Deck Slab,Bridge Deck,Significance
+Road Bridge,Headstocks,Super Structure Other,Main Condition
+Road Bridge,Headstocks,Super Structure Other,Significance
+Road Bridge,Open Girders,Super Structure Other,Main Condition
+Road Bridge,Open Girders,Super Structure Other,Significance
+Road Bridge,Pier wall,Super Structure Other,Main Condition
+Road Bridge,Pier wall,Super Structure Other,Significance
+Road Bridge,Wearing Surface on Deck,01 Wearing Course,Significance
+Road Bridge,Wearing Surface on Deck,01 Wearing Course,Surface Condition
+Road Bridge,Wingwall/Retaining Wall,Wingwall,Main Condition
+Road Bridge,Wingwall/Retaining Wall,Wingwall,Significance
+Rock Pool,Rock Pool,Main,Main Condition
+Rock Rip-Rap,Open Channel Main,Main,Main Condition
+Rock Rip-Rap with Geofabric,Open Channel Main,Main,Main Condition
+Rocking Equipment,Playground Equipment Main,Main,Main Condition
+Rotunda,Other Structures Main,Main,Main Condition
+Roundabout,Kerb Main,Main,Main Condition
+Roundabout,Streetscape Main,Main,Main Condition
+S Pit,Pit Main,Main,Main Condition
+S Pit,Pit Main,Main,Pit Condition
+Safety Fencing,Fence Main,Main,Main Condition
+Safety Fencing,Fence Main,Main,Structural Compliance Condition
+Safety Fencing,Fence Main,Main,Structural Condition
+Safety Fencing,Fence Main,Main,Surface Damage Condition
+Sandstone,Planter Box Main,Main,Main Condition
+Sandstone,Planter Box Main,Main,Structural Compliance Condition
+Sandstone,Planter Box Main,Main,Structural Condition
+Sandstone,Planter Box Main,Main,Surface Damage Condition
+Sanitary Drainage,Pipe Main,Main,Main Condition
+Sealed,03 Base Course,03 Base Course,Pavement Subbase Condition
+Sensor,Main,Main,Main Condition
+Server,Main,Main,Main Condition
+Shade Sail,Pole,Main,Main Condition
+Shade Sail,Shade Cloth,Ancillary,Main Condition
+Shared Use Path,Footpaths Main,Main,Main Condition
+Shared Use Path,Formation,04 Working Platform,Formation Condition
+Shared Use Path,Pavement Base,02 Intermediate Course,Pavement Base Condition
+Shared Use Path,Surface,01 Wearing Course,Surface Condition
+Shelter,Other Structures Main,Main,Main Condition
+Single,Access Ramp Main,Main,Main Condition
+Single Bar,Gate Main,Main,Main Condition
+Single Bar,Gate Main,Main,Structural Compliance Condition
+Single Bar,Gate Main,Main,Structural Condition
+Single Bar,Gate Main,Main,Surface Damage Condition
+Single Bar,Tree Main,Main,Consequence of Failure
+Single Bar,Tree Main,Main,Likelihood Matrix
+Single Bar,Tree Main,Main,Likelihood of Failure
+Single Bar,Tree Main,Main,Likelihood of Impact
+Single Bar,Tree Main,Main,Risk Rating Matrix
+Single Gatic,Pit Main,Main,Main Condition
+Single Gatic,Pit Main,Main,Pit Condition
+Single Timber Rail,Gate Main,Main,Main Condition
+Site Identification Directional Sign,Custom Sign Main,Main,Main Condition
+Site Identification Directional Sign,Custom Sign Main,Main,Structural Compliance Condition
+Site Identification Directional Sign,Custom Sign Main,Main,Structural Condition
+Site Identification Mapped Sign,Custom Sign Main,Main,Main Condition
+Site Identification Mapped Sign,Custom Sign Main,Main,Structural Compliance Condition
+Site Identification Mapped Sign,Custom Sign Main,Main,Structural Condition
+Site Identification Mapped Sign,Custom Sign Main,Main,Surface Damage Condition
+Site Identification Regulatory,Custom Sign Main,Main,Main Condition
+Skate Park,Concrete Base,Main,Main Condition
+Skate Park,Concrete Surface,Main,Main Condition
+Skate Park,Rubble Base,Main,Main Condition
+Skatepark - Concrete Surface,Concrete Surface,Main,Main Condition
+Skatepark Equipment,Skatepark Equipment,Main,Main Condition
+Slides,Playground Equipment Main,Main,Main Condition
+Small (<=1000mm x 1500mm),Planter Box Main,Main,Main Condition
+Small (<=1000mm x 1500mm),Tree Main,Main,Consequence of Failure
+Small (<=1000mm x 1500mm),Tree Main,Main,Likelihood Matrix
+Small (<=1000mm x 1500mm),Tree Main,Main,Likelihood of Failure
+Small (<=1000mm x 1500mm),Tree Main,Main,Likelihood of Impact
+Small (<=1000mm x 1500mm),Tree Main,Main,Risk Rating Matrix
+Small Memorial,Artwork Lighting Main,Main,Main Condition
+Small Memorial,Artwork Main,Main,Main Condition
+Small Memorial,Artwork Main,Main,Structural Condition
+Small Memorial,Artwork Main,Main,Surface Condition
+SmartSpot,Smart Eye Sensor,Main,Main Condition
+SmartSpot,Smart Parking,Main,Main Condition
+Soccer Goals,Other Structures Main,Main,Main Condition
+Soccer Goals,Soccer Goal,Main,Main Condition
+Soccer Pitch,Soccer Pitch Main,Main,Main Condition
+Solar Bin,Bin Main,Main,Main Condition
+Spatial Networks,Playground Equipment Main,Main,Main Condition
+Splitter,Kerb Main,Main,Main Condition
+Spoon Drain,Kerb Main,Main,Main Condition
+Sports,Playground Equipment Main,Main,Main Condition
+Spot Light,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Stairs,Formation,04 Working Platform,Formation Condition
+Stairs,Pavement Base,02 Intermediate Course,Pavement Base Condition
+Stairs,Surface,01 Wearing Course,Surface Condition
+Standard 4.4m,Pole Main,Main,Main Condition
+Standard 4.4m,Wifi Supply Point,Main,Main Condition
+Standard Litter Bin,Bin Main,Main,Main Condition
+Standard Litter Bin,Bin Main,Main,Structural Compliance Condition
+Standard Litter Bin,Bin Main,Main,Structural Condition
+Standard Litter Bin,Bin Main,Main,Surface Damage Condition
+Steel,Planter Box Main,Main,Main Condition
+Steel,Planter Box Main,Main,Structural Compliance Condition
+Steel,Planter Box Main,Main,Structural Condition
+Steel,Planter Box Main,Main,Surface Damage Condition
+Steel Frame and Cyclone Mesh,Gate Main,Main,Main Condition
+Steel Frame and Cyclone Mesh,Gate Main,Main,Structural Compliance Condition
+Steel Frame and Cyclone Mesh,Gate Main,Main,Structural Condition
+Steel Frame and Cyclone Mesh,Gate Main,Main,Surface Damage Condition
+Steel Frame and Cyclone Mesh,Tree Main,Main,Consequence of Failure
+Steel Frame and Cyclone Mesh,Tree Main,Main,Likelihood Matrix
+Steel Frame and Cyclone Mesh,Tree Main,Main,Likelihood of Failure
+Steel Frame and Cyclone Mesh,Tree Main,Main,Likelihood of Impact
+Steel Frame and Cyclone Mesh,Tree Main,Main,Risk Rating Matrix
+Steel Frame and Mesh Insert,Gate Main,Main,Main Condition
+Steel Frame and Mesh Insert,Gate Main,Main,Structural Compliance Condition
+Steel Frame and Mesh Insert,Gate Main,Main,Structural Condition
+Steel Frame and Mesh Insert,Gate Main,Main,Surface Damage Condition
+Steel Frame and Vert Bar,Gate Main,Main,Main Condition
+Steel Frame and Vert Bar,Gate Main,Main,Structural Compliance Condition
+Steel Frame and Vert Bar,Gate Main,Main,Structural Condition
+Steel Frame and Vert Bar,Gate Main,Main,Surface Damage Condition
+Steel Frame and Vert Bar,Tree Main,Main,Consequence of Failure
+Steel Frame and Vert Bar,Tree Main,Main,Likelihood Matrix
+Steel Frame and Vert Bar,Tree Main,Main,Likelihood of Failure
+Steel Frame and Vert Bar,Tree Main,Main,Likelihood of Impact
+Steel Frame and Vert Bar,Tree Main,Main,Risk Rating Matrix
+Steel Rail,Bike Rack Main,Main,Main Condition
+Steel Rail,Bike Rack Main,Main,Structural Compliance Condition
+Steel Rail,Bike Rack Main,Main,Structural Condition
+Steel Rail,Bike Rack Main,Main,Surface Damage Condition
+Steel Slot,Bike Rack Main,Main,Main Condition
+Steel Slot,Bike Rack Main,Main,Structural Compliance Condition
+Steel Slot,Bike Rack Main,Main,Structural Condition
+Steel Truss Style,Gate Main,Main,Main Condition
+Steel Truss Style,Gate Main,Main,Structural Compliance Condition
+Steel Truss Style,Gate Main,Main,Structural Condition
+Steel With Fluted Top,Bollard Main,Main,Main Condition
+Steel With Fluted Top,Bollard Main,Main,Structural Compliance Condition
+Steel With Fluted Top,Bollard Main,Main,Structural Condition
+Steel With Fluted Top,Bollard Main,Main,Surface Damage Condition
+Stepped Post Top,Pole,Main,Main Condition
+Stepped Post Top Pole - Adepole 5.0m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Stepped Post Top Pole - City Streets,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Stepped Post Top Pole - City Streets,Pole,Main,Main Condition
+Stepped Post Top Pole - Park Lands,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Stone Paver on Rigid Concrete Pavement,01 Wearing Course,01 Wearing Course,Main Condition
+Stone Paver on Rigid Concrete Pavement,01 Wearing Course,01 Wearing Course,Surface Condition
+Stone Paver on Rigid Concrete Pavement,03 Base Course,03 Base Course,Main Condition
+Stone Paver on Rigid Concrete Pavement,03 Base Course,03 Base Course,Pavement Subbase Condition
+Stone Paver on Rigid Concrete Pavement,04 Working Platform,04 Working Platform,Formation Condition
+Stratacell,Stratacell Main,Main,Main Condition
+Street Light,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Street Light,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Street Light,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Street Light,Luminaire,Luminaire,Luminaire Condition
+Street Light,Primary Luminaire,Luminaire,Luminaire Condition
+Street Light,Primary Luminaire,Luminaire,Main Condition
+Street Light,Secondary Luminaire,Luminaire,Luminaire Condition
+Street Light - Pendant,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Street Light - Pendant,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Street Light - Pendant,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Street Light - PLC Light on SAPN Pole,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Street Light - Prestige,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Street Light - Prestige,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Street Light - Prestige,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Street Light - Solar,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Street Light - Traffic,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Street Light - Traffic,Luminaire,Luminaire,Main Condition
+Street Light - Traffic,Primary Luminaire,Luminaire,Luminaire Condition
+Street Light - Wall Mounted,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Street Light - Wall Mounted,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Street Light Bracket  - 3m Outreach (Tram Corridor),LE Light Pole Bracket,LE Light Pole Bracket,LE Light Pole Bracket Condition
+Street Light Pole - 10.5m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - 4.5m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - 6.5m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - 6.5m,Pole,Main,Main Condition
+Street Light Pole - 9.5m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - Adepole - 10.5m,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - Dual Outreach,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - Dual Outreach - Heritage Style,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - Jeffcott Catenary Style,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Light Pole - Solar,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Street Tree,Tree Base Treatment,Ancillary,Ancillary Condition
+Street Tree,Tree Base Treatment,Ancillary,Main Condition
+Street Tree,Tree grate,Ancillary,Ancillary Condition
+Street Tree,Tree grate,Ancillary,Main Condition
+Street Tree,Tree Main,Main,Consequence of Failure
+Street Tree,Tree Main,Main,Likelihood Matrix
+Street Tree,Tree Main,Main,Likelihood of Failure
+Street Tree,Tree Main,Main,Likelihood of Impact
+Street Tree,Tree Main,Main,Main Condition
+Street Tree,Tree Main,Main,Risk Rating Matrix
+Street Tree,Tree Pit,Main,Main Condition
+Street Tree,Tree Surround,Ancillary,Main Condition
+StripDrain,Stormwater Drain Main,Main,Main Condition
+SubSurface,Stormwater Drain Main,Main,Main Condition
+Swale,Open Channel Main,Main,Main Condition
+Swale,Swale Main,Main,Main Condition
+Swings,Playground Equipment Main,Main,Main Condition
+Tablets,Main,Main,Main Condition
+Tactile Play,Playground Equipment Main,Main,Main Condition
+Telstra Style Steel Pit,Pit Main,Main,Main Condition
+Telstra Style Steel Pit,Pit Main,Main,Pit Condition
+Tennis Court,Tennis Main,Main,Main Condition
+Tennis Court - Acrylic Surface ,Acrylic Surface,Main,Main Condition
+Tennis Court - Acrylic Surface ,Asphalt Layer,Main,Main Condition
+Tennis Court - Acrylic Surface ,Rubble Base,Main,Main Condition
+Tennis Court - Synthetic Turf Surface,Rubble Base,Main,Main Condition
+Tennis Court - Synthetic Turf Surface,Synthetic Turf,Main,Main Condition
+Tennis Court - Turf Surface ,Turf Surface,Main,Main Condition
+Tennis Net,Tennis Net,Main,Main Condition
+Ticket Machines,Main,Main,Main Condition
+Timber,Planter Box Main,Main,Main Condition
+Torrens River Weir,Control System Hardware,Ancillary,Ancillary Condition
+Torrens River Weir,Gate,Koala Crossing Lights,Condition
+Torrens Weir Fixing,LE Light Pole,LE Light Pole,LE Light Pole Condition
+Town Hall 1800x1800 Pit,SCAT Town Hall Pit,SCAT Town Hall Pit,SCAT Pit Condition
+Town Hall Complex,Electrical Services,Electrical,Electrical Condition
+Town Hall Complex,Electrical Services,Electrical,Main Condition
+Town Hall Complex,Fire Services,Fire,Fire Condition
+Town Hall Complex,Fitout and Fittings,Fitout and Fittings,Fitouts and Fittings Condition
+Town Hall Complex,Fitout and Fittings,Fitout and Fittings,Main Condition
+Town Hall Complex,Hydraulic Services,Hydraulics,Hydraulics Condition
+Town Hall Complex,Mechanical Services,Mechanical,Main Condition
+Town Hall Complex,Mechanical Services,Mechanical,Mechanical Condition
+Town Hall Complex,Roof Structure,Roof,Roof Condition
+Town Hall Complex,Technology,Technology,Main Condition
+Town Hall Complex,Vertical Transport Services,Transport Service,Transport Condition
+Traffic controller,CCTV Equipment Enclosure,Main,Main Condition
+Traffic Lantern Assembly,Bike Traffic Lantern - 1 LED,Bike Traffic Lantern - 1 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Bike Traffic Lantern - 2 LED,Bike Traffic Lantern - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Bike Traffic Lantern - 3 LED,Bike Traffic Lantern - 3 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Bus Traffic Lantern - 1 LED,Bus Traffic Lantern - 1 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Bus Traffic Lantern - 2 LED,Bus Traffic Lantern - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Bus Traffic Lantern - 3 LED,Bus Traffic Lantern - 3 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Car Arrow Traffic Lantern - 1 LED,Car Arrow Traffic Lantern - 1 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Car Arrow Traffic Lantern - 2 LED,Car Arrow Traffic Lantern - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Car Arrow Traffic Lantern - 3 LED,Car Arrow Traffic Lantern - 3 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Car Traffic Lantern - 2 LED,Car Traffic Lantern - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Car Traffic Lantern - 3 LED,Car Traffic Lantern - 3 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Koala Crossing Lights,Koala Crossing Lights,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,L2-Car Arrow Traffic Lantern - 3 LED,Car Arrow Traffic Lantern - 3 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,L2-Pedestrian with Count Down Timer - 2 LED,Pedestrian with Count Down Timer - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,No Right Turn Lantern - 1 LED,No Right Turn Lantern - 1 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Pedestrian - 2 LED,Pedestrian - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Pedestrian with Count Down Timer - 2 LED,Pedestrian with Count Down Timer - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Tram Traffic Lantern - 1 LED,Tram Traffic Lantern - 1 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Tram Traffic Lantern - 2 LED,Tram Traffic Lantern - 2 LED,Traffic Signal Assembly Condition
+Traffic Lantern Assembly,Tram Traffic Lantern - 3 LED,Tram Traffic Lantern - 3 LED,Traffic Signal Assembly Condition
+Traffic Signal Controller,TS Controller,TS Controller,Controller Condition
+Traffic Signal Controller MSB Pod,TS Controller,TS Controller,Controller Condition
+Traffic Signal Controller with Top Box RU07,Controller Main,Main,Main Condition
+Traffic Signal Controller with Top Box RU07,Top Box,Ancillary,Ancillary Condition
+Traffic Signal Controller with Top Box RU07,TS Controller,TS Controller,Controller Condition
+Traffic Signal Controller with Top Box RU07,TS Top Box RU07,TS Top Box RU07,Top Box Condition
+Traffic Signal Controller with Top Box RU11,CCTV,Ancillary,Ancillary Condition
+Traffic Signal Controller with Top Box RU11,Controller Main,Main,Main Condition
+Traffic Signal Controller with Top Box RU11,Top Box,Ancillary,Ancillary Condition
+Traffic Signal Controller with Top Box RU11,TS Controller,TS Controller,Controller Condition
+Traffic Signal Controller with Top Box RU11,TS Top Box RU11,TS Top Box RU11,Top Box Condition
+Tram Detector-Induction,Detector Loop,Detector Loop,Detector Loop Condition
+Tram Site Loop Pit,Pit Main,Main,Main Condition
+Tram Site Loop Pit,Pit Main,Main,Pit Condition
+Tree Bud Light,Bud Lighting,Main,Driver Condition
+Tree Bud Light,Bud Lighting,Main,Main Condition
+Tree Bud Light,Bud Lighting,Main,Overhead Lighting Cable Condition
+Tree Bud Light,Luminaire,Luminaire,Luminaire Condition
+Tree Bud Light,Luminaire,Luminaire,Main Condition
+Tree Bud Light,Pole,Main,Main Condition
+Tree Bud Light,Primary Luminaire,Luminaire,Luminaire Condition
+Tree Bud Light,Tree Bud Light,Tree Bud Light,Tree Bud Light Condition
+Tree Inlet,Tree Inlet Main,Main,Main Condition
+Tree Surround,Kerb Main,Main,Main Condition
+Tree Surround,Kerb Main,Main,Risk Rating Matrix
+Trench Drain,Stormwater Drain Main,Main,Main Condition
+TX,Parking Machine Main,Main,Main Condition
+Tyre Pump,Bike Rack Main,Main,Main Condition
+U Shape,Bike Rack Main,Main,Main Condition
+U Shape,Bike Rack Main,Main,Structural Compliance Condition
+U Shape,Bike Rack Main,Main,Structural Condition
+U Shape,Bike Rack Main,Main,Surface Damage Condition
+Unidentified,CCTV Cable and Conduit,Main,Main Condition
+Unidentified,CCTV Camera,Main,Main Condition
+Uniterrupted Power Supply,Main,Main,Main Condition
+Unsealed Rubble Pavement,03 Base Course,03 Base Course,Pavement Subbase Condition
+Upark Buildings,Electrical Services,Electrical,Electrical Condition
+Upark Buildings,Electrical Services,Electrical,Main Condition
+Upark Buildings,Fire Services,Fire,Fire Condition
+Upark Buildings,Fitout and Fittings,Fitout and Fittings,Fitouts and Fittings Condition
+Upark Buildings,Fitout and Fittings,Fitout and Fittings,Main Condition
+Upark Buildings,Hydraulic Services,Hydraulics,Hydraulics Condition
+Upark Buildings,Mechanical Services,Mechanical,Mechanical Condition
+Upark Buildings,Roof Structure,Roof,Roof Condition
+Upark Buildings,Structure,Main,Main Condition
+Upark Buildings,Vertical Transport Services,Transport Service,Transport Condition
+Uplight,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Uplight,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Uplight,LE Luminaire Conduit,LE Luminaire Conduit,LE Luminaire Conduit Condition
+Urban Plinth,Custom Sign Main,Main,Main Condition
+Urban Plinth,Custom Sign Main,Main,Structural Compliance Condition
+Urban Plinth,Custom Sign Main,Main,Structural Condition
+Urban Plinth,Custom Sign Main,Main,Surface Damage Condition
+U-Shape,Culvert Main,Main,Main Condition
+Valve,Valve Main,Main,Main Condition
+Vehicle Detector-Flir,Detector Loop,Detector Loop,Detector Loop Condition
+Vehicle Detector-Induction,Detector Loop,Detector Loop,Detector Loop Condition
+Vehicle Detector-Patriot,Detector Loop,Detector Loop,Detector Loop Condition
+Vehicular Entry Sign,Custom Sign Main,Main,Main Condition
+Verges,Streetscape Main,Main,Main Condition
+Wall Light,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Wall Light,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Wall Light - Adelaide Bridge,LE Luminaire,LE Luminaire,LE Luminaire Condition
+Wall Light - Adelaide Bridge,LE Luminaire Cable,LE Luminaire Cable,LE Luminaire Cable Condition
+Water Feature,Artwork Lighting Main,Main,Main Condition
+Water Feature,Concrete Base,Main,Main Condition
+Water Feature,Pond Liner,Main,Main Condition
+Water Feature,Water Feature Main,Main,Main Condition
+Water Meter,Meter Main,Main,Main Condition
+Water Meter,Tree Main,Main,Consequence of Failure
+Water Meter,Tree Main,Main,Likelihood Matrix
+Water Meter,Tree Main,Main,Likelihood of Failure
+Water Meter,Tree Main,Main,Likelihood of Impact
+Water Meter,Tree Main,Main,Risk Rating Matrix
+Water Play,Concrete Base,Main,Main Condition
+Zinc,Planter Box Main,Main,Main Condition
+Zip Line,Playground Equipment Main,Main,Main Condition

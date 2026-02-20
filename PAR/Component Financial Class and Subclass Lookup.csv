@@ -1,0 +1,369 @@
+Component_Name,Component_Type,Component_Financial_Class,Component_Financial_Subclass
+01 Wearing Course,01 Wearing Course,Infrastructure,Roads
+02 Intermediate Course,02 Intermediate Course,Infrastructure,Roads
+03 Base Course,03 Base Course,Infrastructure,Roads
+04 Working Platform,04 Working Platform,Infrastructure,Roads
+Above Ground Switchboard,Main,Infrastructure,Lighting and Electrical
+Abutment,Sub-Structure Other,Infrastructure,Bridges
+Abutment / Wingwall 1,Wingwall,Infrastructure,Bridges
+Abutment 1,Sub-Structure Other,Infrastructure,Bridges
+Abutment 2,Sub-Structure Other,Infrastructure,Bridges
+Abutments,Sub-Structure Other,Infrastructure,Bridges
+Access Ladders,Main,Infrastructure,Water Infrastructure
+Access Lids,Main,Infrastructure,Water Infrastructure
+Access Ramp Main,Main,Infrastructure,Footpaths
+Acrylic Surface,Main,Park Land Improvements,Park Land Improvements
+Aerator Main,Main,Infrastructure,Water Infrastructure
+Anchor Wall,Anchor,Infrastructure,Water Infrastructure
+Anchor Wall,Main,Infrastructure,Water Infrastructure
+Anti-throw screen,Super Structure Other,Infrastructure,Bridges
+Apron,Apron,Infrastructure,Water Infrastructure
+Apron,Super Structure Other,Infrastructure,Bridges
+Arches,Super Structure Other,Infrastructure,Bridges
+Archives Main,Main,Other,Civic Collection
+Artistic Pavement Marking,Main,Infrastructure,"Public Art, Statues and Monuments"
+Artwork Lighting Main,Main,Infrastructure,"Public Art, Statues and Monuments"
+Artwork Lighting Main,Main,Park Land Improvements,Park Land Improvements
+Artwork Main,Main,Infrastructure,"Public Art, Statues and Monuments"
+Asphalt Layer,Main,Park Land Improvements,Park Land Improvements
+Audio Tactile,Audio Tactile,Infrastructure,Traffic Signals
+Back Flow Main,Main,Park Land Improvements,Park Land Improvements
+Backflow,Backflow,Park Land Improvements,Park Land Improvements
+Backflow,Main,Park Land Improvements,Park Land Improvements
+Basins Main,Main,Infrastructure,Water Infrastructure
+Basketball Ring,Main,Park Land Improvements,Park Land Improvements
+Baskets/Net,Main,Infrastructure,Water Infrastructure
+Batter Protection,Sub-Structure Other,Infrastructure,Bridges
+Batter Protection 1,Sub-Structure Other,Infrastructure,Bridges
+Batter Protection 2,Sub-Structure Other,Infrastructure,Bridges
+BBQ Main,Main,Infrastructure,Urban Elements
+Bearings,Super Structure Other,Infrastructure,Bridges
+Bike Rack Main,Main,Infrastructure,Urban Elements
+Bike Traffic Lantern - 1 LED,Bike Traffic Lantern - 1 LED,Infrastructure,Traffic Signals
+Bike Traffic Lantern - 2 LED,Bike Traffic Lantern - 2 LED,Infrastructure,Traffic Signals
+Bike Traffic Lantern - 3 LED,Bike Traffic Lantern - 3 LED,Infrastructure,Traffic Signals
+Bin Main,Main,Infrastructure,Urban Elements
+BMX Track - Advanced,Main,Park Land Improvements,Park Land Improvements
+BMX Track - Beginner,Main,Park Land Improvements,Park Land Improvements
+BMX Track - Intermediate,Main,Park Land Improvements,Park Land Improvements
+BMX Track - Pump Track,Main,Park Land Improvements,Park Land Improvements
+Bollard Main,Main,Infrastructure,Urban Elements
+Box Girders,Super Structure Other,Infrastructure,Bridges
+Bracket,Bracket,Infrastructure,Lighting and Electrical
+Bridge Footpath,Bridge Footpath,Infrastructure,Bridges
+Bridge Kerbs,Kerb,Infrastructure,Bridges
+Bridge Railing,Rail,Infrastructure,Bridges
+Bud Lighting,Main,Infrastructure,Lighting and Electrical
+Bus Traffic Lantern - 1 LED,Bus Traffic Lantern - 1 LED,Infrastructure,Traffic Signals
+Bus Traffic Lantern - 2 LED,Bus Traffic Lantern - 2 LED,Infrastructure,Traffic Signals
+Bus Traffic Lantern - 3 LED,Bus Traffic Lantern - 3 LED,Infrastructure,Traffic Signals
+Cable,Cable,Infrastructure,Traffic Signals
+Cable,Main,Infrastructure,Lighting and Electrical
+Cable Tray Screens,Super Structure Other,Infrastructure,Bridges
+Car Arrow Traffic Lantern - 1 LED,Car Arrow Traffic Lantern - 1 LED,Infrastructure,Traffic Signals
+Car Arrow Traffic Lantern - 2 LED,Car Arrow Traffic Lantern - 2 LED,Infrastructure,Traffic Signals
+Car Arrow Traffic Lantern - 3 LED,Car Arrow Traffic Lantern - 3 LED,Infrastructure,Traffic Signals
+Car Traffic Lantern - 2 LED,Car Traffic Lantern - 2 LED,Infrastructure,Traffic Signals
+Car Traffic Lantern - 3 LED,Car Traffic Lantern - 3 LED,Infrastructure,Traffic Signals
+Catenary Electrical Cabling,Catenary Electrical Cabling,Infrastructure,Lighting and Electrical
+Catenary Linear Lighting,Catenary Linear Lighting,Infrastructure,Lighting and Electrical
+Catenary Luminaire,Catenary Luminaire,Infrastructure,Lighting and Electrical
+Catenary Pole,Catenary Pole,Infrastructure,Lighting and Electrical
+Catenary System,Catenary System,Infrastructure,Lighting and Electrical
+CCTV,Ancillary,Infrastructure,Traffic Signals
+CCTV Cable and Conduit,Main,Infrastructure,"Equipment, Furniture and Fittings"
+CCTV Cable and Conduit,Main,Infrastructure,Lighting and Electrical
+CCTV Camera,Main,Other,"Equipment, Furniture and Fittings"
+Christmas Tree Decoration,Ancillary,Infrastructure,Urban Elements
+Christmas Tree Lights,Ancillary,Infrastructure,Urban Elements
+Christmas Tree Main,Main,Infrastructure,Urban Elements
+Column or Piles,Sub-Structure Other,Infrastructure,Bridges
+Concrete Base,Main,Park Land Improvements,Park Land Improvements
+Concrete Structure,Main,Infrastructure,Water Infrastructure
+Concrete Surface,Main,Park Land Improvements,Park Land Improvements
+Conduit,Conduit,Infrastructure,Traffic Signals
+Conduit,Main,Infrastructure,Lighting and Electrical
+Connection Main,Main,Infrastructure,Water Infrastructure
+Control System Hardware,Ancillary,Infrastructure,Water Infrastructure
+Control Wire,Control Wire,Park Land Improvements,Park Land Improvements
+Control wire,Main,Park Land Improvements,Park Land Improvements
+Controller,Control System,Park Land Improvements,Park Land Improvements
+Controller,Main,Park Land Improvements,Park Land Improvements
+Controller and Valve,Control System,Park Land Improvements,Park Land Improvements
+Controller and Valve,Controller and Valve,Park Land Improvements,Park Land Improvements
+Controller and Valve,Main,Park Land Improvements,Park Land Improvements
+Controller Main,Main,Infrastructure,Traffic Signals
+Controller Main,Main,Park Land Improvements,Park Land Improvements
+Creek Main,Main,Infrastructure,Water Infrastructure
+Cricket Net Main,Main,Park Land Improvements,Park Land Improvements
+Cross Beams/Floor Beams,Super Structure Other,Infrastructure,Bridges
+Cross Bracing,Super Structure Other,Infrastructure,Bridges
+Crown Land,Main,Land,Crown Land
+Culvert,Culvert Main,Infrastructure,Bridges
+Culvert Main,Culvert Main,Infrastructure,Water Infrastructure
+Culvert Main,Main,Infrastructure,Water Infrastructure
+Culvert No. 1,Culvert Main,Infrastructure,Bridges
+Custom Sign Main,Main,Infrastructure,Urban Elements
+Deck,Deck,Infrastructure,Urban Elements
+Deck / Slab,Bridge Deck,Infrastructure,Bridges
+Deck / Wearing Surface,01 Wearing Course,Infrastructure,Bridges
+Deck Joints,Super Structure Other,Infrastructure,Bridges
+Deck Joints - Abutment Joint,Super Structure Other,Infrastructure,Bridges
+Deck Joints - Compression Joint Seal,Super Structure Other,Infrastructure,Bridges
+Deck Joints - Expansion Joint,Super Structure Other,Infrastructure,Bridges
+Deck Joints - Finger Joint,Super Structure Other,Infrastructure,Bridges
+Deck Joints - Sliding Joint,Super Structure Other,Infrastructure,Bridges
+Deck Joints2,Super Structure Other,Infrastructure,Bridges
+Deck Slab,Bridge Deck,Infrastructure,Bridges
+Deck Truss,Super Structure Other,Infrastructure,Bridges
+Defibrillator Main,Main,Buildings,Buildings
+Detector Loop,Detector Loop,Infrastructure,Traffic Signals
+Downstream Cribbing Structure,Structure,Infrastructure,Water Infrastructure
+Drinking Fountain Main,Main,Infrastructure,Urban Elements
+Electric Vehicle Charging Station,Main,Infrastructure,Lighting and Electrical
+Electrical Services,Electrical,Buildings,Buildings
+Electrical Services,Electrical,Investment Properties,Investment Properties
+Emitters,Emitters,Park Land Improvements,Park Land Improvements
+Emitters,Main,Park Land Improvements,Park Land Improvements
+Equipment Main,Main,Park Land Improvements,Park Land Improvements
+Erosion Protection Main,Main,Infrastructure,Water Infrastructure
+Fence Main,Main,Infrastructure,Urban Elements
+Fibre,Main,Infrastructure,"Equipment, Furniture and Fittings"
+Fire Services,Fire,Buildings,Buildings
+Fire Services,Fire,Investment Properties,Investment Properties
+Fitout and Fittings,Fitout and Fittings,Buildings,Buildings
+Fitout and Fittings,Fitout and Fittings,Investment Properties,Investment Properties
+Flag Pole Main,Main,Infrastructure,Urban Elements
+Football Goal Posts,Main,Park Land Improvements,Park Land Improvements
+Footpaths Main,Main,Infrastructure,Footpaths
+Formation,04 Working Platform,Infrastructure,Footpaths
+Garden Bed Main,Main,Park Land Improvements,Park Land Improvements
+Gate,Koala Crossing Lights,Infrastructure,Water Infrastructure
+Gate Lock,Ancillary,Infrastructure,Urban Elements
+Gate Main,Main,Infrastructure,Urban Elements
+Gate Super Structure,Super Structure Other,Infrastructure,Water Infrastructure
+Gate Support Structure Access Steelwork,Support,Infrastructure,Water Infrastructure
+Girder Cladding,Super Structure Other,Infrastructure,Bridges
+GPT Baffle System,Main,Infrastructure,Water Infrastructure
+GPT Screens,Main,Infrastructure,Water Infrastructure
+Gravel Surface,Main,Park Land Improvements,Park Land Improvements
+Gross Pollutant Trap Main,Main,Infrastructure,Water Infrastructure
+Handrails,Rail,Infrastructure,Bridges
+Handrails 1,Rail,Infrastructure,Bridges
+Headstocks,Super Structure Other,Infrastructure,Bridges
+Headwall 1,Headwall,Infrastructure,Bridges
+Headwall Main,Main,Infrastructure,Water Infrastructure
+Headwalls/Wingwalls,Sub-Structure Other,Infrastructure,Bridges
+Heavy Fleet Main,Main,Other,Plant and Equipment
+Holding Tank,Main,Infrastructure,Water Infrastructure
+Hydraulic Services,Hydraulics,Buildings,Buildings
+Hydraulic Services,Hydraulics,Investment Properties,Investment Properties
+Hydrolic System,Main,Infrastructure,Urban Elements
+Inspection Opening,Main,Infrastructure,Water Infrastructure
+Irrigation Main,Main,Park Land Improvements,Park Land Improvements
+Kerb,Kerb,Infrastructure,Bridges
+Kerb Main,Main,Infrastructure,Kerb and Water Table
+Koala Crossing Lights,Koala Crossing Lights,Infrastructure,Traffic Signals
+L2-Pedestrian with Count Down Timer - 2 LED,Pedestrian with Count Down Timer - 2 LED,Infrastructure,Traffic Signals
+Land,Main,Land,Other
+Laterals,Laterals,Park Land Improvements,Park Land Improvements
+Laterals,Main,Park Land Improvements,Park Land Improvements
+LE Bollard Lighting Switch,LE Bollard Lighting Switch,Infrastructure,Lighting and Electrical
+LE CCTV Pole,LE CCTV Pole,Infrastructure,Lighting and Electrical
+LE Light Pole,LE Light Pole,Infrastructure,Lighting and Electrical
+LE Light Pole Bracket,LE Light Pole Bracket,Infrastructure,Lighting and Electrical
+LE Lighting Pit,LE Lighting Pit,Infrastructure,Lighting and Electrical
+LE Luminaire,LE Luminaire,Infrastructure,Lighting and Electrical
+LE Luminaire Cable,LE Luminaire Cable,Infrastructure,Lighting and Electrical
+LE Luminaire Conduit,LE Luminaire Conduit,Infrastructure,Lighting and Electrical
+LE Main Switchboard - Above Ground - Large,LE Main Switchboard - Above Ground - Large,Infrastructure,Lighting and Electrical
+LE Main Switchboard - Above Ground - Medium,LE Main Switchboard - Above Ground - Medium,Infrastructure,Lighting and Electrical
+LE Main Switchboard - Above Ground - Size TBC,LE Main Switchboard - Above Ground - Size TBC,Infrastructure,Lighting and Electrical
+LE Main Switchboard - Above Ground - Small,LE Main Switchboard - Above Ground - Small,Infrastructure,Lighting and Electrical
+LE Main Switchboard - Above Ground - Victoria Square - Large,LE Main Switchboard - Above Ground - Victoria Square - Large,Infrastructure,Lighting and Electrical
+LE Main Switchboard - Below Ground,LE Main Switchboard - Below Ground,Infrastructure,Lighting and Electrical
+LE Main Switchboard - Wall Mounted - Small,LE Main Switchboard - Wall Mounted - Small,Infrastructure,Lighting and Electrical
+LE Power Bollard - Above Ground,LE Power Bollard - Above Ground,Infrastructure,Lighting and Electrical
+LE Power Outlet,LE Power Outlet,Infrastructure,Lighting and Electrical
+Lid,Lid,Infrastructure,Water Infrastructure
+Light Fleet Main,Main,Other,Plant and Equipment
+Lighting Control,Lighting Control,Infrastructure,Lighting and Electrical
+Lockable Isolation Valve,Main,Infrastructure,Water Infrastructure
+Low Flow Bypass,Koala Crossing Lights,Infrastructure,Water Infrastructure
+Luminaire,Luminaire,Infrastructure,Lighting and Electrical
+Main,Main,Infrastructure,Lighting and Electrical
+Main,Main,Infrastructure,Water Infrastructure
+Main,Main,Other,Civic Collection
+Main,Main,Other,"Equipment, Furniture and Fittings"
+Main,Main,Other,Plant and Equipment
+Mainline,Main,Park Land Improvements,Park Land Improvements
+Mainline,Mainline,Park Land Improvements,Park Land Improvements
+Major Plant Main,Main,Other,Plant and Equipment
+Master Valve,Main,Park Land Improvements,Park Land Improvements
+Mechanical Services,Mechanical,Buildings,Buildings
+Mechanical Services,Mechanical,Investment Properties,Investment Properties
+Meter Main,Main,Infrastructure,Water Infrastructure
+Meter Main,Main,Park Land Improvements,Park Land Improvements
+Minor Plant Main,Main,Other,Plant and Equipment
+Miscellaneous Main,Main,Other,Plant and Equipment
+Netball Ring,Main,Park Land Improvements,Park Land Improvements
+No Right Turn Lantern - 1 LED,No Right Turn Lantern - 1 LED,Infrastructure,Traffic Signals
+North Abutment,Abutment,Infrastructure,Water Infrastructure
+North Access Barrier,Koala Crossing Lights,Infrastructure,Water Infrastructure
+North Access Stairs,Stairs,Infrastructure,Water Infrastructure
+North Downstream Retaining Wall,Retaining Wall Main,Infrastructure,Water Infrastructure
+North Downstream Weir Wall,Main,Infrastructure,Water Infrastructure
+North Rock Batter,Koala Crossing Lights,Infrastructure,Water Infrastructure
+On Street Electric Vehicle Charging Station - Free Stand,On Street Electric Vehicle Charging Station - Free Stand,Infrastructure,Lighting and Electrical
+On Street Electric Vehicle Charging Station - Wall Mounted,On Street Electric Vehicle Charging Station - Wall Mounted,Infrastructure,Lighting and Electrical
+Open Channel Main,Main,Infrastructure,Water Infrastructure
+Open Channels Main,Main,Infrastructure,Water Infrastructure
+Open Girders,Super Structure Other,Infrastructure,Bridges
+Other Structures Main,Main,Infrastructure,Urban Elements
+Outlet Protection,Sub-Structure Other,Infrastructure,Bridges
+Parking Machine Main,Main,Infrastructure,Ticket Machines
+Pavement Base,02 Intermediate Course,Infrastructure,Footpaths
+Pedestrian - 2 LED,Pedestrian - 2 LED,Infrastructure,Traffic Signals
+Pedestrian with Count Down Timer - 2 LED,Pedestrian with Count Down Timer - 2 LED,Infrastructure,Traffic Signals
+People Movement Sensor,Main,Infrastructure,Traffic Signals
+Picnic Table Main,Main,Infrastructure,Urban Elements
+Pier Protection,Sub-Structure Other,Infrastructure,Bridges
+Pier Wall,Main,Infrastructure,Water Infrastructure
+Pier wall,Super Structure Other,Infrastructure,Bridges
+Piers,Sub-Structure Other,Infrastructure,Bridges
+Pile Caps,Sub-Structure Other,Infrastructure,Bridges
+Piles,Pile,Infrastructure,Water Infrastructure
+Pipe Main,Main,Infrastructure,Water Infrastructure
+Pit Main,Main,Infrastructure,Lighting and Electrical
+Pit Main,Main,Infrastructure,Traffic Signals
+Pit Main,Main,Infrastructure,Water Infrastructure
+Planter Box Main,Main,Infrastructure,Urban Elements
+Playground Equipment Main,Main,Infrastructure,Urban Elements
+Playground Equipment Main,Main,Park Land Improvements,Park Land Improvements
+Pod,Main,Infrastructure,Lighting and Electrical
+Pole,Main,Infrastructure,Lighting and Electrical
+Pole,Main,Infrastructure,Urban Elements
+Pole Main,Main,Infrastructure,Traffic Signals
+Pond Liner,Main,Park Land Improvements,Park Land Improvements
+Power Outlet Main,Ancillary,Infrastructure,Lighting and Electrical
+Power Outlet Main,Main,Infrastructure,Lighting and Electrical
+Precast Girders,Super Structure Other,Infrastructure,Bridges
+Primary Beams or Trusses,Super Structure Other,Infrastructure,Bridges
+Primary Bracket,Bracket,Infrastructure,Lighting and Electrical
+Primary Luminaire,Luminaire,Infrastructure,Lighting and Electrical
+Public Access Walkway Decking,Deck,Infrastructure,Water Infrastructure
+Public Access Walkway Super Structure,Super Structure Other,Infrastructure,Water Infrastructure
+Pump Main,Main,Infrastructure,Water Infrastructure
+Pump Main,Main,Park Land Improvements,Park Land Improvements
+Pump Station Main,Main,Infrastructure,Water Infrastructure
+Push Button,Push Button,Infrastructure,Traffic Signals
+Retaining Wall Main,Main,Infrastructure,Urban Elements
+Retention Tank Main,Main,Infrastructure,Water Infrastructure
+Rock Pool,Main,Park Land Improvements,Park Land Improvements
+Roof Structure,Roof,Buildings,Buildings
+Roof Structure,Roof,Investment Properties,Investment Properties
+Rubble Base,Main,Park Land Improvements,Park Land Improvements
+Sanitary Drainage Main,Main,Infrastructure,Water Infrastructure
+SCAT Cable,SCAT Cable,Infrastructure,Traffic Signals
+SCAT Conduit,SCAT Conduit,Infrastructure,Traffic Signals
+SCAT Join Pit,SCAT Join Pit,Infrastructure,Traffic Signals
+SCAT Town Hall Pit,SCAT Town Hall Pit,Infrastructure,Traffic Signals
+Seat Main,Main,Infrastructure,Urban Elements
+Secondary Beams or Joists,Super Structure Other,Infrastructure,Bridges
+Secondary Luminaire,Luminaire,Infrastructure,Lighting and Electrical
+Sewer Pipe Main,Main,Infrastructure,Water Infrastructure
+Shade Cloth,Ancillary,Infrastructure,Urban Elements
+Skatepark Equipment,Main,Park Land Improvements,Park Land Improvements
+Smart Eye Sensor,Main,Infrastructure,Urban Elements
+Smart Parking,Main,Infrastructure,Urban Elements
+Smart Water Meter,Main,Infrastructure,Water Infrastructure
+Soccer Goal,Main,Park Land Improvements,Park Land Improvements
+Softfall - Rubberised,Main,Park Land Improvements,Park Land Improvements
+Softfall - Rubberised,Softfall,Park Land Improvements,Park Land Improvements
+Softfall - Woodchip,Softfall,Park Land Improvements,Park Land Improvements
+South Abutment,Abutment,Infrastructure,Water Infrastructure
+South Access Barrier,Koala Crossing Lights,Infrastructure,Water Infrastructure
+South Access Stairs,Stairs,Infrastructure,Water Infrastructure
+South Downstream Retaining Wall,Retaining Wall Main,Infrastructure,Water Infrastructure
+South Downstream Weir Wall,Main,Infrastructure,Water Infrastructure
+South Rock Batter,Koala Crossing Lights,Infrastructure,Water Infrastructure
+Span 1 Arch 1,Super Structure Other,Infrastructure,Bridges
+Span 1 Deck / Slab,Bridge Deck,Infrastructure,Bridges
+Span 1 Deck / Wearing Surface,Bridge Deck,Infrastructure,Bridges
+Span 1 Deck/Slab,Bridge Deck,Infrastructure,Bridges
+Span 1 Handrails 1,Rail,Infrastructure,Bridges
+Span 1 Handrails 2,Rail,Infrastructure,Bridges
+Span 1 Primary Beams or Trusses,Super Structure Other,Infrastructure,Bridges
+Span 1 Primary Beams or Trusses 1,Super Structure Other,Infrastructure,Bridges
+Span 1 Secondary Beams or Joists,Super Structure Other,Infrastructure,Bridges
+Span 1-3 Deck / Slab,Bridge Deck,Infrastructure,Bridges
+Span 1-3 Kerb 1,Kerb,Infrastructure,Bridges
+Span 1-3 Primary Beams or Trusses,Super Structure Other,Infrastructure,Bridges
+Span 1-3 Secondary Beams or Joists,Super Structure Other,Infrastructure,Bridges
+Span 1-4 Deck / Slab,Bridge Deck,Infrastructure,Bridges
+Span 1-4 Primary Beams or Trusses,Super Structure Other,Infrastructure,Bridges
+Span 1-4 Secondary Beams or Joists,Super Structure Other,Infrastructure,Bridges
+Span 1-5  Primary Beams or Trusses,Super Structure Other,Infrastructure,Bridges
+Span 1-5 Deck / Slab,Bridge Deck,Infrastructure,Bridges
+Span 1-5 Handrails 1,Rail,Infrastructure,Bridges
+Span 1-5 Secondary Beams or Joists,Super Structure Other,Infrastructure,Bridges
+Stop Log Gated Access Walkway Super Structure,Super Structure Other,Infrastructure,Water Infrastructure
+Stop Log Gated Access Walkway Support Frame,Support,Infrastructure,Water Infrastructure
+Stop Log Gated Decking,Deck,Infrastructure,Water Infrastructure
+Stormwater Drain Main,Lid,Infrastructure,Water Infrastructure
+Stormwater Drain Main,Main,Infrastructure,Water Infrastructure
+Stormwater Pit Main,Main,Infrastructure,Water Infrastructure
+Stratacell Main,Main,Park Land Improvements,Park Land Improvements
+Stringers,Super Structure Other,Infrastructure,Bridges
+Structure,Main,Buildings,Buildings
+Structure,Main,Investment Properties,Investment Properties
+Structure,Structure,Buildings,Buildings
+Sub-Structure Main,Sub-Structure Main,Infrastructure,Urban Elements
+Super Structure Main,Main,Infrastructure,Urban Elements
+Super Structure Main,Super Structure Main,Infrastructure,Urban Elements
+Surface,01 Wearing Course,Infrastructure,Footpaths
+Swale Main,Main,Infrastructure,Water Infrastructure
+Synthetic Turf,Main,Park Land Improvements,Park Land Improvements
+Technology,Technology,Buildings,Buildings
+Tennis Net,Main,Park Land Improvements,Park Land Improvements
+Top Box,Ancillary,Infrastructure,Traffic Signals
+Tram Traffic Lantern - 1 LED,Tram Traffic Lantern - 1 LED,Infrastructure,Traffic Signals
+Tram Traffic Lantern - 2 LED,Tram Traffic Lantern - 2 LED,Infrastructure,Traffic Signals
+Tram Traffic Lantern - 3 LED,Tram Traffic Lantern - 3 LED,Infrastructure,Traffic Signals
+Trash Racks,Main,Infrastructure,Water Infrastructure
+Tree Base Treatment,Ancillary,Park Land Improvements,Park Land Improvements
+Tree Bud Light,Tree Bud Light,Infrastructure,Lighting and Electrical
+Tree grate,Ancillary,Park Land Improvements,Park Land Improvements
+Tree Inlet Main,Main,Park Land Improvements,Park Land Improvements
+Tree Main,Main,Park Land Improvements,Park Land Improvements
+Tree Pit,Main,Park Land Improvements,Park Land Improvements
+Tree Surround,Ancillary,Park Land Improvements,Park Land Improvements
+TS Controller,TS Controller,Infrastructure,Traffic Signals
+TS Top Box RU07,TS Top Box RU07,Infrastructure,Traffic Signals
+TS Top Box RU11,TS Top Box RU11,Infrastructure,Traffic Signals
+Turf Surface,Main,Park Land Improvements,Park Land Improvements
+UPS,TS UPS,Infrastructure,Traffic Signals
+Valve Main,Main,Infrastructure,Water Infrastructure
+Valves,Control System,Park Land Improvements,Park Land Improvements
+Valves,Main,Park Land Improvements,Park Land Improvements
+Vent Pipe,Main,Infrastructure,Water Infrastructure
+Vent Pt Main,Main,Infrastructure,Water Infrastructure
+Vertical Transport Services,Transport Service,Buildings,Buildings
+Walling,Wall,Infrastructure,Water Infrastructure
+Wash Down Tap Main,Main,Infrastructure,Water Infrastructure
+Water Feature Main,Main,Infrastructure,Urban Elements
+Water Feature Main,Main,Park Land Improvements,Park Land Improvements
+Wearing Surface,01 Wearing Course,Infrastructure,Bridges
+Wearing Surface on Deck,01 Wearing Course,Infrastructure,Bridges
+Weir Structure,Main,Infrastructure,Water Infrastructure
+Wifi Supply Point,Main,Infrastructure,"Equipment, Furniture and Fittings"
+Wifi Supply Point,Main,Infrastructure,Traffic Signals
+Wifi Supply Point,Wifi Supply Point,Infrastructure,"Equipment, Furniture and Fittings"
+Wingwall/Retaining Wall,Wingwall,Infrastructure,Bridges
+Z0131_WIP,Main,Infrastructure,Traffic Signals
+Z0132_WIP,Main,Infrastructure,Traffic Signals
+Z0133_WIP,Main,Infrastructure,Traffic Signals
+Z0431_WIP,Main,Infrastructure,Traffic Signals
+Z2034_WIP,Main,Infrastructure,Traffic Signals
+Z2038_WIP,Main,Infrastructure,Traffic Signals
+Z2039_WIP,Main,Infrastructure,Traffic Signals

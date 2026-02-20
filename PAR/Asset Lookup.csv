@@ -1,0 +1,866 @@
+Asset_Category,Asset_Class,Asset_Subclass,Asset_Type,Asset_Subtype
+Artworks,Urban Elements,Arts and Culture,Artwork,Large Memorial
+Artworks,Urban Elements,Arts and Culture,Artwork,Public Arts
+Artworks,Urban Elements,Arts and Culture,Artwork,Small Memorial
+Basins,Water Infrastructure,Stormwater Network Structure,Basin,Bio-retention
+Basins,Water Infrastructure,Stormwater Network Structure,Basin,Detention
+Basins,Water Infrastructure,Stormwater Network Structure,Basin,Sedimentation
+Bins,Urban Elements,Waste,Bin,Bin Stand
+Bins,Urban Elements,Waste,Bin,Butt-Out
+Bins,Urban Elements,Waste,Bin,Dog Dispenser
+Bins,Urban Elements,Waste,Bin,Enclosure
+Bins,Urban Elements,Waste,Bin,Recycle Bin
+Bins,Urban Elements,Waste,Bin,Solar Bin
+Bins,Urban Elements,Waste,Bin,Standard Litter Bin
+Bridges,Transportation,Bridge,Bridge,Culvert Footbridge
+Bridges,Transportation,Bridge,Bridge,Major Footbridge
+Bridges,Transportation,Bridge,Bridge,Minor Footbridge
+Bridges,Transportation,Bridge,Bridge,Road Bridge
+Buildings,Building,Commercial,Building,Central Market Precinct
+Buildings,Building,Commercial,Building,Commercial Buildings
+Buildings,Building,Commercial,Building,Defibrillator
+Buildings,Building,Commercial,Building,Investment Properties
+Buildings,Building,Commercial,Building,Upark Buildings
+Buildings,Building,Commercial,Building Tenancy,Building Tenancy
+Buildings,Building,Community,Building,Community - Libraries and Community Halls
+Buildings,Building,Community,Building,Community - Park Lands Businesses
+Buildings,Building,Community,Building,Community - Park Lands Sports Clubs and Grandstands
+Buildings,Building,Community,Building,Defibrillator
+Buildings,Building,Corporate,Building,Community - Park Lands Businesses
+Buildings,Building,Corporate,Building,Corporation
+Buildings,Building,Corporate,Building,Defibrillator
+Buildings,Building,Corporate,Building,Town Hall Complex
+Buildings,Building,Facility,Building,Facility
+Buildings,Building,Facility,Building,Public Conveniences
+Buildings,Building,Leased Building,Building,Leased Building
+Culverts,Water Infrastructure,Stormwater Network Structure,Culvert,Box
+Culverts,Water Infrastructure,Stormwater Network Structure,Culvert,Pipe
+Culverts,Water Infrastructure,Stormwater Network Structure,Culvert,U-Shape
+Electrical,Urban Elements,On-street Parking,Smart Parking,SmartSpot
+Electrical Conduit Pits,Lighting and Electrical,Distribution,Lighting Pit,Fuse Pit
+Electrical Conduit Pits,Lighting and Electrical,Distribution,Lighting Pit,Fuse Pit - TBC
+Electrical Conduit Pits,Lighting and Electrical,Distribution,Lighting Pit,Join Pit
+Electrical Conduit Pits,Lighting and Electrical,Distribution,Lighting Pit,Pull Through Pit
+Electrical Conduit Pits,Lighting and Electrical,Distribution,Pit,Fuse Pit
+Electrical Conduit Pits,Lighting and Electrical,Distribution,Pit,Pull Through
+Electrical Conduit Pits,Transportation,Traffic Signals,Pit,
+Electrical Conduit Pits,Transportation,Traffic Signals,Pit,Join Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,Pit,Loop Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,Pit,Pull Through
+Electrical Conduit Pits,Transportation,Traffic Signals,SCATS Infrastructure - Pit,Join Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,SCATS Infrastructure - Pit,Town Hall 1800x1800 Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,D Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,Double D Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,Double Gatic
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P1
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P2
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P3
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P4
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P5
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P6
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P7
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,P8
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,S Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,Single Gatic
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,Telstra Style Steel Pit
+Electrical Conduit Pits,Transportation,Traffic Signals,Traffic Signal Pit,Tram Site Loop Pit
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Cable,100
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Cable,3
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Cable,63
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Cable,Unknown
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,100
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,150
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,2 x 100
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,2 x 40
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,2 x 50
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,2 x 63
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,2 x 80
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,25
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,3 x 80
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,32
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,4 x 80
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,40
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,5 x 80
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,50
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,63
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,65
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,75
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,80
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Aboveground ETSA Service Point
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Comms - White
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Comms - White Spare
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Consumer Main
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Electrical - Orange
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Electrical - Orange Spare
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Galvanised Pipe
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Gas Duct 50mm Diameter
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Gas Lantern
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,High Pressure Sodium- 400Watt
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Metal Halide 100 Watt Spec
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Metal Halide 250 Watt Spec
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,MIMS Wiring on Structure
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Public Lighting Underground Duct
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,TBD
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Unknown
+Electrical Conduits,Lighting and Electrical,Distribution,Electrical Conduit,Wiring
+Electrical Conduits,Lighting and Electrical,Distribution,Optical Fibre,96 Core
+Electrical Conduits,Transportation,Traffic Signals,SCATS Infrastructure - Cable Conduit,Conduit - 100mm
+Electrical Conduits,Transportation,Traffic Signals,SCATS Infrastructure - Cable Conduit,Copper Cable - 20 Pair
+Electrical Conduits,Transportation,Traffic Signals,SCATS Infrastructure - Cable Conduit,Copper Cable - 50 Pair
+Electrical Conduits,Transportation,Traffic Signals,Traffic Signal Cables and Conduits,Cables and Conduits - Footpaths 29 core
+Electrical Conduits,Transportation,Traffic Signals,Traffic Signal Cables and Conduits,Cables and Conduits - Roads 63 core
+Electrical Conduits,Transportation,Traffic Signals,Traffic Signal Cables and Conduits,Cables and Conduits - Tramline 63 Core
+Fences,Urban Elements,Furniture,Fence,Barrier Fencing
+Fences,Urban Elements,Furniture,Fence,Bollard Fence Unlinked
+Fences,Urban Elements,Structure,Fence,Barrier Fencing
+Fences,Urban Elements,Structure,Fence,Bollard Fence Linked
+Fences,Urban Elements,Structure,Fence,Bollard Fence Unlinked
+Fences,Urban Elements,Structure,Fence,Handrail
+Fences,Urban Elements,Structure,Fence,Safety Fencing
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Artefact
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Building
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Clock
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Ephemera
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Fountain
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Furniture
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Garment
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Gold/Silver
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Map
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Marquette
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Medal(s)
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Medals
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Memorial
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Miscellaneous
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Monograph
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Painting
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Plaque
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Portrait
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Print
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Sculpture
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Statue
+"Fleet, Plant and Equipment",Civic Collection,Civic Collection,Archives,Window
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Central Markets,Equipment - Adelaide Central Market,BioSeparator
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Central Markets,Equipment - Adelaide Central Market,Bollards
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Central Markets,Equipment - Adelaide Central Market,Dining Furniture
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Central Markets,Equipment - Adelaide Central Market,General
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Central Markets,Equipment - Adelaide Central Market,Information Desk
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Central Markets,Equipment - Adelaide Central Market,People Counter
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Central Markets,Equipment - Adelaide Central Market,Storage compound
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Town Hall,Equipment - ATH,Kitchen
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Town Hall,Equipment - ATH,Musical
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Town Hall,Equipment - ATH,Staging
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Town Hall,Equipment - ATH,Venue
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Town Hall,Furniture - ATH,Chambers
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Town Hall,Furniture - ATH,Musical
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Adelaide Town Hall,Furniture - ATH,Venue
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Arts and Culture,Equipment - Arts and Culture,Projector
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",City Archives,Equipment - City Archives,Film Reader
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",CLC Equipment,Customer Centre,Folding Machine
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Commercial Off-Street Parking,Equipment - Off-Street Parking,Car Park Equipment
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Commercial Off-Street Parking,Equipment - Off-Street Parking,Entry/Exit
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Commercial Off-Street Parking,Equipment - Off-Street Parking,Intercom Equipment
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Commercial Off-Street Parking,Equipment - Off-Street Parking,On Prem
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Commercial Off-Street Parking,Equipment - Off-Street Parking,Ticket Machines
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - AEDA,Christmas Trees
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - AEDA,Decorative Lighting
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - AEDA,Mall Decorations
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - CoA,Bows / Garlands
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - CoA,Decorative Lighting
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - CoA,Other Decorations
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - CoA,Park Lands  / Squares Decorations
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Christmas Decorations - CoA,Street Decorations
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Equipment - Events,Containers
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Events,Equipment - Events,Mobile Items
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Equipment - ICT,Fast Charging Table
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Equipment - ICT,Laptop
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Equipment - ICT,Library Equipment
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Equipment - ICT,Monitor
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Equipment - ICT,Printer/MFD
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Equipment - ICT,Scanner
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Equipment - ICT,Workstation
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Data
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Disk Storage
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Firewall
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Network Switch
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Optical Fibre
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Server
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Traffic Control Boxes
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Uniterrupted Power Supply
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Wireless Access Point
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,Cabling
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,Camera
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,Gateway
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,Meeting Room Equipment
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,Mobile Phone
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,PIO
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,Tablets
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Libraries,Equipment - Libraries,Bike Trailer
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Libraries,Equipment - Libraries,Display
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Libraries,Equipment - Libraries,Fan
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Libraries,Equipment - Libraries,Other
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Libraries,Equipment - Libraries,Wireless Hotspot
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Libraries,Furniture - Libraries,Tables/Chairs
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",North Adelaide Golf Course,Golf Course,Fuel Tanks
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",North Adelaide Golf Course,Golf Course,Golf Equipment
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Nursery,Equipment - Nursery,Boom Gate
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Regulatory Services,Equipment - Regulatory Services,PIO
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Sustainability,Equipment - Sustainability,Hubs
+"Fleet, Plant and Equipment","Equipment, Furniture and Fittings",Sustainability,Equipment - Sustainability,Sensor
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Heavy Fleet,Suction Sweeper
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Heavy Fleet,Truck
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Heavy Fleet,Truck - Compactor
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Heavy Fleet,Truck - Crane
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Heavy Fleet,Truck - EWP
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Golf Cart
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Motorcycle
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Passenger Shuttle
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Sedan
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Station Wagon
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Ute
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Utility Vehicle
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Light Fleet,Van
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Fleet,Miscellaneous,Miscellaneous
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Boat
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Boat - Motor
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Caravan
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Compaction Equipment
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Compressor
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Compressor - Tank
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Crane - Fixed
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Display Board - Portable
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Drum Roller
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Emulsion Sprayer - Skid Mounted
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Excavator
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Forklift
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Generator - Fixed
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Hoist
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Hoist - Scissor
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Ice Maker
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Loader
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Mower
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Seeder
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Site Hut
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Sweeper/Scrubber
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Ticket Box
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Trailer
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Major Plant,Wood Chipper
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Auger
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Blower
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Brushcutter
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Chainsaw
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Compaction Equipment
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Compressor - Portable
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Concrete Mixer
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Concrete Saw
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Confined Space Equipment
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Drain Cleaner
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Electric Bike
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Fall Arrest Equipment
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Fridge - Portable
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Generator - Portable
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Golf Ball Retriever
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Gum Remover
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Hand Tool
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Hedge Trimmer
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Jack Hammer
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Lawn Edger
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Linemarking Equipment
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Mower - Hand
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Personnel Lifter
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Pole Pruner
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Pole Saw
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Power Tool
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Powerhead
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Pressure Cleaner
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Pressure Washer
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Pump
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Rolling Machine
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Slab Lifter
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Spray Painter
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Spray Tank
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Sprayer
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Vaccum - Separator
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Vacuum
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Welder
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Minor Plant,Wet Vaccum
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Attachment
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Leveling Equipment
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Magnetic Lifter
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Miscellaneous
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Pallet Lifter
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Scarifier
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Spreader
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Miscellaneous,Top Dresser
+"Fleet, Plant and Equipment","Plant, Fleet and Equipment",Plant,Small Tools,Workshop Equipment
+"Fleet, Plant and Equipment",Urban Elements,Other Structures,,
+Gates,Urban Elements,Structure,Gate,Boom Gate - Twin Lane
+Gates,Urban Elements,Structure,Gate,Brace Arm Style
+Gates,Urban Elements,Structure,Gate,Braced Steel Frame and Bars
+Gates,Urban Elements,Structure,Gate,Braced Timber Ranch Style
+Gates,Urban Elements,Structure,Gate,Chain
+Gates,Urban Elements,Structure,Gate,Double Braced Steel
+Gates,Urban Elements,Structure,Gate,Double Steel Bar
+Gates,Urban Elements,Structure,Gate,Single Bar
+Gates,Urban Elements,Structure,Gate,Single Timber Rail
+Gates,Urban Elements,Structure,Gate,Steel Frame and Cyclone Mesh
+Gates,Urban Elements,Structure,Gate,Steel Frame and Mesh Insert
+Gates,Urban Elements,Structure,Gate,Steel Frame and Vert Bar
+Gates,Urban Elements,Structure,Gate,Steel Truss Style
+ICT Hardware,"Equipment, Furniture and Fittings",CCTV,Camera,Unidentified
+ICT Hardware,"Equipment, Furniture and Fittings","Information, Communications and Technology",Camera,Unidentified
+ICT Hardware,"Equipment, Furniture and Fittings","Information, Communications and Technology",CCTV,Network Assets
+ICT Hardware,"Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Data
+ICT Hardware,"Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Firewall
+ICT Hardware,"Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Network Switch
+ICT Hardware,"Equipment, Furniture and Fittings","Information, Communications and Technology",Network,Uniterrupted Power Supply
+ICT Hardware,"Equipment, Furniture and Fittings","Information, Communications and Technology",Telecommunications,Communication Room
+ICT Hardware,Lighting and Electrical,CCTV,Camera,IndigoVision PTZ
+ICT Hardware,Lighting and Electrical,CCTV,Camera,Pelco S5220-EG1
+ICT Hardware,Lighting and Electrical,CCTV,Camera,Pelco S5220-EG1-X
+ICT Hardware,Lighting and Electrical,CCTV,Camera,Pelco S6230-EG1
+ICT Hardware,Lighting and Electrical,CCTV,Camera,Pelco S6230-EGL1
+ICT Hardware,Lighting and Electrical,CCTV,Camera,Pelco S7230L-EW1
+ICT Hardware,Lighting and Electrical,CCTV,Camera,PelcoIXP21
+ICT Hardware,Lighting and Electrical,CCTV,Camera,Unidentified
+ICT Hardware,Lighting and Electrical,CCTV,Electrical Conduit,Comms - White
+ICT Hardware,Lighting and Electrical,CCTV,Equipment Enclosure,Cabinet
+ICT Hardware,Lighting and Electrical,CCTV,Equipment Enclosure,Internal
+ICT Hardware,Lighting and Electrical,CCTV,Equipment Enclosure,Metal Enclosure
+ICT Hardware,Lighting and Electrical,CCTV,Equipment Enclosure,Plastic Enclosure
+ICT Hardware,Lighting and Electrical,CCTV,Equipment Enclosure,Pod
+ICT Hardware,Lighting and Electrical,CCTV,Equipment Enclosure,TBD
+ICT Hardware,Lighting and Electrical,CCTV,Equipment Enclosure,Traffic controller
+ICT Hardware,Lighting and Electrical,On Street Electric Vehicle Charging Station,On Street Electric Vehicle Charging Station,On Street Electric Vehicle Charging Station - Free Stand
+ICT Hardware,Lighting and Electrical,On Street Electric Vehicle Charging Station,On Street Electric Vehicle Charging Station,On Street Electric Vehicle Charging Station - Wall Mounted
+ICT Hardware,Lighting and Electrical,Smart Technology,Defibrillator,Metered
+ICT Hardware,Lighting and Electrical,Smart Technology,Defibrillator,Unmetered
+ICT Hardware,Lighting and Electrical,Smart Technology,Smart Parking,Sensor
+ICT Hardware,Lighting and Electrical,Smart Technology,Smart Parking,SmartSpot
+ICT Hardware,Transportation,Traffic Signals,People Movement Sensor,Metered
+Instrumentation,Park Lands and Open Space,Irrigation System,Irrigation,Controller
+Instrumentation,Transportation,Traffic Signals,Traffic Signal Controllers,Traffic Signal Controller
+Instrumentation,Transportation,Traffic Signals,Traffic Signal Controllers,Traffic Signal Controller MSB Pod
+Instrumentation,Transportation,Traffic Signals,Traffic Signal Controllers,Traffic Signal Controller with Top Box RU07
+Instrumentation,Transportation,Traffic Signals,Traffic Signal Controllers,Traffic Signal Controller with Top Box RU11
+Instrumentation,Transportation,Traffic Signals,Uninterruptible Power Supply,ECUPS (8 Batteries)
+Instrumentation,Transportation,Traffic Signals,Uninterruptible Power Supply,ICUPS (2 Batteries)
+Irrigation,Park Lands and Open Space,Irrigation System,Irrigation,Drip in Line
+Irrigation,Park Lands and Open Space,Irrigation System,Irrigation,Irrigation
+Irrigation,Park Lands and Open Space,Irrigation System,Irrigation,Irrigation Parkland Space
+Irrigation Regulators,Park Lands and Open Space,Irrigation System,Irrigation,Controller
+Irrigation Regulators,Park Lands and Open Space,Irrigation System,Irrigation,Irrigation
+Kerbs,Transportation,Kerb and Water Table,Kerb and Water Table,Flush Kerb
+Kerbs,Transportation,Kerb and Water Table,Kerb and Water Table,Kerb
+Kerbs,Transportation,Kerb and Water Table,Kerb and Water Table,Kerb and Water Table
+Kerbs,Transportation,Kerb and Water Table,Kerb and Water Table,Mountable Kerb
+Kerbs,Transportation,Kerb and Water Table,Kerb and Water Table,Mountable Kerb and Water Table
+Kerbs,Transportation,Kerb and Water Table,Kerb and Water Table,Spoon Drain
+Kerbs,Transportation,Kerb and Water Table,Traffic Control Device,Median Island
+Kerbs,Transportation,Kerb and Water Table,Traffic Control Device,Pedestrian Refuge
+Kerbs,Transportation,Kerb and Water Table,Traffic Control Device,Roundabout
+Kerbs,Transportation,Kerb and Water Table,Traffic Control Device,Splitter
+Kerbs,Transportation,Kerb and Water Table,Tree Surround,Tree Surround
+Land,Land,Crown Land,Land,Crown Land
+Land,Land,Land,Land,Land
+Land,Park Lands and Open Space,Open Space Area,Land,Crown Land
+Lighting,,,,
+Lighting,Lighting and Electrical,CCTV,CCTV Pole,CCTV Pole - Adepole 5m
+Lighting,Lighting and Electrical,CCTV,CCTV Pole,CCTV Pole - Stepped Post Top 3.5m
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Electrical Cabling,Catenary Electrical Cabling - Gouger Street (16m per Light)
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Electrical Cabling,Catenary Electrical Cabling - Rundle Mall (6m per Light)
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Ebenezer Place
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Gresham Place
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - O'Connell Street Laneway
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Peel Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Rundle Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Solomon Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Tavistock Lane
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Vardon Avenue
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Vaughan Place
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Victoria Sqaure - Across Lawn
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Victoria Square Arbour - East
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Linear Lighting,Catenary Festoon Lighting - Victoria Square Arbour - West
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Luminaire,Catenary Downlight - Gouger Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Luminaire,Catenary Downlight - Rundle Mall
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Pole,Catenary Pole - Gouger Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Pole,Catenary Pole - Rundle Mall
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary Pole,Catenary Pole - Solomon Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Ebenezer Place
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Gouger Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Gresham Place
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - O'Connell Street Laneway
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Peel Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Rundle Mall
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Rundle Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Solomon Street
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Tavistock Lane
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Vardon Avenue
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Vaughan Place
+Lighting,Lighting and Electrical,Decorative Lighting,Catenary System,Catenary System - Victoria Square - Across Lawn
+Lighting,Lighting and Electrical,Decorative Lighting,Luminaire,Tree Bud Light
+Lighting,Lighting and Electrical,Distribution,Electrical Conduit,Consumer Main
+Lighting,Lighting and Electrical,Distribution,Electrical Conduit,Electrical - Orange
+Lighting,Lighting and Electrical,Distribution,Lighting Control,C-Bus System - Large
+Lighting,Lighting and Electrical,Distribution,Lighting Control,C-Bus System - Small
+Lighting,Lighting and Electrical,Distribution,Lighting Control,Lighting Panel
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,10.4m Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,10.5m Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,12m Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,18m Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,6.5m Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,7.0m Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,9.0m Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,9.0m HESS Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Adelaide Bridge Fixing
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,AdePole 10.5m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,AdePole Short
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Architectural Lighting Pole - 5.3m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Architectural Lighting Pole - 9.0m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Basic Lighting
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Bollard
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Bridge
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Bud Lighting
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Catenary Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Ceremonial
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Combination Traffic Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Floodlight Pole
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Floodlight Tower - 12m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Floodlight Tower - 18m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Floodlight Tower - 32m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,FPM15F
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Heritage
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Heritage Style Post Top Pole
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Heritage Style Street Lighting Pole
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Modullum Column
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Park Street
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Post Top Lantern
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Post Top Pole - City Streets
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Post Top Pole - Park Lands
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Smart Pole
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Stepped Post Top
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Stepped Post Top Pole - Adepole 5.0m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Stepped Post Top Pole - City Streets
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Stepped Post Top Pole - Park Lands
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - 10.5m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - 4.5m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - 6.5m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - 9.5m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - Adepole - 10.5m
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - Dual Outreach
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - Dual Outreach - Heritage Style
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - Jeffcott Catenary Style
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Street Light Pole - Solar
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Tapered
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Torrens Weir Fixing
+Lighting,Lighting and Electrical,Public Lighting,Light Pole,Unidentified
+Lighting,Lighting and Electrical,Public Lighting,Light Pole Bracket,Street Light Bracket  - 3m Outreach (Tram Corridor)
+Lighting,Lighting and Electrical,Public Lighting,Linear Lighting,Festoon Light
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Architectural Street Light
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Back of Pole Light - Pendant
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Back of Pole Light - Street Light
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Back of Pole Light - Street Light - Prestige
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Back of Pole Light - Traffic
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Bracket Only
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Bud Lighting
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Catenary Lights
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Directional
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Downlight
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Floodlight
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Floodlight - Adelaide Bridge
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Floodlight - Church
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Floodlight - Directional
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Floodlight - Sports Field
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Fluorescent
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Heritage Style Post Top Light
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,High Pressure Sodium
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,LED
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,LED Strip
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Light Bollard
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Low Pressure Sodium
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Mercury Vapour
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Metal Halide
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Pendant
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Post Top Light - City Streets
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Post Top Light - Park Lands
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Post Top Light - Pendant
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Post Top Light - Wall Mounted
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Primary Luminaire
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Projector
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Spot Light
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Street Light
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Street Light - Pendant
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Street Light - PLC Light on SAPN Pole
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Street Light - Prestige
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Street Light - Solar
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Street Light - Traffic
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Street Light - Wall Mounted
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Unidentified
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Uplight
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Wall Light
+Lighting,Lighting and Electrical,Public Lighting,Luminaire,Wall Light - Adelaide Bridge
+Marine Structures,Urban Elements,Structure,Marine Structures,Boat Landing
+Marine Structures,Urban Elements,Structure,Marine Structures,Boat Ramp
+Open Drains and Rain Gardens,Water Infrastructure,Stormwater Network Structure,Creek,Creek
+Open Drains and Rain Gardens,Water Infrastructure,Stormwater Network Structure,Earth Retaining Structure,Energy Dissipation
+Open Drains and Rain Gardens,Water Infrastructure,Stormwater Network Structure,Earth Retaining Structure,Erosion Protection
+Open Drains and Rain Gardens,Water Infrastructure,Stormwater Network Structure,Links,Rock Rip-Rap
+Open Drains and Rain Gardens,Water Infrastructure,Stormwater Network Structure,Links,Rock Rip-Rap with Geofabric
+Open Drains and Rain Gardens,Water Infrastructure,Stormwater Network Structure,Open Channels,Open Channels
+Open Drains and Rain Gardens,Water Infrastructure,Stormwater Network Structure,Swale,Swale
+Open Space Furniture,Urban Elements,Arts and Culture,Artwork,Public Arts
+Open Space Furniture,Urban Elements,Furniture,BBQ,Mains BBQ
+Open Space Furniture,Urban Elements,Furniture,Bike Rack,Art Rack
+Open Space Furniture,Urban Elements,Furniture,Bike Rack,Bike Repair Station
+Open Space Furniture,Urban Elements,Furniture,Bike Rack,Circular
+Open Space Furniture,Urban Elements,Furniture,Bike Rack,Steel Rail
+Open Space Furniture,Urban Elements,Furniture,Bike Rack,Steel Slot
+Open Space Furniture,Urban Elements,Furniture,Bike Rack,Tyre Pump
+Open Space Furniture,Urban Elements,Furniture,Bike Rack,U Shape
+Open Space Furniture,Urban Elements,Furniture,Bollard,Adelaide Suite Style
+Open Space Furniture,Urban Elements,Furniture,Bollard,Concrete Cylindrical
+Open Space Furniture,Urban Elements,Furniture,Bollard,Energy Absorbing
+Open Space Furniture,Urban Elements,Furniture,Bollard,Heritage Style Acorn
+Open Space Furniture,Urban Elements,Furniture,Bollard,Nonremovable
+Open Space Furniture,Urban Elements,Furniture,Bollard,Plain Tubular Steel
+Open Space Furniture,Urban Elements,Furniture,Bollard,Removable
+Open Space Furniture,Urban Elements,Furniture,Bollard,Retractable
+Open Space Furniture,Urban Elements,Furniture,Bollard,Steel With Fluted Top
+Open Space Furniture,Urban Elements,Furniture,Drinking Fountain,Curved
+Open Space Furniture,Urban Elements,Furniture,Drinking Fountain,Memorial
+Open Space Furniture,Urban Elements,Furniture,Drinking Fountain,Post
+Open Space Furniture,Urban Elements,Furniture,Drinking Fountain,Refill
+Open Space Furniture,Urban Elements,Furniture,Picnic Table,Bench
+Open Space Furniture,Urban Elements,Furniture,Picnic Table,Flat Top
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Concrete
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Concrete and Mosaic
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Large (>1500mm x 2000mm)
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Medium (<=1500mm x 2000mm)
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Sandstone
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Small (<=1000mm x 1500mm)
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Steel
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Timber
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Timber and Steel
+Open Space Furniture,Urban Elements,Furniture,Planter Box,Zinc
+Open Space Furniture,Urban Elements,Furniture,Seat,Border
+Open Space Furniture,Urban Elements,Furniture,Seat,Fixed
+Open Space Furniture,Urban Elements,Furniture,Seat,Free Standing
+Open Space Furniture,Urban Elements,Parking,Parking Machine,MetroLite
+Open Space Furniture,Urban Elements,Sign,Wayfinding Strategy Sign,Interpretive Large Sign
+Open Space Furniture,Urban Elements,Structure,Flag Pole,Official
+Open Space Furniture,Urban Elements,Waste,Bin,Enclosure
+Open Space Furniture,Urban Elements,Waste,Bin,Standard Litter Bin
+Open Space Services,Maintenance,Cleansing Asset,Cleansing Asset,General Cleansing Asset
+Open Space Services,Maintenance,Cleansing Asset,Cleansing Asset,Monument
+Open Space Services,Maintenance,Cleansing Asset,Cleansing Asset,Private Building
+Open Space Services,Maintenance,Cleansing Asset,Cleansing Asset,Statue
+Open Space Services,Maintenance,Inspection Zones,Rapid Response,Rapid Response
+Open Space Services,Water Infrastructure,Sewer Infrastructure,Nodes,Wash Down Tap
+Other Structures,Urban Elements,Other Structures,Other Structures,Arbour Structure
+Other Structures,Urban Elements,Other Structures,Other Structures,Basketball Backboard
+Other Structures,Urban Elements,Other Structures,Other Structures,Canopy
+Other Structures,Urban Elements,Other Structures,Other Structures,Handrail
+Other Structures,Urban Elements,Other Structures,Other Structures,Horse Trough
+Other Structures,Urban Elements,Other Structures,Other Structures,Miscellaneous
+Other Structures,Urban Elements,Other Structures,Other Structures,Pergola
+Other Structures,Urban Elements,Other Structures,Other Structures,Platform
+Other Structures,Urban Elements,Other Structures,Other Structures,Rotunda
+Other Structures,Urban Elements,Other Structures,Other Structures,Shade Sail
+Other Structures,Urban Elements,Other Structures,Other Structures,Shelter
+Other Structures,Urban Elements,Other Structures,Other Structures,Skate Rink
+Other Structures,Urban Elements,Other Structures,Other Structures,Soccer Goals
+Other Structures,Urban Elements,Other Structures,Other Structures,Tennis Net and Posts
+Other Structures,Urban Elements,Structure,Other Structures,Arbour Structure
+Park Active Areas,Park Lands and Open Space,Open Space Area,Sportsfield and Area,General Sports Field
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Basketball Court,Basketball Court - Acrylic Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Basketball Court,Basketball Court - Asphalt Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,BMX Track,BMX Track - Beginner
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Chess Set,Chess Set - Concrete
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Cricket Pitch,Cricket Pitch - Concrete
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Golf Greens,Golf Greens - Turf Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Multipurpose Court,Multipurpose Court - Acrylic Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Multipurpose Court,Multipurpose Court - Asphalt Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Netball Court,Netball Court - Acrylic Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Petanque,Petanque - Gravel Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Skatepark,Skatepark - Concrete Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sports Equipment,Basketball Ring
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sports Equipment,Football Goal Posts
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sports Equipment,Netball Ring
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sports Equipment,Skatepark Equipment
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sports Equipment,Soccer Goals
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sports Equipment,Tennis Net
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sportsfield and Area,BMX Track
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Sportsfield and Area,Skate Park
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Tennis Court,Tennis Court - Acrylic Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Tennis Court,Tennis Court - Synthetic Turf Surface
+Park Active Areas,Park Lands and Open Space,Sportsfields & Active Areas,Tennis Court,Tennis Court - Turf Surface
+Park Active Areas,Urban Elements,Recreational,Cricket Pitch,Cricket Pitch - Concrete
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Archery Field
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Athletic Track
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Basketball Court
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Bowls Lawn
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Cricket Net
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Cricket Pitch
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Croquet Field
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Fitness Station
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,General Sports Field
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Golf Net
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Hockey Field
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Netball Court
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Petanque Piste
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Soccer Pitch
+Park Active Areas,Urban Elements,Recreational,Sportsfield and Area,Tennis Court
+Park Passive Areas,,,Garden Bed,Native
+Park Passive Areas,Maintenance,City Wide Activities,City Wide Activities,City Wide Activities - Park
+Park Passive Areas,Maintenance,City Wide Activities,City Wide Activities,City Wide Activities - Street
+Park Passive Areas,Maintenance,Horticulture,Biodiversity Area,Buffer Conservation Zone
+Park Passive Areas,Maintenance,Horticulture,Biodiversity Area,Butterfly Conservation Zone
+Park Passive Areas,Maintenance,Horticulture,Biodiversity Area,Informal Recreation Zone
+Park Passive Areas,Maintenance,Horticulture,Biodiversity Area,Protected Conservation Zone
+Park Passive Areas,Maintenance,Horticulture,Biodiversity Area,Remnant Conservation Zone
+Park Passive Areas,Maintenance,Horticulture,Biodiversity Area,Revegetation Conservation Zone
+Park Passive Areas,Maintenance,Horticulture,Park,Park
+Park Passive Areas,Maintenance,Horticulture,Park,Sub-Park Region
+Park Passive Areas,Maintenance,Horticulture,Spray Zone,Spray Zone
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Garden Bed,Annuals
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Garden Bed,Community
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Garden Bed,Hedge
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Garden Bed,Native
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Garden Bed,Perennials
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Garden Bed,Roses
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Grassed Area,Irrigated Turf
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Stratacell,Stratacell
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Stratacell,Stratavault
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Streetscape,Medians
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Streetscape,Nature Strips
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Streetscape,Planted Road Verge
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Streetscape,Planted Verges
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Streetscape,Planter Box
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Streetscape,Roundabout
+Park Passive Areas,Park Lands and Open Space,Open Space Area,Streetscape,Verges
+Park Passive Areas,Park Lands and Open Space,Water Feature,Water Feature,Ornamental Stream
+Park Passive Areas,Park Lands and Open Space,Water Feature,Water Feature,Rock Pool
+Park Passive Areas,Park Lands and Open Space,Water Feature,Water Feature,Water Feature
+Park Passive Areas,Park Lands and Open Space,Water Feature,Water Feature,Water Play
+Pathways,Transportation,Pathway,Access Ramp,Double
+Pathways,Transportation,Pathway,Access Ramp,Single
+Pathways,Transportation,Pathway,Park Lands,Accessible Ramp
+Pathways,Transportation,Pathway,Park Lands,Informal Path
+Pathways,Transportation,Pathway,Park Lands,Pedestrian
+Pathways,Transportation,Pathway,Park Lands,Shared Use Path
+Pathways,Transportation,Pathway,Park Lands,Stairs
+Pathways,Transportation,Pathway,Road Reserve,CycleWay
+Pathways,Transportation,Pathway,Road Reserve,Pedestrian
+Pathways,Transportation,Pathway,Road Reserve,Shared Use Path
+Pathways,Transportation,Pathway,Road Reserve,Stairs
+Pathways,Transportation,Road,Park Lands,Pedestrian
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Art
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Carousels
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Climber
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Fitness Station
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Furniture
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,General
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Jnr Balance Rope
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Jnr Climber Poles
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Jnr Rope Unit
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Jnr See Saw
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Jnr Spring Rocker
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Jnr Step Poles
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Multipurpose
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Rocking Equipment
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Slides
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Spatial Networks
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Sports
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Swings
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Tactile Play
+Play Equipment,Park Lands and Open Space,Recreational,Playground Equipment,Zip Line
+Play Equipment,Urban Elements,Recreational,Playground Equipment,Climber
+Play Equipment,Urban Elements,Recreational,Playground Equipment,Fitness Station
+Play Equipment,Urban Elements,Recreational,Playground Equipment,Furniture
+Play Equipment,Urban Elements,Recreational,Playground Equipment,General
+Play Equipment,Urban Elements,Recreational,Playground Equipment,Jnr See Saw
+Play Equipment,Urban Elements,Recreational,Playground Equipment,Multipurpose
+Play Equipment,Urban Elements,Recreational,Playground Equipment,Rocking Equipment
+Play Equipment,Urban Elements,Recreational,Playground Equipment,Swings
+Play Equipment,Urban Elements,Structure,Playground Equipment,Climber
+Playgrounds,Park Lands and Open Space,Recreational,Playground,Activity Hub
+Playgrounds,Park Lands and Open Space,Recreational,Playground,Fitness Station
+Playgrounds,Park Lands and Open Space,Recreational,Playground,Playground
+Playgrounds,Urban Elements,Recreational,Playground,Activity Hub
+Playgrounds,Urban Elements,Recreational,Playground,BMX Track
+Playgrounds,Urban Elements,Recreational,Playground,Fitness Station
+Playgrounds,Urban Elements,Recreational,Playground,Nature Inspired Play
+Playgrounds,Urban Elements,Recreational,Playground,Playground
+Playgrounds,Urban Elements,Recreational,Playground,Skate Park
+Playgrounds,Urban Elements,Recreational,Playground Equipment,Climber
+Playgrounds,Urban Elements,Recreational,Playground Equipment,Jnr Rope Unit
+Playgrounds,Urban Elements,Recreational,Playground Equipment,Multipurpose
+Playgrounds,Urban Elements,Recreational,Playground Equipment,Swings
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,ACC Type 1 - Aluminium and Glass
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,ACC Type 3 - Aggregate
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,ACC Type 4 - Single Side Standard Length
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,Adshel - Advertising Double Side Single Length
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,Adshel - Advertising Single Side Double length
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,Adshel - Advertising Single Side Standard Length
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,Adshel - Advertising Standard Solar
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,Adshel - Non-advertising Single Side Double Length
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,Adshel - Non-advertising Standard Solar
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,Heritage Shelter
+Public Transport Shelters,Urban Elements,Structure,Bus Shelter,JVH Kiato
+Public Transport Shelters,Urban Elements,Structure,Bus Stop,Bus Stop
+Retaining Walls,Urban Elements,Structure,Retaining Wall,Crib Wall
+Retaining Walls,Urban Elements,Structure,Retaining Wall,Gabion Basket Wall
+Retaining Walls,Urban Elements,Structure,Retaining Wall,Low Gardens Retaining Wall
+Retaining Walls,Urban Elements,Structure,Retaining Wall,Retaining Wall
+Retaining Walls,Water Infrastructure,Stormwater Network Structure,Earth Retaining Structure,Energy Dissipation
+Retaining Walls,Water Infrastructure,Stormwater Network Structure,Earth Retaining Structure,Erosion Protection
+Retaining Walls,Water Infrastructure,Torrens River and Creeks,Earth Retaining Structure,Earth Retaining Structure
+Retaining Walls,Water Infrastructure,Torrens River and Creeks,Earth Retaining Structure,Erosion Protection
+Roads,Transportation,Road,Car Park,Macadam Pavement (Low Volume)
+Roads,Transportation,Road,Car Park,Sealed
+Roads,Transportation,Road,Car Park,Unsealed Rubble Pavement
+Roads,Transportation,Road,Park Lands Access Road,Brick Paver on Granular Pavement
+Roads,Transportation,Road,Park Lands Access Road,Macadam Pavement (Low Volume)
+Roads,Transportation,Road,Park Lands Access Road,Unsealed Rubble Pavement
+Roads,Transportation,Road,Road,Carriageway
+Roads,Transportation,Road,Road Carriageway,Brick Paver on Granular Pavement
+Roads,Transportation,Road,Road Carriageway,Macadam Pavement (High Volume)
+Roads,Transportation,Road,Road Carriageway,Macadam Pavement (Low Volume)
+Roads,Transportation,Road,Road Carriageway,Rigid Concrete Pavement
+Roads,Transportation,Road,Road Carriageway,Stone Paver on Rigid Concrete Pavement
+Roads,Transportation,Road,Road Intersection,Brick Paver on Granular Pavement
+Roads,Transportation,Road,Road Intersection,Macadam Pavement (High Volume)
+Roads,Transportation,Road,Road Intersection,Macadam Pavement (Low Volume)
+Roads,Transportation,Road,Road Intersection (Raised),Macadam Pavement (Low Volume)
+Roads Equipment,Urban Elements,Parking,Parking Machine,MetroLite
+Roads Equipment,Urban Elements,Parking,Parking Machine,TX
+Sewer Mains,Water Infrastructure,Sewer Infrastructure,Pipe,Main
+Sewer Mains,Water Infrastructure,Sewer Infrastructure,Pipe,Rising Main
+Sewer Mains,Water Infrastructure,Sewer Infrastructure,Pipe,Sanitary Drainage
+Sewer Nodes,Water Infrastructure,Sewer Infrastructure,Nodes,Junction Box
+Sewer Pump Stations,Water Infrastructure,Sewer Infrastructure,Nodes,Pump
+Sewer Pumps,Water Infrastructure,Sewer Infrastructure,Nodes,Pump
+Signals,Transportation,Traffic Signals,Audio Tactile,Audio Tactile
+Signals,Transportation,Traffic Signals,Detector,Vehicle Detector-Flir
+Signals,Transportation,Traffic Signals,Detector Loop,Cycle Detector-Induction
+Signals,Transportation,Traffic Signals,Detector Loop,Tram Detector-Induction
+Signals,Transportation,Traffic Signals,Detector Loop,Vehicle Detector-Induction
+Signals,Transportation,Traffic Signals,Detector Loop,Vehicle Detector-Patriot
+Signals,Transportation,Traffic Signals,Pit,Join Pit
+Signals,Transportation,Traffic Signals,Pit,Loop Pit
+Signals,Transportation,Traffic Signals,Pit,Pull Through
+Signals,Transportation,Traffic Signals,Push Button,Cyclist Push Button
+Signals,Transportation,Traffic Signals,Push Button,Push Button Pole
+Signals,Transportation,Traffic Signals,Push Button,Push Button Shared Pole
+Signals,Transportation,Traffic Signals,Traffic Lantern Assembly,Traffic Lantern Assembly
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,10.5m Adepole combination mast arm
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,10.5m Adepole combination pole
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,10.5m combination
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,10.5m combination mast arm
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,10.5m combination mast arm(CMA)
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,3 quarters pole
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,9m combination
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,9m combination mast arm (CMA)
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,Mast arm Pole
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,Push Button
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,Standard 4.4m
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,Stobie (SAPN)
+Signals,Transportation,Traffic Signals,Traffic Signal Poles,Tram (DPTI)
+Signs,Urban Elements,Sign,Business Signs,Business Sign Plinth Short
+Signs,Urban Elements,Sign,Business Signs,Business Sign Plinth Tall
+Signs,Urban Elements,Sign,Business Signs,Business Sign Wall Mounted Short
+Signs,Urban Elements,Sign,Custom Sign,Building Identification Sign Small
+Signs,Urban Elements,Sign,Custom Sign,Cultural
+Signs,Urban Elements,Sign,Custom Sign,Custom Sign
+Signs,Urban Elements,Sign,Custom Sign,"Hanging Fingerboard Sign, Topham Mall"
+Signs,Urban Elements,Sign,Custom Sign,Information
+Signs,Urban Elements,Sign,Custom Sign,"Light Box Panel, Topham Mall"
+Signs,Urban Elements,Sign,Custom Sign,"Long Panel Directional, Topham Mall"
+Signs,Urban Elements,Sign,Custom Sign,Naming
+Signs,Urban Elements,Sign,Custom Sign,Pole Box with a Custom Pole
+Signs,Urban Elements,Sign,Custom Sign,"Short Panel Directional, Topham Mall"
+Signs,Urban Elements,Sign,Custom Sign,Urban Plinth
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Advisory Large Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Advisory Small Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Bin Mounted Directional Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Braille Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Building Identification Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Building Identification Sign Small
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Cycle Bollard
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Cycle Directional Panel
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Fingerboard
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Gateway Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Interpretive Large Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Interpretive Sign (Post Mounted)
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Park Lands Plinth
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Pedestrian Panel
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Pole Box
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Pole Box (Cycle)
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Pole Mounted Directional Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Pole Warp
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Regulatory Panel
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Site Identification Directional Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Site Identification Mapped Sign
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Site Identification Regulatory
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Surface Graphics
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Urban Plinth
+Signs,Urban Elements,Sign,Wayfinding Strategy Sign,Vehicular Entry Sign
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Culvert,Box
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Culvert,Culvert
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Links,Pipe-Main
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Pipe,Inlet
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Pipe,Main
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Pipe,StripDrain
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Pipe,SubSurface
+Stormwater Drains,Water Infrastructure,Stormwater Network Structure,Pipe,Trench Drain
+Stormwater End Structures,Water Infrastructure,Stormwater Network Structure,Headwall,Headwall
+Stormwater End Structures,Water Infrastructure,Stormwater Network Structure,Nodes,Headwall
+Stormwater End Structures,Water Infrastructure,Stormwater Network Structure,Plug,Plug
+Stormwater End Structures,Water Infrastructure,Stormwater Network Structure,Sump,Pipe Connection Point
+Stormwater End Structures,Water Infrastructure,Stormwater Network Structure,Sump,Property Connection
+Stormwater Fittings,Water Infrastructure,Stormwater Network Structure,Nodes,Air Vent
+Stormwater Fittings,Water Infrastructure,Stormwater Network Structure,Nodes,Pump Station
+Stormwater Fittings,Water Infrastructure,Stormwater Network Structure,Nodes,Valve
+Stormwater GPTs,Water Infrastructure,Stormwater Network Structure,Gross Pollutant Trap,Gross Pollutant Trap
+Stormwater GPTs,Water Infrastructure,Stormwater Network Structure,Nodes,Retention Tank
+Stormwater Pits,Water Infrastructure,Stormwater Network Structure,Inlet Pit,Double Catchpit
+Stormwater Pits,Water Infrastructure,Stormwater Network Structure,Inlet Pit,Floor Drain
+Stormwater Pits,Water Infrastructure,Stormwater Network Structure,Inlet Pit,Inlet Pit
+Stormwater Pits,Water Infrastructure,Stormwater Network Structure,Join,Join
+Stormwater Pits,Water Infrastructure,Stormwater Network Structure,Junction Box,Accessible Junction Box
+Stormwater Pits,Water Infrastructure,Stormwater Network Structure,Junction Box,Inaccessible Junction Box
+Stormwater Pits,Water Infrastructure,Stormwater Network Structure,Junction Box,Junction Box
+Switchboards,Lighting and Electrical,Distribution,Bollard Lighting Switch,Bollard Lighting Switch
+Switchboards,Lighting and Electrical,Distribution,Metered Board,Power Bollard
+Switchboards,Lighting and Electrical,Distribution,Metered Board,Sub-board
+Switchboards,Lighting and Electrical,Distribution,Power Outlet,Power Outlet
+Switchboards,Lighting and Electrical,Distribution,Switchboard,CoA Wall Mounted Control Panel
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard - Above Ground - Large
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard - Above Ground - Medium
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard - Above Ground - Size TBC
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard - Above Ground - Small
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard - Above Ground - Victoria Square - Large
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard - Below Ground
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Main Switchboard - Wall Mounted - Small
+Switchboards,Lighting and Electrical,Distribution,Switchboard,Power Bollard - Above Ground
+Trees,Park Lands and Open Space,Open Space Area,Tree,Park Tree
+Trees,Park Lands and Open Space,Open Space Area,Tree,Street Tree
+Trees,Park Lands and Open Space,Open Space Area,Tree Inlet,Tree Inlet
+Water Fittings,Water Infrastructure,Non Potable Water,Pipe,Main
+Water Fittings,Water Infrastructure,Potable Water,Pipe,Main
+Water Meters and Services,Lighting and Electrical,Distribution,Electrical Meter,Electrical Meter
+Water Meters and Services,Park Lands and Open Space,Gas Fitting,Meter,Gas Meter
+Water Meters and Services,Park Lands and Open Space,Irrigation System,Meter,Water Meter
+Water Meters and Services,Water Infrastructure,Potable Water,Pipe,Main
+Water Pits,Water Infrastructure,Non Potable Water,Nodes,Non Potable Water Pit
+Water Pits,Water Infrastructure,Potable Water,Nodes,Potable Water Pit
+Water Plant and Equipment,Park Lands and Open Space,Irrigation System,Irrigation,Back Flow
+Water Plant and Equipment,Park Lands and Open Space,Water Regulators,Back Flow,Irrigation
+Water Plant and Equipment,Park Lands and Open Space,Water Regulators,Irrigation,Back Flow
+Water Plant and Equipment,Park Lands and Open Space,Water Regulators,Property,Back Flow
+Water Plant and Equipment,Water Infrastructure,Sewer Infrastructure,Aerator,Aerator
+Water Pumps,Park Lands and Open Space,Irrigation System,Irrigation,Pump
+Water Pumps,Water Infrastructure,Stormwater Network Structure,Nodes,Pump
+Water Reservoirs,Water Infrastructure,Torrens River and Creeks,Weir,Minor Weir
+Water Reservoirs,Water Infrastructure,Torrens River and Creeks,Weir,Torrens River Weir
+Water Valves,Water Infrastructure,Stormwater Network Structure,Nodes,Valve

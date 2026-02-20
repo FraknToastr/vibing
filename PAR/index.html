@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PAR Lookup Prepopulation Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="bg-shape bg-shape-a"></div>
+  <div class="bg-shape bg-shape-b"></div>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-top">
+        <div class="title-bar">
+          <div>
+            <p class="eyebrow">Project Asset Register</p>
+          </div>
+          <div class="hero-actions">
+            <div class="inline-group">
+              <input id="projectCodeInput" class="project-code-input" type="text" placeholder="Project Code">
+              <button class="ghost" id="applyProjectCode" type="button">Apply</button>
+            </div>
+            <button class="ghost" id="saveSession" type="button">Save session</button>
+            <button class="ghost" id="loadSession" type="button">Load session</button>
+            <button class="ghost" id="resetAll">Reset all</button>
+            <button class="ghost" id="toggleWidth">Full width</button>
+          </div>
+        </div>
+        <input type="file" id="sessionFileInput" accept=".json" hidden>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tabs" role="tablist" aria-label="PAR sections">
+      <button class="tab-btn is-active" data-tab="lookup" type="button" aria-controls="panel-lookup">
+        Lookups
+      </button>
+      <button class="tab-btn" data-tab="new" type="button" aria-controls="panel-new">
+        New Assets
+      </button>
+      <button class="tab-btn" data-tab="renewed" type="button" aria-controls="panel-renewed">
+        Renewed Assets
+      </button>
+      <button class="tab-btn" data-tab="disposed" type="button" aria-controls="panel-disposed">
+        Disposed Assets
+      </button>
+      <button class="tab-btn" data-tab="service-criteria" type="button" aria-controls="panel-service-criteria">
+        Service Criteria
+      </button>
+    </div>
+
+    <section class="tab-panel is-active" data-tab="lookup" id="panel-lookup">
+      <details class="card" id="lookup" open>
+        <summary class="card-header">
+          <div>
+            <h2>Lookup Tables</h2>
+            <p>Load the reference tables used to cascade asset details.</p>
+          </div>
+          <span class="chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="card-body">
+          <div class="form-row">
+            <button class="ghost" id="loadLookups">Load from repo CSVs</button>
+            <button class="ghost" id="loadLookupsLocal" type="button">Load from local CSVs</button>
+            <input type="file" id="lookupBulkInput" accept=".csv" multiple hidden>
+            <div class="status" id="lookupStatus">No lookups loaded.</div>
+          </div>
+          <div class="lookup-grid">
+            <div class="lookup-item" data-lookup="assetLookup">
+              <h3>Asset Lookup</h3>
+              <label class="file-input">
+                <input type="file" class="lookupFile" accept=".csv">
+                <span>Choose CSV</span>
+              </label>
+              <div class="status lookupStatus">⚠ Not loaded.</div>
+            </div>
+            <div class="lookup-item" data-lookup="componentLookup">
+              <h3>Component Lookup</h3>
+              <label class="file-input">
+                <input type="file" class="lookupFile" accept=".csv">
+                <span>Choose CSV</span>
+              </label>
+              <div class="status lookupStatus">⚠ Not loaded.</div>
+            </div>
+            <div class="lookup-item" data-lookup="componentFinancial">
+              <h3>Component Financials</h3>
+              <label class="file-input">
+                <input type="file" class="lookupFile" accept=".csv">
+                <span>Choose CSV</span>
+              </label>
+              <div class="status lookupStatus">⚠ Not loaded.</div>
+            </div>
+            <div class="lookup-item" data-lookup="valuationComponent">
+              <h3>Valuation Components</h3>
+              <label class="file-input">
+                <input type="file" class="lookupFile" accept=".csv">
+                <span>Choose CSV</span>
+              </label>
+              <div class="status lookupStatus">⚠ Not loaded.</div>
+            </div>
+            <div class="lookup-item" data-lookup="serviceCriteria">
+              <h3>Service Criteria</h3>
+              <label class="file-input">
+                <input type="file" class="lookupFile" accept=".csv">
+                <span>Choose CSV</span>
+              </label>
+              <div class="status lookupStatus">⚠ Not loaded.</div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="tab-panel" data-tab="new" id="panel-new" hidden>
+      <details class="card sheet" data-sheet="new" open>
+        <summary class="card-header">
+          <div>
+            <h2>New Assets</h2>
+            <p>Select a subtype and resolve asset + component details.</p>
+          </div>
+          <div class="summary-actions">
+            <button class="ghost summary-btn" id="resetNew" type="button">Reset</button>
+            <span class="chevron" aria-hidden="true"></span>
+          </div>
+        </summary>
+        <div class="card-body">
+          <div class="form-row">
+            <button class="ghost" id="addNewRow">Add row</button>
+            <div class="inline-group">
+              <button class="ghost" id="duplicateNewRow">Duplicate latest</button>
+              <select id="duplicateCount" class="count-select" aria-label="Duplicate count"></select>
+            </div>
+            <button class="ghost" id="insertNewRow">Insert empty row</button>
+            <button class="ghost" id="insertDuplicateRow">Insert duplicate</button>
+            <button class="ghost" id="removeSelectedRows">Remove selected</button>
+            <button class="primary" id="exportNewCsv">Export CSV</button>
+            <div class="status" id="newAssetStatus">Ready.</div>
+          </div>
+          <div class="table-wrap">
+            <table id="newAssetsTable"></table>
+          </div>
+          <div class="result" id="newAssetResult"></div>
+        </div>
+      </details>
+    </section>
+
+    <section class="tab-panel" data-tab="renewed" id="panel-renewed" hidden>
+      <details class="card sheet" data-sheet="renewed" open>
+        <summary class="card-header">
+          <div>
+            <h2>Renewed Assets</h2>
+            <p>Validate and prepopulate the Renewed Assets CSV.</p>
+          </div>
+          <div class="summary-actions">
+            <button class="ghost summary-btn" id="resetRenewed" type="button">Reset</button>
+            <span class="chevron" aria-hidden="true"></span>
+          </div>
+        </summary>
+        <div class="card-body">
+        <div class="form-row">
+          <button class="ghost" id="renewedLoadIds" type="button">Upload Asset IDs CSV</button>
+          <input type="file" id="renewedIdFile" accept=".csv" hidden>
+          <button class="ghost" id="renewedApplyIds" type="button">Apply pasted IDs</button>
+          <button class="ghost" id="renewedTogglePaste" type="button">Hide Paste Box</button>
+          <button class="ghost" id="renewedValidate" type="button">Validate</button>
+          <button class="ghost" id="renewedToggleFields" type="button">Hide Non-Asset Fields</button>
+          <button class="primary" id="exportRenewedCsv" type="button">Export CSV</button>
+          <div class="status" id="renewedStatus">No Asset IDs loaded.</div>
+        </div>
+        <textarea id="renewedIdText" rows="4"
+          placeholder="Paste Asset IDs (comma or line separated)."></textarea>
+          <div class="table-wrap table-wrap-renewed">
+            <table id="renewedAssetsTable"></table>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="tab-panel" data-tab="disposed" id="panel-disposed" hidden>
+      <details class="card sheet" data-sheet="disposed" open>
+        <summary class="card-header">
+          <div>
+            <h2>Disposed Assets</h2>
+            <p>Validate and prepopulate the Disposed Assets CSV.</p>
+          </div>
+          <div class="summary-actions">
+            <button class="ghost summary-btn" id="resetDisposed" type="button">Reset</button>
+            <span class="chevron" aria-hidden="true"></span>
+          </div>
+        </summary>
+        <div class="card-body">
+          <div class="form-row">
+          <button class="ghost" id="disposedLoadIds" type="button">Upload Asset IDs CSV</button>
+          <input type="file" id="disposedIdFile" accept=".csv" hidden>
+          <button class="ghost" id="disposedApplyIds" type="button">Apply pasted IDs</button>
+          <button class="ghost" id="disposedTogglePaste" type="button">Hide Paste Box</button>
+          <button class="ghost" id="disposedValidate" type="button">Validate</button>
+          <button class="ghost" id="disposedToggleFields" type="button">Hide Non-Asset Fields</button>
+          <button class="primary" id="exportDisposedCsv" type="button">Export CSV</button>
+          <div class="status" id="disposedStatus">No Asset IDs loaded.</div>
+        </div>
+          <textarea id="disposedIdText" rows="4"
+            placeholder="Paste Asset IDs (comma or line separated)."></textarea>
+          <div class="table-wrap table-wrap-renewed">
+            <table id="disposedAssetsTable"></table>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="tab-panel" data-tab="service-criteria" id="panel-service-criteria" hidden>
+      <details class="card sheet" data-sheet="service-criteria" open>
+        <summary class="card-header">
+          <div>
+            <h2>Service Criteria</h2>
+            <p>Build the Service Criteria CSV using lookup options.</p>
+          </div>
+          <div class="summary-actions">
+            <button class="ghost summary-btn" id="resetServiceCriteria" type="button">Reset</button>
+            <span class="chevron" aria-hidden="true"></span>
+          </div>
+        </summary>
+        <div class="card-body">
+          <div class="form-row">
+            <button class="ghost" id="addServiceCriteriaRow" type="button">Add row</button>
+            <div class="inline-group">
+              <button class="ghost" id="duplicateServiceCriteriaRow" type="button">Duplicate latest</button>
+              <select id="serviceCriteriaDuplicateCount" class="count-select" aria-label="Duplicate count"></select>
+            </div>
+            <button class="ghost" id="insertServiceCriteriaRow" type="button">Insert empty row</button>
+            <button class="ghost" id="insertDuplicateServiceCriteriaRow" type="button">Insert duplicate</button>
+            <button class="ghost" id="removeServiceCriteriaRows" type="button">Remove selected</button>
+            <button class="ghost" id="validateServiceCriteria" type="button">Validate</button>
+            <button class="primary" id="exportServiceCriteriaCsv" type="button">Export CSV</button>
+            <div class="status" id="serviceCriteriaStatus">Ready.</div>
+          </div>
+          <div class="table-wrap">
+            <table id="serviceCriteriaTable"></table>
+          </div>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Limits: 500 rows per sheet. All processing stays in your browser session.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

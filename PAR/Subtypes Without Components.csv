@@ -1,0 +1,52 @@
+asset type,asset subtype
+Building Tenancy,Building Tenancy
+Pit,Loop Pit
+Light Pole,10.4m Column
+Light Pole,10.5m Column
+Light Pole,12m Column
+Light Pole,18m Column
+Light Pole,6.5m Column
+Light Pole,9.0m Column
+Light Pole,9.0m HESS Column
+Light Pole,AdePole 10.5m
+Light Pole,AdePole Short
+Light Pole,Basic Lighting
+Light Pole,Bridge
+Light Pole,Catenary Column
+Light Pole,Ceremonial
+Light Pole,Combination Traffic Column
+Light Pole,FPM15F
+Light Pole,Heritage
+Light Pole,Modullum Column
+Light Pole,Park Street
+Light Pole,Post Top Lantern
+Light Pole,Tapered
+Luminaire,Catenary Lights
+Luminaire,Directional
+Luminaire,Fluorescent
+Luminaire,High Pressure Sodium
+Luminaire,Low Pressure Sodium
+Luminaire,Primary Luminaire
+Cleansing Asset,General Cleansing Asset
+Cleansing Asset,Monument
+Cleansing Asset,Private Building
+Rapid Response,Rapid Response
+Other Structures,Canopy
+City Wide Activities,City Wide Activities - Park
+City Wide Activities,City Wide Activities - Street
+Biodiversity Area,Buffer Conservation Zone
+Biodiversity Area,Butterfly Conservation Zone
+Biodiversity Area,Informal Recreation Zone
+Biodiversity Area,Protected Conservation Zone
+Biodiversity Area,Remnant Conservation Zone
+Biodiversity Area,Revegetation Conservation Zone
+Park,Park
+Park,Sub-Park Region
+Spray Zone,Spray Zone
+Access Ramp,Double
+Traffic Signal Poles,Stobie (SAPN)
+Traffic Signal Poles,Tram (DPTI)
+Custom Sign,Naming
+Metered Board,Power Bollard
+Switchboard,CoA Wall Mounted Control Panel
+Switchboard,Main Switchboard
