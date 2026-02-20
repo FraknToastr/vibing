@@ -160,6 +160,34 @@
     button.primary { background: #14532d; border-color: #22c55e; }
     button.primary:hover { background: #166534; }
 
+    .pattern-rows {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 0.4rem;
+    }
+
+    .pattern-row {
+      border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+      border-radius: 8px;
+      padding: 0.5rem;
+      background: color-mix(in srgb, var(--panel-2) 82%, transparent);
+    }
+
+    .pattern-row-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .pattern-row-title {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+
     .row-wrap {
       overflow-x: auto;
       padding-bottom: 0.2rem;
@@ -298,9 +326,10 @@
   <main class="container">
     <section class="card">
       <h1>Wordle-Style Pattern Extractor (Offline)</h1>
-      <p class="subtle">Extracts matching substrings from pasted text using a 20-position pattern row.</p>
+      <p class="subtle">Extracts matching substrings from pasted text using one or more 20-position pattern rows.</p>
       <ol class="usage">
         <li>Paste text, set pattern type + optional char in each square, then click <strong>Extract</strong>.</li>
+        <li>Use <strong>Add Another Pattern</strong> to create alternate rows (for example DNNNN and FNNNN).</li>
         <li>Keep <strong>Length</strong> in Auto, or set manually (1–20) to force extraction length.</li>
         <li>Use output options for quoting, dedupe, trim, and CSV row formatting.</li>
       </ol>
@@ -317,9 +346,10 @@
             <option value="pathwayId">Pathway Id</option>
             <option value="planSaId">Plan SA Id</option>
             <option value="pathwayUbn">Pathway UBN</option>
-            <option value="auMobile">Australian Mobile</option>
-            <option value="auAbn">Australian ABN</option>
-            <option value="auTfn">Australian Tax File Number</option>
+            <option value="auMobile">Australian Mobile (2 patterns)</option>
+            <option value="auMedicare">Australian Medicare Number (3 patterns)</option>
+            <option value="auAbn">Australian ABN (2 patterns)</option>
+            <option value="auTfn">Australian Tax File Number (3 patterns)</option>
           </select>
         </label>
         <label class="field">
@@ -332,17 +362,16 @@
         </label>
         <button id="resetPatternBtn" type="button">Reset Pattern</button>
         <button id="sampleBtn" type="button">Sample Input</button>
+        <button id="addPatternRowBtn" type="button">Add Another Pattern</button>
       </div>
       <div class="subtle">Type codes per position: <strong>L</strong>=Letter, <strong>N</strong>=Number, <strong>C</strong>=Character, <strong>*</strong>=Wildcard.</div>
-      <div class="row-wrap" aria-label="Pattern row scroll area">
-        <div id="patternGrid" class="pattern-grid" role="group" aria-label="20-position pattern"></div>
-      </div>
+      <div id="patternRows" class="pattern-rows" aria-label="Pattern maker rows"></div>
       <div id="statusMsg" class="status" aria-live="polite"></div>
       <div id="counter" class="counter">
         <span>Total matches: <code id="countTotal">0</code></span>
         <span>Unique output: <code id="countUnique">0</code></span>
         <span>Time: <code id="countTime">0 ms</code></span>
-        <span>Active length: <code id="activeLen">1</code></span>
+        <span>Active length(s): <code id="activeLen">1</code></span>
       </div>
     </section>
 
@@ -402,7 +431,8 @@
     const TOTAL_POSITIONS = 20;
 
     const el = {
-      patternGrid: document.getElementById("patternGrid"),
+      patternRows: document.getElementById("patternRows"),
+      addPatternRowBtn: document.getElementById("addPatternRowBtn"),
       lengthAuto: document.getElementById("lengthAuto"),
       manualLength: document.getElementById("manualLength"),
       statusMsg: document.getElementById("statusMsg"),
@@ -426,16 +456,30 @@
       sampleBtn: document.getElementById("sampleBtn")
     };
 
-    const patternCells = [];
+    const patternRows = [];
+    let nextPatternRowId = 1;
     const PATTERN_PRESETS = {
-      asseticId: { label: "Assetic Id", template: "NNNNNN" },
-      pathwayId: { label: "Pathway Id", template: "NNNNNN" },
-      planSaId: { label: "Plan SA Id", template: "NNNNNNNN" },
+      asseticId: { label: "Assetic Id", templates: ["NNNNNN"] },
+      pathwayId: { label: "Pathway Id", templates: ["NNNNNN"] },
+      planSaId: { label: "Plan SA Id", templates: ["NNNNNNNN"] },
       // Based on UBN.csv dominant format.
-      pathwayUbn: { label: "Pathway UBN", template: "NNNN-NN-NN" },
-      auMobile: { label: "Australian Mobile", template: "04NNNNNNNN" },
-      auAbn: { label: "Australian ABN", template: "NNNNNNNNNNN" },
-      auTfn: { label: "Australian Tax File Number", template: "NNNNNNNNN" }
+      pathwayUbn: { label: "Pathway UBN", templates: ["NNNN-NN-NN"] },
+      auMobile: {
+        label: "Australian Mobile (2 patterns)",
+        templates: ["04NNNNNNNN", "+614NNNNNNNN"]
+      },
+      auMedicare: {
+        label: "Australian Medicare Number (3 patterns)",
+        templates: ["NNNNNNNNNN", "NNNN NNNNN N", "NNNN-NNNNN-N"]
+      },
+      auAbn: {
+        label: "Australian ABN (2 patterns)",
+        templates: ["NNNNNNNNNNN", "NN NNN NNN NNN"]
+      },
+      auTfn: {
+        label: "Australian Tax File Number (3 patterns)",
+        templates: ["NNNNNNNNN", "NNN NNN NNN", "NNN-NNN-NNN"]
+      }
     };
     const HEADER_NAME_CUSTOM = "custom pattern";
     const HEADER_NAME_SAMPLE = "Sample";
@@ -504,15 +548,116 @@
       el.headerName.value = HEADER_NAME_CUSTOM;
     }
 
-    // Creates the 20 UI cells (selector + char input) and installs keyboard behavior.
-    function initPatternGrid() {
+    function getPresetTemplates(preset) {
+      if (!preset) return [];
+      if (Array.isArray(preset.templates) && preset.templates.length > 0) {
+        return preset.templates;
+      }
+      if (typeof preset.template === "string" && preset.template !== "") {
+        return [preset.template];
+      }
+      return [];
+    }
+
+    function refreshPatternRowHeaders() {
+      const allowRemove = patternRows.length > 1;
+      patternRows.forEach((row, idx) => {
+        row.title.textContent = `Pattern ${idx + 1}`;
+        row.removeBtn.disabled = !allowRemove;
+        row.removeBtn.style.visibility = allowRemove ? "visible" : "hidden";
+      });
+    }
+
+    function setRowToWildcard(row) {
+      row.cells.forEach((c) => {
+        c.select.value = TYPE.WILDCARD;
+        c.input.value = "";
+        c.input.classList.remove("invalid");
+      });
+    }
+
+    function applyTemplateToRow(row, template) {
+      setRowToWildcard(row);
+      const tokens = (template || "").split("").slice(0, TOTAL_POSITIONS);
+      tokens.forEach((token, idx) => {
+        const cell = row.cells[idx];
+        if (token === "N") {
+          cell.select.value = TYPE.NUMBER;
+          cell.input.value = "";
+        } else if (token === "L") {
+          cell.select.value = TYPE.LETTER;
+          cell.input.value = "";
+        } else if (token === "C") {
+          cell.select.value = TYPE.CHARACTER;
+          cell.input.value = "";
+        } else if (token === "*") {
+          cell.select.value = TYPE.WILDCARD;
+          cell.input.value = "";
+        } else if (isDigit(token)) {
+          cell.select.value = TYPE.NUMBER;
+          cell.input.value = token;
+        } else if (isLetter(token)) {
+          cell.select.value = TYPE.LETTER;
+          cell.input.value = token;
+        } else {
+          cell.select.value = TYPE.CHARACTER;
+          cell.input.value = token;
+        }
+      });
+    }
+
+    function createPatternRow() {
+      const row = {
+        id: nextPatternRowId,
+        root: document.createElement("div"),
+        title: document.createElement("div"),
+        removeBtn: document.createElement("button"),
+        cells: []
+      };
+      nextPatternRowId += 1;
+
+      row.root.className = "pattern-row";
+      const rowHead = document.createElement("div");
+      rowHead.className = "pattern-row-head";
+
+      row.title.className = "pattern-row-title";
+      row.title.textContent = "Pattern";
+
+      row.removeBtn.type = "button";
+      row.removeBtn.textContent = "Remove";
+      row.removeBtn.addEventListener("click", () => {
+        if (patternRows.length <= 1) return;
+        const idx = patternRows.findIndex((entry) => entry.id === row.id);
+        if (idx === -1) return;
+        patternRows[idx].root.remove();
+        patternRows.splice(idx, 1);
+        el.presetSelect.value = "";
+        setHeaderNameByPatternSource("custom");
+        refreshPatternRowHeaders();
+        validatePattern(false);
+        setStatus("Pattern removed.", "");
+      });
+
+      rowHead.appendChild(row.title);
+      rowHead.appendChild(row.removeBtn);
+      row.root.appendChild(rowHead);
+
+      const rowWrap = document.createElement("div");
+      rowWrap.className = "row-wrap";
+      const grid = document.createElement("div");
+      grid.className = "pattern-grid";
+      grid.setAttribute("role", "group");
+      grid.setAttribute("aria-label", "20-position pattern");
+      rowWrap.appendChild(grid);
+      row.root.appendChild(rowWrap);
+
       for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
         const cell = document.createElement("div");
         cell.className = "cell";
 
         const select = document.createElement("select");
         select.className = "type-select";
-        select.setAttribute("aria-label", `Type for position ${i + 1}`);
+        select.setAttribute("aria-label", `Type for pattern ${row.id}, position ${i + 1}`);
         [TYPE.LETTER, TYPE.NUMBER, TYPE.CHARACTER, TYPE.WILDCARD].forEach((code) => {
           const option = document.createElement("option");
           option.value = code;
@@ -527,10 +672,9 @@
         input.maxLength = 1;
         input.autocomplete = "off";
         input.spellcheck = false;
-        input.setAttribute("aria-label", `Character for position ${i + 1}`);
+        input.setAttribute("aria-label", `Character for pattern ${row.id}, position ${i + 1}`);
 
         input.addEventListener("input", (ev) => {
-          // Keep exactly one character; auto-advance once user types.
           const v = ev.target.value;
           ev.target.value = v.length > 1 ? v.slice(0, 1) : v;
           if (ev.target.value !== "") {
@@ -545,24 +689,25 @@
           setHeaderNameByPatternSource("custom");
           validatePattern(false);
           if (ev.target.value && i < TOTAL_POSITIONS - 1) {
-            patternCells[i + 1].input.focus();
-            patternCells[i + 1].input.select();
+            row.cells[i + 1].input.focus();
+            row.cells[i + 1].input.select();
           }
         });
 
         input.addEventListener("keydown", (ev) => {
           if (ev.key === "ArrowRight" && i < TOTAL_POSITIONS - 1) {
             ev.preventDefault();
-            patternCells[i + 1].input.focus();
-            patternCells[i + 1].input.select();
+            row.cells[i + 1].input.focus();
+            row.cells[i + 1].input.select();
           } else if (ev.key === "ArrowLeft" && i > 0) {
             ev.preventDefault();
-            patternCells[i - 1].input.focus();
-            patternCells[i - 1].input.select();
+            row.cells[i - 1].input.focus();
+            row.cells[i - 1].input.select();
           } else if (ev.key === "Backspace" && ev.target.value === "" && i > 0) {
             ev.preventDefault();
-            patternCells[i - 1].input.focus();
-            patternCells[i - 1].input.value = "";
+            row.cells[i - 1].input.focus();
+            row.cells[i - 1].input.value = "";
+            setHeaderNameByPatternSource("custom");
             validatePattern(false);
           }
         });
@@ -574,14 +719,34 @@
 
         cell.appendChild(select);
         cell.appendChild(input);
-        el.patternGrid.appendChild(cell);
-        patternCells.push({ cell, select, input });
+        grid.appendChild(cell);
+        row.cells.push({ cell, select, input });
       }
-      updateActiveLengthVisuals(getActiveLength());
+
+      return row;
     }
 
-    // Computes active length L according to spec.
-    function getActiveLength() {
+    function addPatternRow(template = "", quiet = false) {
+      const row = createPatternRow();
+      patternRows.push(row);
+      el.patternRows.appendChild(row.root);
+      if (template) applyTemplateToRow(row, template);
+      refreshPatternRowHeaders();
+      validatePattern(false);
+      if (!quiet) {
+        setStatus(`Added pattern ${patternRows.length}.`, "ok");
+      }
+      return row;
+    }
+
+    function clearPatternRows() {
+      while (patternRows.length > 0) {
+        const row = patternRows.pop();
+        row.root.remove();
+      }
+    }
+
+    function getActiveLengthForRow(row) {
       if (!el.lengthAuto.checked) {
         const manual = Number(el.manualLength.value);
         return Math.max(1, Math.min(TOTAL_POSITIONS, Number.isFinite(manual) ? manual : 1));
@@ -589,7 +754,7 @@
 
       let maxIdx = 0;
       for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
-        const c = patternCells[i];
+        const c = row.cells[i];
         const hasChar = c.input.value !== "";
         const typeNotWildcard = c.select.value !== TYPE.WILDCARD;
         if (hasChar || typeNotWildcard) maxIdx = i + 1;
@@ -600,51 +765,42 @@
     function applyPreset(key) {
       const preset = PATTERN_PRESETS[key];
       if (!preset) return;
+      const templates = getPresetTemplates(preset).map((template) => template.slice(0, TOTAL_POSITIONS));
+      if (templates.length === 0) return;
 
-      const tokens = preset.template.split("").slice(0, TOTAL_POSITIONS);
-      patternCells.forEach((c) => {
-        c.select.value = TYPE.WILDCARD;
-        c.input.value = "";
-        c.input.classList.remove("invalid");
-      });
+      clearPatternRows();
+      templates.forEach((template) => addPatternRow(template, true));
 
-      tokens.forEach((token, idx) => {
-        const cell = patternCells[idx];
-        if (token === "N") {
-          cell.select.value = TYPE.NUMBER;
-          cell.input.value = "";
-        } else if (token === "L") {
-          cell.select.value = TYPE.LETTER;
-          cell.input.value = "";
-        } else if (token === "*") {
-          cell.select.value = TYPE.WILDCARD;
-          cell.input.value = "";
-        } else {
-          cell.select.value = TYPE.CHARACTER;
-          cell.input.value = token;
-        }
-      });
-
-      el.lengthAuto.checked = false;
-      el.manualLength.disabled = false;
-      el.manualLength.value = String(tokens.length);
+      el.lengthAuto.checked = true;
+      el.manualLength.disabled = true;
+      el.manualLength.value = "20";
       setHeaderNameByPatternSource("preset", key);
       validatePattern(false);
-      setStatus(`Preset applied: ${preset.label} (${preset.template}).`, "ok");
+      setStatus(`Preset applied: ${preset.label}.`, "ok");
     }
 
     function updateCellWordleStates() {
-      patternCells.forEach((c) => {
-        const configured = c.input.value !== "" || c.select.value !== TYPE.WILDCARD;
-        c.cell.classList.toggle("configured", configured);
+      patternRows.forEach((row) => {
+        row.cells.forEach((c) => {
+          const configured = c.input.value !== "" || c.select.value !== TYPE.WILDCARD;
+          c.cell.classList.toggle("configured", configured);
+        });
       });
     }
 
-    function updateActiveLengthVisuals(L) {
-      el.activeLen.textContent = String(L);
-      for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
-        patternCells[i].cell.classList.toggle("inactive", i >= L);
+    function updateActiveLengthVisuals(activeLengths) {
+      if (activeLengths.length === 0) {
+        el.activeLen.textContent = "1";
+        return;
       }
+
+      el.activeLen.textContent = activeLengths.join(" | ");
+      patternRows.forEach((row, rowIdx) => {
+        const L = activeLengths[rowIdx] || 1;
+        for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
+          row.cells[i].cell.classList.toggle("inactive", i >= L);
+        }
+      });
     }
 
     function setStatus(msg, kind = "") {
@@ -652,32 +808,46 @@
       el.statusMsg.className = `status${kind ? ` ${kind}` : ""}`;
     }
 
+    function formatInvalidLocations(invalidByRow) {
+      return invalidByRow
+        .map((entry) => `row ${entry.row} position(s): ${entry.positions.join(", ")}`)
+        .join("; ");
+    }
+
     // Validates entered chars against selected type; marks invalid squares.
     function validatePattern(showError = true) {
-      const L = getActiveLength();
-      updateActiveLengthVisuals(L);
+      const activeLengths = patternRows.map((row) => getActiveLengthForRow(row));
+      updateActiveLengthVisuals(activeLengths);
       updateCellWordleStates();
 
-      const invalidPositions = [];
-      for (let i = 0; i < L; i += 1) {
-        const { select, input } = patternCells[i];
-        const ok = charAllowedByType(input.value, select.value);
-        input.classList.toggle("invalid", !ok);
-        if (!ok) invalidPositions.push(i + 1);
-      }
+      const invalidByRow = [];
+      patternRows.forEach((row, rowIdx) => {
+        const L = activeLengths[rowIdx];
+        const invalidPositions = [];
 
-      // Past L should never block extraction; clear invalid state there.
-      for (let i = L; i < TOTAL_POSITIONS; i += 1) {
-        patternCells[i].input.classList.remove("invalid");
-      }
+        for (let i = 0; i < L; i += 1) {
+          const { select, input } = row.cells[i];
+          const ok = charAllowedByType(input.value, select.value);
+          input.classList.toggle("invalid", !ok);
+          if (!ok) invalidPositions.push(i + 1);
+        }
 
-      if (invalidPositions.length > 0) {
-        if (showError) setStatus(`Pattern invalid at position(s): ${invalidPositions.join(", ")}.`, "error");
-        return { valid: false, invalidPositions, L };
+        for (let i = L; i < TOTAL_POSITIONS; i += 1) {
+          row.cells[i].input.classList.remove("invalid");
+        }
+
+        if (invalidPositions.length > 0) {
+          invalidByRow.push({ row: rowIdx + 1, positions: invalidPositions });
+        }
+      });
+
+      if (invalidByRow.length > 0) {
+        if (showError) setStatus(`Pattern invalid at ${formatInvalidLocations(invalidByRow)}.`, "error");
+        return { valid: false, invalidByRow, activeLengths };
       }
 
       if (showError) setStatus("Pattern valid and ready.", "ok");
-      return { valid: true, invalidPositions: [], L };
+      return { valid: true, invalidByRow: [], activeLengths };
     }
 
     // Build matcher exactly as requested.
@@ -753,9 +923,9 @@
 
     function extractMatches() {
       const start = performance.now();
-      const { valid, invalidPositions, L } = validatePattern(true);
+      const { valid, invalidByRow, activeLengths } = validatePattern(true);
       if (!valid) {
-        setStatus(`Cannot extract: invalid pattern at position(s): ${invalidPositions.join(", ")}.`, "error");
+        setStatus(`Cannot extract: invalid pattern at ${formatInvalidLocations(invalidByRow)}.`, "error");
         el.countTotal.textContent = "0";
         el.countUnique.textContent = "0";
         el.countTime.textContent = `${Math.round(performance.now() - start)} ms`;
@@ -763,8 +933,9 @@
       }
 
       const text = el.inputText.value || "";
-      if (text.length < L) {
-        setStatus(`No matches: input length (${text.length}) is shorter than active length (${L}).`, "");
+      const minLength = activeLengths.length > 0 ? Math.min(...activeLengths) : 1;
+      if (text.length < minLength) {
+        setStatus(`No matches: input length (${text.length}) is shorter than active length (${minLength}).`, "");
         el.outputText.value = "No patterns found.";
         el.countTotal.textContent = "0";
         el.countUnique.textContent = "0";
@@ -772,12 +943,18 @@
         return;
       }
 
-      const selectors = patternCells.map((c) => c.select.value);
-      const chars = patternCells.map((c) => c.input.value);
-      const matcher = buildMatcher(selectors, chars, L);
-      if (!matcher.isValid) {
-        setStatus(`Cannot extract: invalid pattern at position(s): ${matcher.invalidPositions.join(", ")}.`, "error");
-        return;
+      const matchers = [];
+      for (let rowIdx = 0; rowIdx < patternRows.length; rowIdx += 1) {
+        const row = patternRows[rowIdx];
+        const L = activeLengths[rowIdx];
+        const selectors = row.cells.map((c) => c.select.value);
+        const chars = row.cells.map((c) => c.input.value);
+        const matcher = buildMatcher(selectors, chars, L);
+        if (!matcher.isValid) {
+          setStatus(`Cannot extract: invalid pattern at row ${rowIdx + 1}, position(s): ${matcher.invalidPositions.join(", ")}.`, "error");
+          return;
+        }
+        matchers.push({ matcher, L });
       }
 
       let total = 0;
@@ -786,19 +963,22 @@
       const seen = new Set();
       const values = [];
 
-      for (let i = 0; i <= text.length - L; i += 1) {
-        if (!matcher.matchAt(text, i)) continue;
-        total += 1;
-        let candidate = text.slice(i, i + L);
-        if (trimOutput) candidate = candidate.trim();
+      matchers.forEach(({ matcher, L }) => {
+        if (text.length < L) return;
+        for (let i = 0; i <= text.length - L; i += 1) {
+          if (!matcher.matchAt(text, i)) continue;
+          total += 1;
+          let candidate = text.slice(i, i + L);
+          if (trimOutput) candidate = candidate.trim();
 
-        if (allowDupes) {
-          values.push(candidate);
-        } else if (!seen.has(candidate)) {
-          seen.add(candidate);
-          values.push(candidate);
+          if (allowDupes) {
+            values.push(candidate);
+          } else if (!seen.has(candidate)) {
+            seen.add(candidate);
+            values.push(candidate);
+          }
         }
-      }
+      });
 
       el.outputText.value = formatOutput(values);
       el.countTotal.textContent = String(total);
@@ -809,7 +989,7 @@
         el.outputText.value = "No patterns found.";
         setStatus("No matches found.", "");
       } else {
-        setStatus(`Extraction complete: ${values.length} value(s) in output.`, "ok");
+        setStatus(`Extraction complete: ${values.length} value(s) from ${patternRows.length} pattern(s).`, "ok");
       }
     }
 
@@ -831,11 +1011,8 @@
     }
 
     function resetPattern() {
-      patternCells.forEach((c) => {
-        c.select.value = TYPE.WILDCARD;
-        c.input.value = "";
-        c.input.classList.remove("invalid");
-      });
+      clearPatternRows();
+      addPatternRow("", true);
       el.presetSelect.value = "";
       el.lengthAuto.checked = true;
       el.manualLength.disabled = true;
@@ -854,10 +1031,11 @@
 
       resetPattern();
       // Demo pattern: Letter, Letter, Number, Number => picks values like AB12, XY34.
-      patternCells[0].select.value = TYPE.LETTER;
-      patternCells[1].select.value = TYPE.LETTER;
-      patternCells[2].select.value = TYPE.NUMBER;
-      patternCells[3].select.value = TYPE.NUMBER;
+      const row = patternRows[0];
+      row.cells[0].select.value = TYPE.LETTER;
+      row.cells[1].select.value = TYPE.LETTER;
+      row.cells[2].select.value = TYPE.NUMBER;
+      row.cells[3].select.value = TYPE.NUMBER;
       el.lengthAuto.checked = false;
       el.manualLength.disabled = false;
       el.manualLength.value = "4";
@@ -892,6 +1070,11 @@
       });
       el.resetPatternBtn.addEventListener("click", resetPattern);
       el.sampleBtn.addEventListener("click", loadSample);
+      el.addPatternRowBtn.addEventListener("click", () => {
+        addPatternRow();
+        el.presetSelect.value = "";
+        setHeaderNameByPatternSource("custom");
+      });
       el.presetSelect.addEventListener("change", () => {
         if (el.presetSelect.value) {
           applyPreset(el.presetSelect.value);
@@ -905,7 +1088,7 @@
       });
     }
 
-    initPatternGrid();
+    addPatternRow("", true);
     initTheme();
     wireThemeMessages();
     wireEvents();
