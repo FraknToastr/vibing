@@ -1,50 +1,196 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>JR – GitHub Apps Launcher</title>
+  <title>Josh Roberts' Data Toolbox</title>
   <style>
     :root{
-      --bg:#0b0f14; --card:#121826; --muted:#9aa4b2; --text:#e6edf3;
-      --border:#223044; --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --btn:#1f6feb; --btnText:#ffffff; --btn2:#263042; --btn2Text:#e6edf3;
-      --chip:#1a2332; --chipText:#b9c4d3; --focus:#7aa7ff;
+      --bg:#08101a;
+      --bgGlowA:rgba(31,111,235,.18);
+      --bgGlowB:rgba(68,194,255,.14);
+      --cardBg:rgba(255,255,255,.04);
+      --panel:color-mix(in srgb, #101a29 90%, transparent);
+      --searchBg:rgba(255,255,255,.04);
+      --themeBg:#1a2432;
+      --muted:#9aa4b2;
+      --text:#e6edf3;
+      --border:#223044;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --btn:#1f6feb;
+      --btnText:#ffffff;
+      --btn2:#263042;
+      --btn2Text:#e6edf3;
+      --chip:#1a2332;
+      --chipText:#b9c4d3;
+      --focus:#7aa7ff;
+      --headerGlowA:rgba(31,111,235,.45);
+      --headerGlowB:rgba(68,194,255,.30);
     }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f6f8fb; --card:#ffffff; --muted:#5b6573; --text:#111827;
-        --border:#d9e1ee; --shadow: 0 10px 30px rgba(17,24,39,.10);
-        --btn:#1f6feb; --btnText:#ffffff; --btn2:#eef2f8; --btn2Text:#111827;
-        --chip:#eef2f8; --chipText:#334155; --focus:#2b6fff;
-      }
+
+    :root[data-theme="light"]{
+      --bg:#f4f7fb;
+      --bgGlowA:rgba(31,111,235,.10);
+      --bgGlowB:rgba(68,194,255,.08);
+      --cardBg:rgba(255,255,255,.86);
+      --panel:color-mix(in srgb, #ffffff 90%, transparent);
+      --searchBg:rgba(17,24,39,.02);
+      --themeBg:#eef2f8;
+      --muted:#4b5b6f;
+      --text:#111827;
+      --border:#d1dbe8;
+      --shadow:0 10px 30px rgba(17,24,39,.10);
+      --btn:#1f6feb;
+      --btnText:#ffffff;
+      --btn2:#eef2f8;
+      --btn2Text:#111827;
+      --chip:#eef2f8;
+      --chipText:#334155;
+      --focus:#2b6fff;
+      --headerGlowA:rgba(31,111,235,.24);
+      --headerGlowB:rgba(68,194,255,.18);
     }
+
     *{ box-sizing:border-box; }
-    body{
+    html, body{
       margin:0;
+      min-height:100%;
+    }
+    body{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 10% 0%, rgba(31,111,235,.20), transparent 55%),
-                  radial-gradient(1000px 500px at 90% 10%, rgba(122,167,255,.14), transparent 60%),
+      background: radial-gradient(1200px 600px at 10% 0%, var(--bgGlowA), transparent 55%),
+                  radial-gradient(1000px 500px at 90% 10%, var(--bgGlowB), transparent 60%),
                   var(--bg);
       color:var(--text);
       min-height:100vh;
     }
     a{ color:inherit; }
-    .wrap{ max-width:1050px; margin:0 auto; padding:28px 18px 42px; }
-    header{
-      display:flex; gap:14px; align-items:flex-end; justify-content:space-between;
-      flex-wrap:wrap;
-      padding: 8px 2px 18px;
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid var(--border);
+      background:var(--panel);
+      backdrop-filter: blur(8px);
+      overflow:hidden;
     }
-    .title{ display:flex; flex-direction:column; gap:6px; }
-    h1{ margin:0; font-size:22px; letter-spacing:.2px; }
-    .sub{ margin:0; color:var(--muted); font-size:13px; line-height:1.35; max-width:75ch; }
-    .controls{
-      display:flex; gap:10px; align-items:center;
-      flex: 1 1 320px;
+
+    .topbar::before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:220px;
+      left:-120px;
+      top:-120px;
+      background:
+        radial-gradient(circle, var(--headerGlowA), transparent 65%),
+        radial-gradient(circle at 65% 55%, var(--headerGlowB), transparent 60%);
+      filter: blur(10px);
+      animation: drift 8s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+
+    @keyframes drift{
+      0%{ transform: translateX(0) translateY(0) scale(1); opacity:.85; }
+      100%{ transform: translateX(60px) translateY(20px) scale(1.08); opacity:1; }
+    }
+
+    .barInner{
+      width:min(1300px, 98vw);
+      margin:0 auto;
+      padding:12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      position:relative;
+    }
+
+    .brand{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .title{
+      margin:0;
+      font-size:1.02rem;
+      letter-spacing:.2px;
+      text-shadow: 0 0 14px rgba(122,167,255,.25);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .appName{
+      margin:0;
+      font-size:.84rem;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .topActions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
       justify-content:flex-end;
     }
+
+    .themeField{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.84rem;
+      color:var(--muted);
+      background:var(--themeBg);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:7px 10px;
+    }
+
+    .themePicker{
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:var(--cardBg);
+      color:var(--text);
+      font-size:.82rem;
+      padding:4px 8px;
+    }
+
+    .themePicker:focus{
+      outline:none;
+      box-shadow:0 0 0 3px rgba(122,167,255,.18);
+    }
+
+    .wrap{
+      width:min(1050px, 96vw);
+      margin:0 auto;
+      padding:22px 0 42px;
+    }
+
+    .launcherHead{
+      display:flex;
+      gap:14px;
+      align-items:flex-end;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding:8px 2px 18px;
+    }
+
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+      max-width:75ch;
+    }
+
     .search{
       position:relative;
       flex:1 1 260px;
@@ -56,13 +202,10 @@
       padding:10px 12px 10px 36px;
       border-radius:12px;
       border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
+      background: var(--searchBg);
       color:var(--text);
       outline:none;
       box-shadow:none;
-    }
-    @media (prefers-color-scheme: light){
-      .search input{ background: rgba(17,24,39,.02); }
     }
     .search svg{
       position:absolute;
@@ -83,7 +226,7 @@
     }
     .card{
       grid-column: span 6;
-      background: rgba(255,255,255,.04);
+      background: var(--cardBg);
       border:1px solid var(--border);
       border-radius:16px;
       padding:16px 16px 14px;
@@ -92,9 +235,6 @@
       overflow:hidden;
     }
     @media (max-width: 780px){ .card{ grid-column: span 12; } }
-    @media (prefers-color-scheme: light){
-      .card{ background: rgba(255,255,255, .86); }
-    }
     .cardTop{
       display:flex; gap:12px; align-items:flex-start;
       margin-bottom: 10px;
@@ -130,9 +270,6 @@
       background: var(--chip);
       color: var(--chipText);
       border: 1px solid rgba(255,255,255,.06);
-    }
-    @media (prefers-color-scheme: light){
-      .chip{ border-color: rgba(17,24,39,.08); }
     }
     .actions{
       display:flex; gap:10px; flex-wrap:wrap;
@@ -174,28 +311,53 @@
       color: var(--muted);
       background: rgba(255,255,255,.03);
     }
+
+    @media (max-width:760px){
+      .barInner{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+      .topActions{
+        width:100%;
+        justify-content:flex-start;
+      }
+    }
+
     code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="title">
-        <h1>JR – App Launcher</h1>
-        <p class="sub">
-          Static launcher for your GitHub-hosted tools. “Launch” targets GitHub Pages URLs; “Source” opens the repo file.
-        </p>
+  <header class="topbar">
+    <div class="barInner">
+      <div class="brand">
+        <h1 class="title">Josh Roberts' Data Toolbox</h1>
+        <p class="appName">Launcher</p>
       </div>
+      <div class="topActions">
+        <label class="themeField" for="themePicker">
+          Theme
+          <select id="themePicker" class="themePicker" aria-label="Theme picker">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </header>
 
-      <div class="controls">
-        <div class="search" aria-label="Search apps">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <input id="q" type="text" placeholder="Search apps…" autocomplete="off" />
-        </div>
+  <div class="wrap">
+    <section class="launcherHead">
+      <p class="sub">
+        Static launcher for your GitHub-hosted tools. “Launch” opens each app inside the shared toolbox shell; “Source” opens the repo file.
+      </p>
+
+      <div class="search" aria-label="Search apps">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input id="q" type="text" placeholder="Search apps…" autocomplete="off" />
       </div>
-    </header>
+    </section>
 
     <main>
       <div id="grid" class="grid" role="list"></div>
@@ -216,15 +378,56 @@
       return base.replace(/\/+$/, "") + "/" + String(path).replace(/^\/+/, "");
     }
 
+    function shellUrl(targetUrl, appName) {
+      const shell = new URL("app-shell.html", window.location.href);
+      shell.searchParams.set("src", targetUrl);
+      shell.searchParams.set("app", appName);
+      return shell.toString();
+    }
+
+    const THEME_STORAGE_KEY = "jrDataToolboxTheme";
+
+    function normalizeTheme(theme) {
+      return theme === "light" ? "light" : "dark";
+    }
+
+    function setTheme(theme, persist = true) {
+      const resolved = normalizeTheme(theme);
+      document.documentElement.setAttribute("data-theme", resolved);
+      if (elThemePicker.value !== resolved) {
+        elThemePicker.value = resolved;
+      }
+      if (persist) {
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, resolved);
+        } catch {
+          // Ignore storage restrictions.
+        }
+      }
+    }
+
+    function initTheme() {
+      let stored = "dark";
+      try {
+        stored = localStorage.getItem(THEME_STORAGE_KEY) || "dark";
+      } catch {
+        stored = "dark";
+      }
+      setTheme(stored, false);
+    }
+
     const APPS = [
       {
-        id: "six-digit-extractor",
-        name: "Six-Digit Extractor",
-        icon: "🔎",
-        description: "Paste messy text → extract all 6-digit numbers → copy/save CSV.",
-        tags: ["extract", "csv", "text", "vibing"],
-        launchUrl: pagesUrl("FraknToastr", "vibing", "six-digit-extractor.html"),
-        sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/six-digit-extractor.html"
+        id: "pattern-extractor",
+        name: "Pattern Extractor",
+        icon: "🧩",
+        description: "Extract regex-style patterns from text with configurable options.",
+        tags: ["extract", "pattern", "regex", "vibing"],
+        launchUrl: shellUrl(
+          pagesUrl("FraknToastr", "vibing", "Pattern%20Extractor.html"),
+          "Pattern Extractor"
+        ),
+        sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/Pattern%20Extractor.html"
       },
       {
         id: "sql-beautifier",
@@ -232,7 +435,10 @@
         icon: "🧼",
         description: "Format/beautify SQL quickly in-browser.",
         tags: ["sql", "format", "beautify", "vibing"],
-        launchUrl: pagesUrl("FraknToastr", "vibing", "sql-beautifier.html"),
+        launchUrl: shellUrl(
+          pagesUrl("FraknToastr", "vibing", "sql-beautifier.html"),
+          "SQL Beautifier"
+        ),
         sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/sql-beautifier.html"
       },
       {
@@ -242,17 +448,22 @@
         description: "QR code generator (Ileostomy Association).",
         tags: ["qr", "generator", "ileostomy-association"],
         // Folder index: .../qr-generator/ (or .../qr-generator/index.html both usually work)
-        launchUrl: pagesUrl("FraknToastr", "Ileostomy-Association", "qr-generator/"),
+        launchUrl: shellUrl(
+          pagesUrl("FraknToastr", "Ileostomy-Association", "qr-generator/"),
+          "IASA QR Generator"
+        ),
         sourceUrl: "https://github.com/FraknToastr/Ileostomy-Association/blob/main/qr-generator/index.html"
       }
     ];
 
     const elGrid = document.getElementById("grid");
     const elQ = document.getElementById("q");
+    const elThemePicker = document.getElementById("themePicker");
     const elShown = document.getElementById("shown");
     const elTotal = document.getElementById("total");
 
     elTotal.textContent = String(APPS.length);
+    initTheme();
 
     function escapeHtml(s){
       return String(s)
@@ -292,7 +503,7 @@
             </div>
 
             <div class="actions">
-              <a class="btn btnPrimary" href="${escapeHtml(app.launchUrl)}" target="_blank" rel="noopener noreferrer">
+              <a class="btn btnPrimary" href="${escapeHtml(app.launchUrl)}">
                 ▶ Launch
               </a>
               <a class="btn btnSecondary" href="${escapeHtml(app.sourceUrl)}" target="_blank" rel="noopener noreferrer">
@@ -325,6 +536,7 @@
     }
 
     elQ.addEventListener("input", applyFilter);
+    elThemePicker.addEventListener("change", () => setTheme(elThemePicker.value));
 
     // Initial render
     render(APPS);

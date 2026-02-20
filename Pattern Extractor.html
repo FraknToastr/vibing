@@ -276,9 +276,6 @@
   <main class="container">
     <section class="card">
       <h1>Wordle-Style Pattern Extractor (Offline)</h1>
-      <div class="controls" style="margin-top:0.6rem;">
-        <button id="themeToggleBtn" type="button" aria-pressed="false">Switch to Light Theme</button>
-      </div>
       <p class="subtle">Extracts matching substrings from pasted text using a 20-position pattern row. Works from <code>file://</code> (double-click this file).</p>
       <ol class="usage">
         <li>Paste text, set pattern type + optional char in each square, then click <strong>Extract</strong>.</li>
@@ -393,34 +390,46 @@
       clearInputBtn: document.getElementById("clearInputBtn"),
       clearOutputBtn: document.getElementById("clearOutputBtn"),
       resetPatternBtn: document.getElementById("resetPatternBtn"),
-      sampleBtn: document.getElementById("sampleBtn"),
-      themeToggleBtn: document.getElementById("themeToggleBtn")
+      sampleBtn: document.getElementById("sampleBtn")
     };
 
     const patternCells = [];
-    const THEME_STORAGE_KEY = "patternExtractorTheme";
+    const THEME_STORAGE_KEY = "jrDataToolboxTheme";
+    const LEGACY_THEME_STORAGE_KEY = "patternExtractorTheme";
+    const THEME_MESSAGE_TYPE = "jr-toolbox-theme";
 
-    function setTheme(theme) {
+    function setTheme(theme, persist = true) {
       const resolved = theme === "light" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", resolved);
-      const isLight = resolved === "light";
-      el.themeToggleBtn.textContent = isLight ? "Switch to Dark Theme" : "Switch to Light Theme";
-      el.themeToggleBtn.setAttribute("aria-pressed", String(isLight));
-      try {
-        localStorage.setItem(THEME_STORAGE_KEY, resolved);
-      } catch {
-        // Ignore storage limitations in strict browser environments.
+      if (persist) {
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, resolved);
+        } catch {
+          // Ignore storage limitations in strict browser environments.
+        }
       }
     }
 
     function initTheme() {
       let stored = "dark";
       try {
-        stored = localStorage.getItem(THEME_STORAGE_KEY) || "dark";
+        stored =
+          localStorage.getItem(THEME_STORAGE_KEY) ||
+          localStorage.getItem(LEGACY_THEME_STORAGE_KEY) ||
+          "dark";
       } catch {
         stored = "dark";
       }
-      setTheme(stored);
+      setTheme(stored, false);
+    }
+
+    function wireThemeMessages() {
+      window.addEventListener("message", (ev) => {
+        const data = ev.data;
+        if (!data || typeof data !== "object") return;
+        if (data.type !== THEME_MESSAGE_TYPE) return;
+        setTheme(data.theme);
+      });
     }
 
     function isLetter(ch) {
@@ -757,10 +766,6 @@
       });
       el.resetPatternBtn.addEventListener("click", resetPattern);
       el.sampleBtn.addEventListener("click", loadSample);
-      el.themeToggleBtn.addEventListener("click", () => {
-        const current = document.documentElement.getAttribute("data-theme") || "dark";
-        setTheme(current === "dark" ? "light" : "dark");
-      });
       el.layoutSelect.addEventListener("change", () => {
         const on = el.layoutSelect.value === "singleRow";
         el.headerOn.disabled = !on;
@@ -770,6 +775,7 @@
 
     initPatternGrid();
     initTheme();
+    wireThemeMessages();
     wireEvents();
     el.layoutSelect.dispatchEvent(new Event("change"));
     validatePattern(false);

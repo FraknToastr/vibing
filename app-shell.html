@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Josh Roberts' Data Toolbox</title>
+  <style>
+    :root{
+      --bg:#08101a;
+      --bgGlowA:rgba(31,111,235,.18);
+      --bgGlowB:rgba(68,194,255,.14);
+      --panel:#101a29;
+      --text:#e5edf7;
+      --muted:#a6b7ce;
+      --line:#22354d;
+      --btn:#1f6feb;
+      --btnAlt:#1a2432;
+      --themeBg:#1a2432;
+      --themeSurface:rgba(255,255,255,.04);
+      --headerGlowA:rgba(31,111,235,.45);
+      --headerGlowB:rgba(68,194,255,.30);
+    }
+
+    :root[data-theme="light"]{
+      --bg:#f4f7fb;
+      --bgGlowA:rgba(31,111,235,.10);
+      --bgGlowB:rgba(68,194,255,.08);
+      --panel:#ffffff;
+      --text:#111827;
+      --muted:#4b5b6f;
+      --line:#d1dbe8;
+      --btn:#1f6feb;
+      --btnAlt:#eef2f8;
+      --themeBg:#eef2f8;
+      --themeSurface:rgba(17,24,39,.02);
+      --headerGlowA:rgba(31,111,235,.24);
+      --headerGlowB:rgba(68,194,255,.18);
+    }
+
+    *{ box-sizing:border-box; }
+
+    html, body{
+      margin:0;
+      min-height:100%;
+      background:
+        radial-gradient(1200px 520px at 10% -10%, var(--bgGlowA), transparent 55%),
+        radial-gradient(1000px 520px at 100% 0, var(--bgGlowB), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body{
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid var(--line);
+      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      backdrop-filter: blur(8px);
+      overflow:hidden;
+    }
+
+    .topbar::before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:220px;
+      left:-120px;
+      top:-120px;
+      background:
+        radial-gradient(circle, var(--headerGlowA), transparent 65%),
+        radial-gradient(circle at 65% 55%, var(--headerGlowB), transparent 60%);
+      filter: blur(10px);
+      animation: drift 8s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+
+    @keyframes drift{
+      0%{ transform: translateX(0) translateY(0) scale(1); opacity:.85; }
+      100%{ transform: translateX(60px) translateY(20px) scale(1.08); opacity:1; }
+    }
+
+    .barInner{
+      width:min(1300px, 98vw);
+      margin:0 auto;
+      padding:12px 12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      position:relative;
+    }
+
+    .brand{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .title{
+      margin:0;
+      font-size:1.02rem;
+      letter-spacing:.2px;
+      text-shadow: 0 0 14px rgba(122,167,255,.25);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .appName{
+      margin:0;
+      font-size:.84rem;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      text-decoration:none;
+      color:var(--text);
+      padding:9px 12px;
+      font-size:.84rem;
+      font-weight:650;
+      white-space:nowrap;
+    }
+
+    .btnPrimary{
+      background:var(--btn);
+      border-color:transparent;
+      color:#fff;
+    }
+
+    .btnAlt{
+      background:var(--btnAlt);
+    }
+
+    .themeField{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.84rem;
+      color:var(--muted);
+      background:var(--themeBg);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:7px 10px;
+    }
+
+    .themePicker{
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:var(--themeSurface);
+      color:var(--text);
+      font-size:.82rem;
+      padding:4px 8px;
+    }
+
+    .themePicker:focus{
+      outline:none;
+      box-shadow:0 0 0 3px rgba(122,167,255,.18);
+    }
+
+    .main{
+      flex:1 1 auto;
+      display:flex;
+      width:min(1300px, 98vw);
+      margin:0 auto;
+      padding:12px;
+    }
+
+    .frameWrap{
+      flex:1 1 auto;
+      min-height:calc(100vh - 86px);
+      border:1px solid var(--line);
+      border-radius:12px;
+      overflow:hidden;
+      background:#0b1220;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      background:#fff;
+    }
+
+    .notice{
+      margin:18px auto 0;
+      width:min(920px, 96vw);
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background: color-mix(in srgb, var(--panel) 88%, transparent);
+      color:var(--muted);
+      display:none;
+    }
+
+    .notice.show{
+      display:block;
+    }
+
+    @media (max-width:760px){
+      .barInner{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .actions{
+        width:100%;
+        justify-content:flex-start;
+      }
+
+      .main{
+        padding:10px;
+      }
+
+      .frameWrap{
+        min-height:calc(100vh - 148px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="barInner">
+      <div class="brand">
+        <h1 class="title">Josh Roberts' Data Toolbox</h1>
+        <p id="appName" class="appName">Loading app...</p>
+      </div>
+      <div class="actions">
+        <label class="themeField" for="themePicker">
+          Theme
+          <select id="themePicker" class="themePicker" aria-label="Theme picker">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </label>
+        <a class="btn btnAlt" href="index.html">Back to Launcher</a>
+        <a id="openDirect" class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">Open Directly</a>
+      </div>
+    </div>
+  </header>
+
+  <p id="notice" class="notice">
+    Could not load this app in the embedded frame. Use "Open Directly" to launch it in a new tab.
+  </p>
+
+  <main class="main">
+    <section class="frameWrap">
+      <iframe id="toolFrame" title="Data Toolbox app"></iframe>
+    </section>
+  </main>
+
+  <script>
+    const THEME_STORAGE_KEY = "jrDataToolboxTheme";
+    const THEME_MESSAGE_TYPE = "jr-toolbox-theme";
+
+    const params = new URLSearchParams(window.location.search);
+    const frame = document.getElementById("toolFrame");
+    const appNameEl = document.getElementById("appName");
+    const notice = document.getElementById("notice");
+    const openDirect = document.getElementById("openDirect");
+    const themePicker = document.getElementById("themePicker");
+
+    function normalizeTheme(theme) {
+      return theme === "light" ? "light" : "dark";
+    }
+
+    function notifyEmbeddedTheme(theme) {
+      try {
+        if (frame.contentWindow) {
+          frame.contentWindow.postMessage(
+            { type: THEME_MESSAGE_TYPE, theme },
+            "*"
+          );
+        }
+      } catch {
+        // Ignore cross-origin restrictions.
+      }
+
+      try {
+        if (frame.contentDocument && frame.contentDocument.documentElement) {
+          frame.contentDocument.documentElement.setAttribute("data-theme", theme);
+        }
+      } catch {
+        // Ignore cross-origin restrictions.
+      }
+    }
+
+    function setTheme(theme, persist = true) {
+      const resolved = normalizeTheme(theme);
+      document.documentElement.setAttribute("data-theme", resolved);
+      if (themePicker.value !== resolved) {
+        themePicker.value = resolved;
+      }
+      notifyEmbeddedTheme(resolved);
+      if (persist) {
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, resolved);
+        } catch {
+          // Ignore storage restrictions.
+        }
+      }
+    }
+
+    function initTheme() {
+      let stored = "dark";
+      try {
+        stored = localStorage.getItem(THEME_STORAGE_KEY) || "dark";
+      } catch {
+        stored = "dark";
+      }
+      setTheme(stored, false);
+    }
+
+    function parseSafeUrl(value) {
+      if (!value) return null;
+      try {
+        const parsed = new URL(value, window.location.href);
+        if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return null;
+        return parsed.toString();
+      } catch {
+        return null;
+      }
+    }
+
+    const appName = (params.get("app") || "Selected App").trim();
+    const targetUrl = parseSafeUrl(params.get("src"));
+
+    appNameEl.textContent = appName;
+    document.title = appName + " | Josh Roberts' Data Toolbox";
+    initTheme();
+
+    if (!targetUrl) {
+      notice.classList.add("show");
+      notice.textContent = "No valid app URL was supplied. Return to launcher and try again.";
+      frame.remove();
+      openDirect.remove();
+    } else {
+      let loaded = false;
+      frame.addEventListener("load", function () {
+        loaded = true;
+        notice.classList.remove("show");
+        setTheme(themePicker.value, false);
+      });
+
+      openDirect.href = targetUrl;
+      frame.src = targetUrl;
+
+      setTimeout(function () {
+        if (loaded) return;
+        notice.classList.add("show");
+      }, 6000);
+    }
+
+    themePicker.addEventListener("change", function () {
+      setTheme(themePicker.value);
+    });
+  </script>
+</body>
+</html>

@@ -817,7 +817,7 @@ This area preserves formatting using clipboard HTML."
     const a = document.createElement("a");
     const stamp = new Date();
     const pad = (n)=>String(n).padStart(2,"0");
-    const fname = `converted-${stamp.getFullYear()}${pad(stamp.getMonth()+1)}${pad(stamp.getDate())}-${pad(stamp.getHours())${pad(stamp.getMinutes())}}.md`.replace(")",""); // safety
+    const fname = `converted-${stamp.getFullYear()}${pad(stamp.getMonth()+1)}${pad(stamp.getDate())}-${pad(stamp.getHours())}${pad(stamp.getMinutes())}.md`;
     a.href = url;
     a.download = fname.replace(/[:]/g,"");
     document.body.appendChild(a);
