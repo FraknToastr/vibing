@@ -25,6 +25,8 @@
       --chip:#1a2332;
       --chipText:#b9c4d3;
       --focus:#7aa7ff;
+      --selectMenuBg:#0f172a;
+      --selectMenuText:#f8fafc;
       --headerGlowA:rgba(31,111,235,.45);
       --headerGlowB:rgba(68,194,255,.30);
     }
@@ -48,6 +50,8 @@
       --chip:#eef2f8;
       --chipText:#334155;
       --focus:#2b6fff;
+      --selectMenuBg:#ffffff;
+      --selectMenuText:#111827;
       --headerGlowA:rgba(31,111,235,.24);
       --headerGlowB:rgba(68,194,255,.18);
     }
@@ -161,6 +165,12 @@
       color:var(--text);
       font-size:.82rem;
       padding:4px 8px;
+      color-scheme: light dark;
+    }
+
+    .themePicker option{
+      background:var(--selectMenuBg);
+      color:var(--selectMenuText);
     }
 
     .themePicker:focus{
@@ -424,7 +434,7 @@
         description: "Extract regex-style patterns from text with configurable options.",
         tags: ["extract", "pattern", "regex", "vibing"],
         launchUrl: shellUrl(
-          pagesUrl("FraknToastr", "vibing", "Pattern%20Extractor.html"),
+          "Pattern%20Extractor.html",
           "Pattern Extractor"
         ),
         sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/Pattern%20Extractor.html"
@@ -436,7 +446,7 @@
         description: "Format/beautify SQL quickly in-browser.",
         tags: ["sql", "format", "beautify", "vibing"],
         launchUrl: shellUrl(
-          pagesUrl("FraknToastr", "vibing", "sql-beautifier.html"),
+          "sql-beautifier.html",
           "SQL Beautifier"
         ),
         sourceUrl: "https://github.com/FraknToastr/vibing/blob/main/sql-beautifier.html"

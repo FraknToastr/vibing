@@ -17,6 +17,8 @@
       --btnAlt:#1a2432;
       --themeBg:#1a2432;
       --themeSurface:rgba(255,255,255,.04);
+      --selectMenuBg:#0f172a;
+      --selectMenuText:#f8fafc;
       --headerGlowA:rgba(31,111,235,.45);
       --headerGlowB:rgba(68,194,255,.30);
     }
@@ -33,6 +35,8 @@
       --btnAlt:#eef2f8;
       --themeBg:#eef2f8;
       --themeSurface:rgba(17,24,39,.02);
+      --selectMenuBg:#ffffff;
+      --selectMenuText:#111827;
       --headerGlowA:rgba(31,111,235,.24);
       --headerGlowB:rgba(68,194,255,.18);
     }
@@ -175,6 +179,12 @@
       color:var(--text);
       font-size:.82rem;
       padding:4px 8px;
+      color-scheme: light dark;
+    }
+
+    .themePicker option{
+      background:var(--selectMenuBg);
+      color:var(--selectMenuText);
     }
 
     .themePicker:focus{

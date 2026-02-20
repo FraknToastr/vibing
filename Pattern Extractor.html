@@ -182,21 +182,21 @@
     }
 
     .cell.inactive {
-      opacity: 0.33;
+      opacity: 1;
     }
 
-    .type-select {
+    select.type-select {
       width: var(--square);
       height: 1.25rem;
       padding: 0;
       text-align: center;
       font-size: 0.74rem;
-      background: #0d1829;
-      color: #bfdbfe;
-      border-color: #27405f;
+      background: #b59f3b;
+      color: #ffffff;
+      border-color: #9c8933;
     }
 
-    .char-input {
+    input.char-input {
       width: var(--square);
       height: var(--square);
       text-align: center;
@@ -206,12 +206,24 @@
       font-family: var(--mono);
       padding: 0;
       border-radius: 7px;
-      border: 1px solid #4b5563;
-      background: #0a1323;
-      color: #e5e7eb;
+      border: 1px solid #9c8933;
+      background: #b59f3b;
+      color: #ffffff;
     }
 
-    .char-input.invalid {
+    .cell.configured select.type-select {
+      background: #538d4e;
+      border-color: #467a42;
+      color: #ffffff;
+    }
+
+    .cell.configured input.char-input {
+      background: #538d4e;
+      border-color: #467a42;
+      color: #ffffff;
+    }
+
+    input.char-input.invalid {
       border-color: var(--error);
       box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.22);
       background: rgba(127, 29, 29, 0.25);
@@ -252,15 +264,25 @@
       border-color: #94a3b8;
       color: #0f172a;
     }
-    :root[data-theme="light"] .type-select {
-      background: #e2e8f0;
-      color: #0f172a;
-      border-color: #94a3b8;
+    :root[data-theme="light"] select.type-select {
+      background: #c9b458;
+      color: #ffffff;
+      border-color: #ad9a48;
     }
-    :root[data-theme="light"] .char-input {
-      background: #ffffff;
-      border-color: #94a3b8;
-      color: #0f172a;
+    :root[data-theme="light"] input.char-input {
+      background: #c9b458;
+      border-color: #ad9a48;
+      color: #ffffff;
+    }
+    :root[data-theme="light"] .cell.configured select.type-select {
+      background: #6aaa64;
+      border-color: #5b9556;
+      color: #ffffff;
+    }
+    :root[data-theme="light"] .cell.configured input.char-input {
+      background: #6aaa64;
+      border-color: #5b9556;
+      color: #ffffff;
     }
     :root[data-theme="light"] .counter { color: #334155; }
     :root[data-theme="light"] .counter code { color: #854d0e; }
@@ -295,6 +317,7 @@
             <option value="pathwayId">Pathway Id (NNNNNN)</option>
             <option value="planSaId">Plan SA ID (NNNNNNNN)</option>
             <option value="pathwayUbn">Pathway UBN (NNNN-NN-NN)</option>
+            <option value="auMobile">Australian Mobile (04NNNNNNNN)</option>
           </select>
         </label>
         <label class="field">
@@ -342,11 +365,9 @@
           Layout
           <select id="layoutSelect">
             <option value="singleLine">Single line</option>
-            <option value="singleRow">Single row (CSV)</option>
+            <option value="singleRowNoHeader">Single row (no header)</option>
+            <option value="singleRowWithHeader">Single row (with header)</option>
           </select>
-        </label>
-        <label class="field">
-          <input id="headerOn" type="checkbox" /> Header (single row mode)
         </label>
         <label class="field">
           Header name
@@ -394,7 +415,6 @@
       trimMatches: document.getElementById("trimMatches"),
       singleQuoteWrap: document.getElementById("singleQuoteWrap"),
       layoutSelect: document.getElementById("layoutSelect"),
-      headerOn: document.getElementById("headerOn"),
       headerName: document.getElementById("headerName"),
       extractBtn: document.getElementById("extractBtn"),
       copyOutputBtn: document.getElementById("copyOutputBtn"),
@@ -410,7 +430,8 @@
       pathwayId: { label: "Pathway Id", template: "NNNNNN" },
       planSaId: { label: "Plan SA ID", template: "NNNNNNNN" },
       // Based on UBN.csv dominant format.
-      pathwayUbn: { label: "Pathway UBN", template: "NNNN-NN-NN" }
+      pathwayUbn: { label: "Pathway UBN", template: "NNNN-NN-NN" },
+      auMobile: { label: "Australian Mobile", template: "04NNNNNNNN" }
     };
     const THEME_STORAGE_KEY = "jrDataToolboxTheme";
     const LEGACY_THEME_STORAGE_KEY = "patternExtractorTheme";
@@ -494,6 +515,15 @@
           // Keep exactly one character; auto-advance once user types.
           const v = ev.target.value;
           ev.target.value = v.length > 1 ? v.slice(0, 1) : v;
+          if (ev.target.value !== "") {
+            if (isDigit(ev.target.value)) {
+              select.value = TYPE.NUMBER;
+            } else if (isLetter(ev.target.value)) {
+              select.value = TYPE.LETTER;
+            } else {
+              select.value = TYPE.CHARACTER;
+            }
+          }
           validatePattern(false);
           if (ev.target.value && i < TOTAL_POSITIONS - 1) {
             patternCells[i + 1].input.focus();
@@ -580,6 +610,13 @@
       setStatus(`Preset applied: ${preset.label} (${preset.template}).`, "ok");
     }
 
+    function updateCellWordleStates() {
+      patternCells.forEach((c) => {
+        const configured = c.input.value !== "" || c.select.value !== TYPE.WILDCARD;
+        c.cell.classList.toggle("configured", configured);
+      });
+    }
+
     function updateActiveLengthVisuals(L) {
       el.activeLen.textContent = String(L);
       for (let i = 0; i < TOTAL_POSITIONS; i += 1) {
@@ -596,6 +633,7 @@
     function validatePattern(showError = true) {
       const L = getActiveLength();
       updateActiveLengthVisuals(L);
+      updateCellWordleStates();
 
       const invalidPositions = [];
       for (let i = 0; i < L; i += 1) {
@@ -679,7 +717,10 @@
       }
 
       const csvValues = prepared.map(csvEscapeIfNeeded).join(",");
-      if (!el.headerOn.checked) {
+      if (layout === "singleRowNoHeader") {
+        return csvValues;
+      }
+      if (layout !== "singleRowWithHeader") {
         return csvValues;
       }
       const headerRaw = (el.headerName.value || "").trim() || "Extracted";
@@ -825,9 +866,8 @@
         applyPreset(el.presetSelect.value);
       });
       el.layoutSelect.addEventListener("change", () => {
-        const on = el.layoutSelect.value === "singleRow";
-        el.headerOn.disabled = !on;
-        el.headerName.disabled = !on;
+        const withHeader = el.layoutSelect.value === "singleRowWithHeader";
+        el.headerName.disabled = !withHeader;
       });
     }
 
