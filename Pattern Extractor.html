@@ -288,6 +288,16 @@
       <h2>Pattern (20 positions)</h2>
       <div class="controls">
         <label class="field">
+          Pattern preset
+          <select id="presetSelect">
+            <option value="">Custom</option>
+            <option value="asseticId">Assetic Id (NNNNNN)</option>
+            <option value="pathwayId">Pathway Id (NNNNNN)</option>
+            <option value="planSaId">Plan SA ID (NNNNNNNN)</option>
+            <option value="pathwayUbn">Pathway UBN (NNNN-NN-NN)</option>
+          </select>
+        </label>
+        <label class="field">
           <input id="lengthAuto" type="checkbox" checked />
           Length Auto
         </label>
@@ -379,6 +389,7 @@
       activeLen: document.getElementById("activeLen"),
       inputText: document.getElementById("inputText"),
       outputText: document.getElementById("outputText"),
+      presetSelect: document.getElementById("presetSelect"),
       allowDupes: document.getElementById("allowDupes"),
       trimMatches: document.getElementById("trimMatches"),
       singleQuoteWrap: document.getElementById("singleQuoteWrap"),
@@ -394,6 +405,13 @@
     };
 
     const patternCells = [];
+    const PATTERN_PRESETS = {
+      asseticId: { label: "Assetic Id", template: "NNNNNN" },
+      pathwayId: { label: "Pathway Id", template: "NNNNNN" },
+      planSaId: { label: "Plan SA ID", template: "NNNNNNNN" },
+      // Based on UBN.csv dominant format.
+      pathwayUbn: { label: "Pathway UBN", template: "NNNN-NN-NN" }
+    };
     const THEME_STORAGE_KEY = "jrDataToolboxTheme";
     const LEGACY_THEME_STORAGE_KEY = "patternExtractorTheme";
     const THEME_MESSAGE_TYPE = "jr-toolbox-theme";
@@ -525,6 +543,41 @@
         if (hasChar || typeNotWildcard) maxIdx = i + 1;
       }
       return Math.max(1, maxIdx);
+    }
+
+    function applyPreset(key) {
+      const preset = PATTERN_PRESETS[key];
+      if (!preset) return;
+
+      const tokens = preset.template.split("").slice(0, TOTAL_POSITIONS);
+      patternCells.forEach((c) => {
+        c.select.value = TYPE.WILDCARD;
+        c.input.value = "";
+        c.input.classList.remove("invalid");
+      });
+
+      tokens.forEach((token, idx) => {
+        const cell = patternCells[idx];
+        if (token === "N") {
+          cell.select.value = TYPE.NUMBER;
+          cell.input.value = "";
+        } else if (token === "L") {
+          cell.select.value = TYPE.LETTER;
+          cell.input.value = "";
+        } else if (token === "*") {
+          cell.select.value = TYPE.WILDCARD;
+          cell.input.value = "";
+        } else {
+          cell.select.value = TYPE.CHARACTER;
+          cell.input.value = token;
+        }
+      });
+
+      el.lengthAuto.checked = false;
+      el.manualLength.disabled = false;
+      el.manualLength.value = String(tokens.length);
+      validatePattern(false);
+      setStatus(`Preset applied: ${preset.label} (${preset.template}).`, "ok");
     }
 
     function updateActiveLengthVisuals(L) {
@@ -718,6 +771,7 @@
         c.input.value = "";
         c.input.classList.remove("invalid");
       });
+      el.presetSelect.value = "";
       el.lengthAuto.checked = true;
       el.manualLength.disabled = true;
       el.manualLength.value = "20";
@@ -741,6 +795,7 @@
       el.lengthAuto.checked = false;
       el.manualLength.disabled = false;
       el.manualLength.value = "4";
+      el.presetSelect.value = "";
       validatePattern(true);
       setStatus("Sample loaded. Click Extract.", "ok");
     }
@@ -766,6 +821,9 @@
       });
       el.resetPatternBtn.addEventListener("click", resetPattern);
       el.sampleBtn.addEventListener("click", loadSample);
+      el.presetSelect.addEventListener("change", () => {
+        applyPreset(el.presetSelect.value);
+      });
       el.layoutSelect.addEventListener("change", () => {
         const on = el.layoutSelect.value === "singleRow";
         el.headerOn.disabled = !on;
